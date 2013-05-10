@@ -91,7 +91,7 @@ a:hover {
 <p>Fractional binary numbers are integers with an implicit &ldquo;binary point&rdquo; (like the decimal point in decimal number). Consider a 4 bit binary number with an implicit binary point between bits 1 and 2 (counting from the right). For example, the number 1011 could be written as 10.11 and would be equal to the decimal number 2&frac34; (2 + &frac12; + &frac14;).
 <p>Practice Problem 2.32 describes a problem with fractional binary numbers that led to <a href="http://www.infoworld.com/article/03/12/17/HNbadmath_1.html" target="_blank">an incident</a> during the Gulf War in 1991. A Patriot missile was fired at an incoming Scud missile but missed it because of a bug in the Patriot missile battery&rsquo;s software. The Scud went on to hit a U.S. military barracks, killing 28 of our soldiers.</p>
 <p>Bugs can sometimes have fatal consequences. You wouldn&rsquo;t want something like this on your conscience.</p>
-<p>The problem is similar to how 0.3333... never exactly represents one third, no matter how many threes you add onto the end. <a href="files/pmsl.c">pmsl.c</a> demonstrates the difference between the value of a fraction and the fractional binary number that represents it. Call this code from the command line as:</p>
+<p>The problem is similar to how 0.3333... never exactly represents one third, no matter how many threes you add onto the end. <strong>pmsl.c</strong> demonstrates the difference between the value of a fraction and the fractional binary number that represents it. Call this code from the command line as:</p>
 <blockquote>
 	<p class="codeInText">pmsl 32 1 10</p>
 	</blockquote>
@@ -99,7 +99,7 @@ a:hover {
 <p>In Linux, the code prints a large number of significant digits for the various values. Running the Visual Studio solution in <a href="files/pmsl.zip">pmsl.zip</a> prints far fewer significant digits. Either Visual Studio is hiding data from us, or Linux is making things up.</p>
 <p class="headerText">Who&rsquo;s Telling The Truth? </p>
 <p>Let&rsquo;s do an experiment to find out whether Linux or Visual Studio is getting things right. We&rsquo;ll use <a href="http://www.joyofpi.com/pi.html" target="_blank">the value of pi</a> as a test case, since we know the correct value out to <em>many</em> digits. </p>
-<p><a href="files/error.c">error.c</a>  prints out double and  float values for pi in Linux. <a href="files/error.zip">error.zip</a> contains a Visual Studio solution that does the same thing. (It's almost the same code, except for the assembly code that gets the value of pi from the chip.) </p>
+<p><strong>error.c</strong>  prints out double and  float values for pi in Linux. <a href="files/error.zip">error.zip</a> contains a Visual Studio solution that does the same thing. (It's almost the same code, except for the assembly code that gets the value of pi from the chip.) </p>
 <p>We observe that Visual Studio&rsquo;s output is accurate except for the rightmost digit. Linux, on the other hand, are quite inaccurate towards the right end of their output. But we can see that both versions of this code are using the same hex value internally for pi.</p>
 <p>This suggests that the culprit is the implementation of <span class="codeInText">printf</span> in Linux. </p>
 <p><em>Sometimes your tools may lie to you. It is up to you to be watchful and figure out what&rsquo;s happening. Remember that in extreme circumstances, lives may depend on getting things like this right.</em></p>

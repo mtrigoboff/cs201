@@ -100,7 +100,7 @@ a:hover {
 	<p><span class="codeInText">argc</span> contains the number of arguments (including the program name). <span class="codeInText">argv</span> is a pointer to an array of pointers.  Each pointer in that array points to a C string
 		containing the corresponding argument. (<span class="codeInText">argv</span> can also be coded like this: <span class="codeInText">char *argv[]</span>. The two forms of <span class="codeInText">argv</span> are equivalent.)	</p>
 	<p>In the example above, <span class="codeInText">argc</span> will be 4, <span class="codeInText">argv[0]</span> will be <span class="codeInText">&quot;programName&quot;</span>, <span class="codeInText">argv[1]</span> will be <span class="codeInText">&quot;abc&quot;</span>, <span class="codeInText">argv[2]</span> will be <span class="codeInText">&quot;def&quot;</span>, and <span class="codeInText">argv[3]</span> will be <span class="codeInText">&quot;123&quot;</span>. Note that 123 is passed as a <em>string</em>, not as a <em>number</em>. </p>
-	<p><a href="files/printargs.c" target="_blank">printargs.c</a> is a simple C program that prints its command-line arguments. </p>
+	<p><strong>printargs.c</strong> is a simple C program that prints its command-line arguments. </p>
 	<p>There are two functions,<span class="codeInText"> atoi()</span> and<span class="codeInText"> atof()</span> (defined in<span class="codeInText"> stdlib.h</span>) which are useful for translating numerical values contained in strings into actual numerical data (the names are abbreviations of <strong>a</strong>lphabetic-<strong>to</strong>-<strong>i</strong>nteger and <strong>a</strong>lphabetic-<strong>to</strong>-<strong>f</strong>loating):</p>
 	<ul>
 		<li><span class="codeInText">int <strong>atoi</strong>(char *str)
@@ -116,7 +116,7 @@ a:hover {
 		</li>
 	</ul>
 	<p>Both of these functions will return zero if the string argument is not a valid number.</p>
-	<p><a href="files/useargs.c" target="_blank">useargs.c</a> is a simple C program that uses atoi() and atof() to parse its command line arguments and do something with them. </p>
+	<p><strong>useargs.c</strong> is a simple C program that uses atoi() and atof() to parse its command line arguments and do something with them. </p>
 <!-- InstanceEndEditable -->
 </blockquote>
 </body>

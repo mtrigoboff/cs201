@@ -117,7 +117,7 @@ a:hover {
 <p>This is illustrated in Figure 8-5 in Section 8.1.3. As you can see, C0, C2, and C3 line up perfectly with CF, PF, and ZF in EFLAGS. <em>This is not a coincidence</em>.  </p>
 <p>The values copied into EFLAGS work well with the <em>unsigned</em> conditional jump instructions such as JA, JB, etc. </p>
 <p>This cumbersome process of transferring comparison results is a legacy of the time when the FPU was a separate chip and its results had to be transferred to the CPU. </p>
-<p>You can run <a href="files/fcond.c" target="_blank">fcond.c</a> in <strong>gdbtui</strong> and watch the old mechanism in action. If you provide it with two command line arguments, you can see it produce results other than &ldquo;unordered.&rdquo; </p>
+<p>You can run <strong>fcond.c</strong> in <strong>gdbtui</strong> and watch the old mechanism in action. If you provide it with two command line arguments, you can see it produce results other than &ldquo;unordered.&rdquo; </p>
 <p><span class="headerText">New Mechanism </span></p>
 <p>More modern Pentium processors (P6 and beyond) have new floating point compare instructions that set EFLAGS directly. The new instructions are: FCOMI, FCOMIP, FUCOMI, and FUCOMIP. They are designed to be used with the <em>unsigned</em> conditional jump instructions (JA, JB, etc).</p>
 <p>Visual Studio solution <a href="files/fcondinstrs.zip">fcondinstrs</a> demonstrates both the old mechanism and the new mechanism. It also demonstrates the use of the FFREE and FINCSTP instructions to pop a value off the ST(i) stack without having to store that value anywhere in memory. This is useful because there isn&rsquo;t an FCOMIPP instruction that would pop <em>both</em> operands off the ST(i) stack. </p>
