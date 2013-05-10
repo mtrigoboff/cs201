@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Unicode</title>
+<!-- InstanceBeginEditable name="head" -->
+</style>
+<!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Unicode" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Unicode</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>In ASCII, characters are represented as a single byte.  This allows for 256 different characters, which is enough for a language like English (26 small letters, 26 capital letters, 10 numerals, punctuation, etc). But 256 values are not enough for a lanuage like Chinese, where each word is its own different character. There are over 40,000 different Chinese characters. And what is really needed is a way to represent characters for <em>all</em> languages, so that you can have a document that displays characters from many languages at the same time. The answer to this problem is <a href="http://www.unicode.org/" target="_blank">Unicode</a>, a way of encoding characters as more than one byte when necessary. In C, characters such as this are known as wide characters, and are collected into <a href="http://www.gnu.org/software/libc/manual/html_node/Character-Set-Handling.html#Character-Set-Handling" target="_blank">character sets</a>. There are data types like <span class="codeInText">wchar_t</span> and libraries that allow you to write C code that uses wide-character-based text. </p>
+<p>In this class we will be dealing only with single-byte ASCII characters. But it&rsquo;s important to know that this larger, multi-lingual situation is part of modern computing environments. </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

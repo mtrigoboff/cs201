@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Inter-Process Communication</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Inter-Process Communication" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Inter-Process Communication</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->Since each process has its own address space, how can processes communicate with each other?
+<p class="headerText">Signals</p>
+<ul>
+	<li><em>signals are a way for Unix processes to communicate with each other, but this mode of communication is not reliable &ndash; the intended recipient may not always receive the signal</em></li>
+	<li><strong>boh.8.18.c</strong>: child signals parent
+		<ul>
+				<li><em>this code will not run properly in Cygwin</em></li>
+				<li>the parent may not count all signals from child, because if the next signal from child comes while the parent is already in signalHandler, the signal is lost</li>
+				<li>the child doesn&rsquo;t sleep if there&rsquo;s a cmd line argument, and then all but one of the signals are missed</li>
+	  </ul>
+	</li>
+</ul>
+<p class="headerText">Pipes</p>
+<ul>
+	<li><em>read about the Unix call for creating pipes by typing &lsquo;man pipe&rsquo; to the Unix command prompt </em></li>
+	<li>code examples
+		<ul>
+			<li><strong>ipc1.c</strong>: attempts inter-process communication (IPC) using a global variable</li>
+				<li><strong>ipc2.c</strong>: attempts IPC using a pipe, but child hangs at<span class="code"> read()</span> call, then things work when user hits return</li>
+				<li><strong>ipc3.c</strong>: achieves IPC using a pipe, and the<span class="code"> poll()</span> call</li>
+				<li><strong>pipe.c</strong>: small protocol using 2 pipes for 2-way IPC</li>
+	  </ul>
+	</li>
+</ul>
+<p class="headerText">Semaphores</p>
+<ul><li> <em>Read <!-- #BeginLibraryItem "/Library/textbook authors.lbi" -->Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron<!-- #EndLibraryItem --> chapter 13, section 5. T</em><em>he textbook describes Posix semaphores, which do not work in Linux. </em><em>Linux has its own flavor of semaphore, which is illustrated in the code below.</em></li>
+	<li>semaphores are used to allow the sharing of resources that should not be used simultaneously by an arbitrarily large number of processes
+		<ul>
+				<li>the idea is to control the number of processes that are allowed into a particular piece of code, which is known as the &ldquo;critical section&rdquo; </li>
+				<li><em>example</em>: a printer. You would not want two or more processess simultaneously writing to a printer &ndash; the output could be a chaotic mixture of the two different intended pages. </li>
+		</ul>
+	</li>
+	<li>semaphores
+		<ul>
+			<li>depend on the processor&rsquo;s ability to perform an &ldquo;atomic operation&rdquo;
+				<ul>
+					<li>the  <span class="code">bts</span> instruction, for instance which both tests and sets a bit in one instruction</li>
+					<li>this makes sure that a process is not interrupted, for instance, between a <span class="code">cmp</span> instruction and the conditional jump following that comparison  </li>
+				</ul>
+			</li>
+			<li>are <em>persistent </em>and <em>global </em>by default in Unix/Linux				</li>
+		</ul>
+	</li>
+	<ul>
+		<li>other programs can access your semaphores</li>
+		<li>they will stick around even after your program exits</li>
+		<li>create semaphores with IPC_PRIVATE if you want semaphores of your own</li>
+		</ul>
+	<li><strong>ineffective.c</strong>
+		<ul>
+			<li>demonstrates what would be an ineffective approach to controlling the number of processes allowed into a critical section</li>
+			<li>think about why this code is ineffective (look at the compiled code for a clue)  </li>
+			<li><em>this is code to just look at, not to run </em></li>
+		</ul>
+	</li>
+	<li><strong>fork5sem.c</strong>	</li>
+	<ul>
+			<li><em>this code doesn&rsquo;t work properly in Cygwin</em></li>
+			<li>creates 3 processes that print</li>
+			<li>parent waits for input from user then kills children</li>
+			<li>call from command line without argument to not use semaphores</li>
+			<li>call from command line with a numeric argument to use semaphores
+				<ul>
+						<li>the argument specifies how many processes can &ldquo;grab&rdquo; the semaphore at the same time</li>
+					<li>1 and 2 are good arguments to try with this code </li>
+					<li>with arguments of 3 and above the code acts just like it does with <em>no</em> argument</li>
+			    </ul>
+			</li>
+		    <li><strong>fork5sem2.c</strong> allows you to control the number of processes you create, and allows you to experiment further with this sort of code </li>
+	</ul>
+</ul>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

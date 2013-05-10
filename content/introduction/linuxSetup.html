@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Linux Setup</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Linux Setup" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Linux Setup</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+    <p class="headerText">Configuration Files </p>
+    <p>To set Linux up on your machine, you should add <a href="files/linuxSetupFiles.zip">these files</a> to your home directory:</p>
+    <ul>
+      <li><span class="codeInText">.bash_profile</span>
+        <ul>
+          <li><span class="codeInText"> </span><em>startup file for bash</em></li>
+          <li>adds<span class="codeInText"> . </span>to your Bash PATH variable, which allows you to run your code without typing<span class="codeInText"> ./ </span>before the program name </li>
+          <li>reconfigures the Bash prompt so that it doesn&rsquo;t take up an entire line all by itself </li>
+        </ul>
+      </li>
+      <li><span class="codeInText">.exrc</span>
+        <ul>
+          <li><span class="codeInText"></span><em>startup file for vi</em></li>
+          <li>sets tab stops to 4 (it takes more than one setting to do this)</li>
+          <li>configures<span class="codeInText"> vi </span>to replace tabs with spaces. You may not want this setting for all of your future use of<span class="codeInText"> vi</span>, but please leave it this way during this class. By having spaces instead of tabs, your  code will appear properly indented when typed out (using <span class="codeInText">cat</span>) in Bash, etc. </li>
+        </ul>
+      </li>
+    </ul>
+    <p class="headerText">Compilation Script File</p>
+    <p>You will normally compile your source code with a command like this:  </p>
+    <blockquote>
+      <p class="codeInText">gcc -m32 -std=gnu99 -Wall -g mycode.c -o mycode</p>
+    </blockquote>
+    <p>To avoid typing all of this over and over and over again, you can use the bash script file that I use in class, <span class="codeInText"><a href="files/gc.zip">gc</a></span> (it&rsquo;s provide in a .zip file, which is ridiculous, because Desire2Learn seems not to be able to handle files whose names do not have an extension). Once you have extracted this file and placed it in <span class="codeInText">/usr/local/bin</span>, you can compile your code by typing this:</p>
+    <blockquote>
+      <p class="codeInText">gc mycode</p>
+    </blockquote>
+    <p class="headerText">Using Linux</p>
+    <p>Here is a handy <!-- #BeginLibraryItem "/Library/cygwin cheat sheet.lbi" --><a href="http://www.voxforge.org/home/docs/cygwin-cheat-sheet" target="_blank">cheat sheet</a><!-- #EndLibraryItem -->. Although some of it is for Cygwin, it explains how to do many common operations in Linux.</p>
+    <p></p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

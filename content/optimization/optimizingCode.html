@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Optimizing Code</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Optimizing Code" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Optimizing Code</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" --><span class="headerText">Overview</span>
+<ul>
+	<li>optimizing code is not straightforward</li>
+	<li>some optimizations may need to be hand-coded due to limitations of  optimizing compilers</li>
+	<li>profiling and trial &amp; error are required</li>
+	<li>the process is empirical as opposed to theoretical</li>
+	<li>&ldquo;an art, not quite a science&rdquo;</li>
+	<li>gcc is only a &ldquo;mild&rdquo; optimizer, not &ldquo;aggressive&rdquo; like  some other compilers 
+		<ul>
+			<li>does not change code as much as aggressive compilers </li>
+			<li>not as &ldquo;smart&rdquo; as some other compilers
+				<ul>
+					<li>e.g. <a href="http://www.intel.com/cd/software/products/asmo-na/eng/compilers/index.htm" target="_blank">Intel&rsquo;s compilers</a>   </li>
+				</ul>
+			</li>
+	  </ul>
+	</li>
+  </ul>
+<p class="headerText">Optimization Blockers</p>
+<ul>
+	<li>the<span class="code"> inc </span>and<span class="code"> dec </span>instructions
+		<ul>
+			<li>non-standard behavior with regard to EFLAGS prevents Pentium from &ldquo;looking ahead&rdquo; of where it currently is in your code</li>
+			<li><em>this will be discussed in more detail later on in this course</em></li>
+		</ul>
+	</li>
+	<li>the memory aliasing	
+		problem
+		<ul>
+			<li><strong>twiddle.c</strong>
+				<ul>
+					<li>an optimizing compiler has to be smart enough not to turn<span class="code"> twiddle1 </span>into<span class="code">  twiddle2</span></li>
+				</ul>
+			</li>
+			<li><strong>swap.c</strong>
+				<ul>
+					<li>a further demonstration of the memory aliasing problem </li>
+				</ul>
+			</li>
+	  </ul>
+	</li>
+	<li>function calls are optimization blockers when they have side effects
+	  <ul>
+	    <li>i.e. they affect data other than their local variables, arguments, and return values</li>
+	    <li>e.g.<span class="code"> return f(x) + f(x) </span>is not the  same as<span class="code"> return 2 * f(x)</span> if<span class="code"> f(x) </span>has side effects
+	      <ul>
+	        <li>two calls to<span class="code"> f(x) </span>vs. one call </li>
+	        <li>e.g. if<span class="code"> f(x) </span>does <span class="code"> counter++ </span>and<span class="code"> counter </span>is a global variable</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+</ul>
+<p class="headerText">Code Motion, Reduction in Strength, SubExpression Handling</p>
+<ul>
+  <li>the code optimization PowerPoint slides describe these quite well with good examples</li></ul>
+ <p class="headerText">Loop Optimization</p>
+<ul>
+	<li>optimizes by reducing loop control overhead
+		<ul>
+			<li>more executions of loop content for each execution of loop control code </li>
+			<li>this is a minor factor </li>
+		</ul>
+	</li>
+	<li>also increases opportunities for parallelism if machine can do it
+		<ul>
+			<li>Pentium  4&rsquo;s can execute code in parallel, as we will see later in this course</li>
+		</ul>
+	</li>
+	<li>code examples:
+	  <ul>
+	    <li><strong>loop.c</strong>
+	      <ul>
+	        <li><em>original code with a loop</em></li>
+          </ul>
+	    </li>
+	    <li><strong>loopunrolled.c</strong>
+	      <ul>
+	        <li><em>same code but with the loop unrolled</em></li>
+          </ul>
+	    </li>
+	    <li><strong>loopsplit.c</strong>
+	      <ul>
+	        <li><em>same code but with the loop split</em></li>
+          </ul>
+	    </li>
+      </ul>
+	</li>
+	<li><em>run these examples on<!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
+	  
+	  <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --> &ndash; results are more realistic than in Cygwin, which is a  Linux simulator running on top of Windows</em></li>
+	<li>use with<span class="code"> time(1) </span>to display<br />
+	  (a command line argument of 30,000,000 works well on the<!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
+                  
+      <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --> Linux machine)
+                  <ul>
+                    <li><span class="code">time loop&nbsp; 30000000</span></li>
+                    <li><span class="code">time loopunrolled 30000000</span></li>
+                    <li><span class="code">time loopsplit 30000000</span>	</li>
+                  </ul>
+	</li>
+  </ul>
+<p>&nbsp; </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

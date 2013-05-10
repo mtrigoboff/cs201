@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Exceptions</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Exceptions" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Exceptions</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+
+  	<p class="headerText">Examples</p>
+	<ul>
+		<li>timer goes off</li>
+    	<li>packet arrives</li>
+    	<li>error condition occurs</li>
+  	</ul>
+	<p class="headerText">Exception Table  </p>
+	<ul>
+		<li>see <em>IA-32 Manual, </em>volume 3, chapter 5  for a description of the <strong>interrupt descriptor table (IDT)</strong> and the registers and instructions which control it
+			<ul>
+				<li><strong>IDTR</strong> is the &ldquo;interrupt descriptor table register,&rdquo; which stores the address of the <strong>IDT</strong>				</li>
+			</ul>
+		</li>
+    	<ul>
+   			<li><em>IA-32 Manual, </em>volume 3, chapter 5, figure 5-1 shows how the <strong>IDTR </strong>points to the <strong>IDT</strong></li>
+			<li>see <em>IA-32 Manual, </em>volume 2 for descriptions of the <strong>LIDT</strong> and <strong>SIDT </strong>instructions which load and store the registers that control the <strong>IDT</strong> (the descriptions are grouped alphabetically with the <strong>LGDT</strong> and <strong>SGDT</strong> instructions) </li>
+    	</ul>
+    	<li>each exception has a number, which is an index into the table: <br />
+    		<br />
+    		<table border="1" cellpadding="4" cellspacing="0">
+    			<tr>
+    				<td><em>exception</em></td>
+      		<td><em>usage</em></td>
+    		</tr>
+    			<tr>
+    				<td>0 &ndash; 31</td>
+      		<td>Intel reserved</td>
+    		</tr>
+    			<tr>
+    				<td>32 &ndash; 255</td>
+      		<td>operating system defined</td>
+    		</tr>
+		</table></li>
+	</ul>
+	<p class="headerText">When an Exception Happens </p>
+	<ul>
+		<li>the state of the processor and process is saved
+			<ul>
+				<li>registers (including EFLAGS)</li>
+			</ul>
+		</li>
+		<li>control is transferred to the address specified in the <strong>IDT</strong> for that exception   </li>
+	</ul>
+	<p><span class="headerText">Exception Types</span></p>
+	<p>There are 4 types of exception:</p>
+	<table border="1" cellspacing="0" cellpadding="4">
+		<tr>
+			<td><em>type</em></td>
+    	<td><em>caused by </em></td>
+    	<td><em>returns to </em></td>
+  	</tr>
+		<tr>
+			<td><div align="left">interrupt</div></td>
+    	<td><div align="left">I/O device needs attention</div></td>
+    	<td><div align="left">next instruction</div></td>
+  	</tr>
+		<tr>
+			<td><div align="left">trap</div></td>
+    	<td><div align="left">OS call</div></td>
+    	<td><div align="left">next instruction</div></td>
+  	</tr>
+		<tr>
+			<td><div align="left">fault</div></td>
+    	<td><div align="left">possibly correctable error</div></td>
+    	<td><div align="left">current instruction</div></td>
+  	</tr>
+		<tr>
+			<td><div align="left">abort</div></td>
+    	<td><div align="left">uncorrectable error</div></td>
+    	<td><div align="left">no return</div></td>
+  	</tr>
+	</table>
+	<p>Traps in the IA-32 environment happen via the <span class="code">INT n</span> and <span class="code">SYSENTER </span>instructions.</p>
+	<p><span class="headerText">Fault Examples</span></p>
+	<p><em>These examples must be run in real Linux &ndash; they don&rsquo;t work properly in Cygwin.</em></p>
+	<ul>
+		<li><strong>fault1.c</strong>: infinitely retries the same division by zero, causing the same error, because control returns from the signal handler to the statement that caused the problem. Hit control-C to terminate the repeated error. </li>
+    	<li><strong>fault2.c</strong>: integer mode division of 10 by first command line argument, catches divide by 0 error</li>
+    	<li><strong>fault3.c</strong>: floating point mode division of first command line argument by second argument does not produce a divide by zero error even though there is a a defined floating point divide exception in the x87 FPU Control Word (IA-32 Manual, Volume 1, page 8-9). This is because the default setting for floating point exceptions is <em>masked</em> (which means that they are ignored by the hardware).</li>
+  	    <li><strong>fault4.c</strong>: with the floating point zero divide exception umasked, our code can see when a divide by zero has occurred.  Using <span class="code">objdump</span>, you can see that the C division statement compiles into more than one floating point instruction. Repeating the <span class="code">fdiv</span> instruction that caused the error does not help because the preceding <span class="code">fld</span> instruction is not repeated. The value that caused the problem remains in ST(0). This version of the code infinitely retries the same division by zero (the <span class="code">fdiv</span> instruction), causing the same error, because control returns from the signal handler to the instruction that caused the problem. Hit control-C to terminate the repeated error. </li>
+	    <li><strong>fault5.c</strong>: with the floating point zero divide exception umasked, our code can see when a divide by zero has occurred.  As we saw in fault4.c, setting variables from the signal handler does not work because the C division statement compiles into more than one floating point instruction. Repeating the <span class="code">fdiv</span> instruction does not help because the preceding <span class="code">fld</span> instruction is repeated. <span class="code">Setjmp/longjmp </span>is the preferred way to return control from the signal handler function to someplace other than the instruction that caused the error. </li>
+	</ul>
+	<p>&nbsp;</p>
+  <!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,11 @@
+syntax: glob
+*.pdf
+dwsync.xml
+*.gif
+*.zip
+*.prev
+*.jpg
+*.ppt
+*.db
+*.xps
+asgmts/asgmt02/linux executables/*

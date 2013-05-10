@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Integer Representations</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Integer Representations" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Integer Representations</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>What we have in a computer&rsquo;s memory is <strong>bits</strong>, nothing but bits. Sometimes we want those bits to act like integers, so we can do integer computation. A &ldquo;representation&rdquo; is a definition of which bits mean which integer. Let&rsquo;s consider a 3 bit integer. There are 8 (2<sup>3</sup>) possible values. Which integers should these 8 possible values &ldquo;represent?&rdquo; Here are some possibilities:</p>
+<table width="462" border="1">
+	<tr>
+		<th width="95" scope="col"><div align="center">bit value </div></th>
+		<th width="93" scope="col"><div align="center">unsigned</div></th>
+		<th width="143" scope="col"><div align="center">two&rsquo;s complement </div></th>
+		<th width="103" scope="col"><div align="center">power of 2 </div></th>
+	</tr>
+	<tr>
+		<td><div align="center">000</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">1</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">001</div></td>
+		<td><div align="center">1</div></td>
+		<td><div align="center">1</div></td>
+		<td><div align="center">2</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">010</div></td>
+		<td><div align="center">2</div></td>
+		<td><div align="center">2</div></td>
+		<td><div align="center">4</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">011</div></td>
+		<td><div align="center">3</div></td>
+		<td><div align="center">3</div></td>
+		<td><div align="center">8</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">100</div></td>
+		<td><div align="center">4</div></td>
+		<td><div align="center">-4</div></td>
+		<td><div align="center">16</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">101</div></td>
+		<td><div align="center">5</div></td>
+		<td><div align="center">-3</div></td>
+		<td><div align="center">32</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">110</div></td>
+		<td><div align="center">6</div></td>
+		<td><div align="center">-2</div></td>
+		<td><div align="center">64</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">111</div></td>
+		<td><div align="center">7</div></td>
+		<td><div align="center">-1</div></td>
+		<td><div align="center">128</div></td>
+	</tr>
+</table>
+<p>The choice is up to the hardware designer. Modern computers support both the <strong>unsigned</strong> and <strong>two&rsquo;s complement</strong> representations. Common sizes for integers are 8, 16, 32, and 64 bits. </p>
+<p>Two&rsquo;s complement representation is &ldquo;hardware friendly.&rdquo; When you add a negative and a positive two&rsquo;s complement number, the normal process of addition that you learned in grade school will yield the correct arithmetical result. </p>
+<p>Note that the leftmost bit corresponds to the sign of a two&rsquo;s complement integer: 0 means positive, 1 means negative. We call that leftmost bit the <strong>sign bit</strong>.</p>
+<p>The relationship between the two&rsquo;s complement and unsigned representations is shown in the following illustration:</p>
+<p><img src="files/twosCompVsUnsigned.jpg" alt="two's complement vs. unsigned integer representations" width="504" height="377" border="0" /></p>
+<p class="headerText">Integer Representation Limits</p>
+<p>As you can see from the table above, there are limits on the size of the number that a particular representation can store. In the 3 bit example, there are only 8 possible values, which are distributed along the number line in a useful arrangement. Here are the upper and lower limits for the common integer representations:</p>
+<table width="599" border="1">
+	<tr>
+		<th width="169" scope="col"><div align="left">representation</div></th>
+		<th colspan="2" scope="col"><div align="center">lower limit </div></th>
+		<th colspan="2" scope="col"><div align="center">upper limit </div></th>
+		</tr>
+	<tr>
+		<td><div align="left">8-bit two&rsquo;s complement </div></td>
+		<td width="128"><div align="center">-128</div></td>
+		<td width="70"><div align="center">-2<sup>7</sup></div></td>
+		<td width="128"><div align="center">127</div></td>
+		<td width="70"><div align="center">2<sup>7</sup>-1</div></td>
+	</tr>
+	<tr>
+		<td><div align="left">8-bit unsigned </div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">255 </div></td>
+		<td><div align="center">2<sup>8</sup> - 1</div></td>
+	</tr>
+	<tr>
+		<td><div align="left">16-bit two&rsquo;s complement </div></td>
+		<td><div align="center">-32,768 </div></td>
+		<td><div align="center">-2<sup>15</sup></div></td>
+		<td><div align="center">32,767 </div></td>
+		<td><div align="center">2<sup>15</sup> - 1</div></td>
+	</tr>
+	<tr>
+		<td><div align="left">16-bit unsigned </div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">65,535 </div></td>
+		<td><div align="center">2<sup>16</sup> - 1</div></td>
+	</tr>
+	<tr>
+		<td><div align="left">32-bit two&rsquo;s complement </div></td>
+		<td><div align="center">-2,147,483,648 </div></td>
+		<td><div align="center">-2<sup>31</sup></div></td>
+		<td><div align="center">2,147,483,647 </div></td>
+		<td><div align="center">2<sup>31</sup> - 1</div></td>
+	</tr>
+	<tr>
+		<td><div align="left">32-bit unsigned </div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">4,294,967,295 </div></td>
+		<td><div align="center">2<sup>32</sup> - 1</div></td>
+	</tr>
+</table>
+<p class="headerText">Signed Overflow Error</p>
+<p>In our 3 bit example, what happens when you add the two&rsquo;s complement values 010 (2) and 011 (3)? You get the value 101, which is -3. 2 + 3 does <em>not</em> equal -3. What&rsquo;s happened is that the numbers have &ldquo;wrapped around&rdquo; and produced a wrong result.</p>
+<p>This is called an &ldquo;overflow error.&rdquo; An overflow error only happens when the carry into the sign bit position is not equal to the carry out of that position (by &ldquo;carry&rdquo; we mean what that word means in normal pencil-and-paper addition). Digital arithmetic hardware uses this condition to detect integer overflow errors. </p>
+<p class="headerText">Generating the  Two&rsquo;s Complement Negative of a Number </p>
+<p>Two generate the negative of a  two&rsquo;s complement number: </p>
+<ul>
+	<li>flip the bits of the original number</li>
+	<li>add 1 to the result of this</li>
+	</ul>
+<p>Why this works:</p>
+<ul>
+	<li>flipping the bits and adding that to the original number produces all 1&rsquo;s</li>
+	<li>add one to that, and you get all 0&rsquo;s</li>
+	<li>therefore the method above generates  the value that will produce zero when added to the original number<br />
+	(<span class="codeInText">x + -x == 0 </span> for all values of x)	        </li>
+</ul>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

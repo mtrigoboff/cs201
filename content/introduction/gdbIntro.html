@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Introduction to the GDBTUI Debugger</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Introduction to the GDBTUI Debugger" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Introduction to the GDBTUI Debugger</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>Some of you may be in the habit of debugging your code by inserting print statements to figure out what your code is doing. This is OK for beginners, but this course is going to help you climb higher than that on the learning curve. </p>
+<p>Professional programmers use <em>debuggers</em>, not print statements: </p>
+<ul>
+	<li>print statements show you only what you <em>asked</em> your code to show you. A debugger shows you <em>everything</em> your code is doing.</li>
+	<li>if you think of something else you want to look at while your code is running, you can look at it with a debugger. With print statements, you would need to stop and recompile your code. For a bug that happens infrequently and unpredictably, this could be the difference between figuring out the bug <em>right now</em> and spending another few weeks waiting for the bug to reappear. And when you finally get lucky and the bug happens again, you may <em>still</em> not have asked the right questions with your print statements. </li>
+	<li>adding a print statement to code changes it (length of the code, timing, state of the operating system, etc). The bug may not appear in this new situation. You do not have to add statements to your code in order to run a debugger. </li>
+	<li>print statements cannot easily show you what your object code is doing. A debugger can show you <em>everything</em> your object code is doing. </li>
+	</ul>
+<p>If you want to be a professional software engineer or computer scientist, <em>you will need to learn to use debuggers</em>. Getting really good at using print statements for debugging is the equivalent of getting really good at riding a bike with training wheels. Employers want programmers who don&rsquo;t need training wheels, programmers who know how to operate industrial-strength tools. </p>
+<p>I will not be able to prevent you from using print statements to debug your code. But if you use print statements for debugging in this class, you will be cheating <em>yourself</em>. </p>
+<p>In this class, we will be using <strong>gdbtui</strong>, which is a character-based GUI user interface for the very powerful, professional-level <strong>gdb</strong> debugger (&ldquo;gdb&rdquo; stands for &ldquo;<u>G</u>NU <u>d</u>e<u>b</u>ugger&rdquo;, and &ldquo;tui&rdquo; stands for &ldquo;<u>t</u>ext <u>u</u>ser <u>i</u>nterface&rdquo;).</p>
+<p>Work to do for this lesson: </p>
+<ul>
+	<li>get access to <strong>Linux</strong>
+	</li><li>compile <a href="files/intro.c" target="_blank">intro.c</a>
+	  <ul>
+	    <li>remember to use the <span class="codeInText">-g</span> flag</li>
+      </ul>
+	</li>
+	<li>run the code in <strong>gdb</strong>&rsquo;s &ldquo;<u>t</u>ext <u>u</u>ser <u>i</u>nterface&rdquo;
+	  <ul>
+	    <li>in Linux, invoke the debugger as <strong>gdbtui</strong></li>
+	    <li>in Cygwin, invoke the debugger as <strong>gdb &#8211;tui</strong></li></ul></li>
+  </ul>
+<p class="headerText">Source Code Debugging </p>
+<p>To observe the source code in <strong>gdbtui</strong>:	</p>
+<ul>
+	<li>type<span class="codeInText"> gdbtui </span>into the Linux command line
+      <ul>
+			<li>your code will appear in the upper half of the gdbtui display</li>
+		</ul>
+		</li>
+	<li>set a breakpoint in<span class="codeInText"> main()</span> by 
+    typing<span class="codeInText"> br main</span> </li>
+	<li>run the code by typing<span class="codeInText"> r</span></li>
+	<li>you can now execute your <em>source code</em> line by line (this is called <em>single-stepping</em>)
+			<ul>
+			  <li>type commands into the lower subwindow:
+                <ul>
+      <li><span class="codeInText">n</span><span class="codeInText">&nbsp;&nbsp;</span>executes the next C source statement, does not descend into functions </li>
+	      <li><span class="codeInText">s</span><span class="codeInText">&nbsp;&nbsp;</span>executes the next C source statement, does descend into functions</li>
+	      </ul>
+			  </li>
+			  <li>at any point, you can type<span class="codeInText"> bt full </span>to see the values of your local variables</li>
+			  <li>when you&rsquo;re done, type<span class="codeInText"> c</span>. This tells your program to run until either the next breakpoint or until<span class="codeInText"> main()</span> returns to the operating system. Make sure that<span class="codeInText"> main()</span> has returned (the black window will disappear).</li>
+			  <li>note that <span class="codeInText">printf()</span> output appears between the upper and lower subwindows. After you&rsquo;ve looked at the output, it&rsquo;s a good idea to hit control-L to refresh the window borders. If you don&rsquo;t do this, the next printf will print over the previous output. If the new line of output is shorter than the old one, you&rsquo;ll still see trailing characters of the old output, which can be confusing</li>
+			  <li>when the code calls <span class="codeInText">scanf()</span>, you will have the opportunity to type input data. You will do this in the area between the upper and lower subwindows.</li>
+      </ul>
+	</li>
+	<li>now we want to run the code again, but this time with command-line arguments:
+		<ul>
+			<li>type<span class="codeInText"> r xyz 33</span></li>
+			<li>execute and then single-step the code as you did above</li>
+			<li>when you&rsquo;re done, type<span class="codeInText"> c</span>, which tells your program to run until either the next breakpoint or until<span class="codeInText"> main()</span> returns to the operating system </li>
+		</ul>
+	</li>
+	<li>quit gdbtui by typing control-D</li>
+</ul>
+<p>You now have the minimal set of skills you need to watch your source code running in gdbtui.</p>
+<p class="headerText">Object Code Debugging </p>
+<p>You can also use <strong>gdbtui</strong> to watch what your object code is doing. The following instructions will show you how. Don&rsquo;t worry if this object code is mysterious to you at this time &ndash; by the end of this course you will be able to understand all of your object code. This lesson  just shows you how to <em>look at</em> object code. Much of the rest of this course will involve learning to <em>understand</em> the object code you&rsquo;re looking at. </p>
+<ul>
+	<li>set a breakpoint in<span class="codeInText"> main()</span> by 
+	  typing<span class="codeInText"> br main</span></li>
+    <li>run the code by typing<span class="codeInText"> r</span></li>
+    <li>set gdbtui to display your object code as well as your source code
+		<ul>
+		  <li>type<span class="codeInText"> layout split</span></li>
+			</ul>
+	</li>
+	<li>you can now execute your <em>object code</em> line by line
+		<ul>
+			<li><span class="codeInText">ni</span><span class="codeInText">&nbsp;&nbsp;</span>executes the next assembly language statement, does not descend into functions </li>
+			<li><span class="codeInText">si</span><span class="codeInText">&nbsp;&nbsp;</span>executes the next assembly language statement, does descend into functions</li>
+		</ul>
+	</li>
+	<li>to see registers type <span class="codeInText">tui reg general</span></li>
+	<li>when you&rsquo;re done, quit gdbtui by typing control-D </li>
+</ul>
+<p class="headerText">Next Steps </p>
+<p><strong>gdb</strong> has many features that are not covered in this short tutorial. I recommend that you use the <a href="files/gdb-manual.pdf" target="_blank">gdb manual</a> to learn about its many features. There is also a <a href="files/gdb-refcard.pdf" target="_blank">reference card</a> that may be of use to you.</p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

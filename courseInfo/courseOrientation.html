@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/info.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Course Orientation</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Course Orientation" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #F0F0F0;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #C0C0C0;
+}
+a:link {
+	color: #000066;
+}
+a:visited {
+	color: #660033;
+}
+a:hover {
+	color: #CC0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Course Orientation</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+
+   	<p><a href="http://spot.pcc.edu/~mtrigobo/personal/captain.html" target="_blank"><img src="images/Me.jpg" alt="Michael Trigoboff" width="216" height="236" hspace="12" vspace="12" border="1" align="right" /></a></p>
+	<p class="headerText">Introduction</p>
+	<p>Welcome to CS201 &ndash; Computer Systems I. I am your instructor, Michael Trigoboff. I've been teaching here at PCC since 2002. Before teaching, I had over 30 years of experience as a software engineer, working on everything from Artificial Intelligence to disk drivers. You can find a more complete description of me on my <a href="http://spot.pcc.edu/~mtrigobo" target="_blank">PCC web site</a>. </p>
+	<p>In CS201, we will go below the surface of your C source code, and learn about the object code produced by the compiler. When your program runs it is actually this object code that is running.</p>
+	<p>Then we will learn about some Unix operating system features that your object code can use. We will also descend into the computer chip itself, and discover some surprising and important things about how your object code is actually executed by the chip.</p>
+	<p class="headerText">Software and Hardware Requirements</p>
+	<p>We will work extensively in <a href="http://cygwin.com" target="_blank">Cygwin</a>, which is a Windows-based Unix emulator. Cygwin has a source-level debugger called <strong>insight</strong> with a graphical user interface which will be especially helpful in understanding compiled code. You will need a Windows PC (or a Mac with Windows installed) to run Cygwin.</p>
+	<p>This term we will be exploring features of Unix that are not properly simulated by Cygwin. Since the demo code will not run properly in Cygwin, I will be running it in a real Linux system, <strong><!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
+
+<strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --></strong>. You will each be given an account on this system. For further instructions on how to access this account, see the <strong>What To Do Next</strong> section below. </p>
+	<p>Because of some limitations in the Unix software tools, I will occasionally use code written for<!-- #BeginLibraryItem "/Library/Visual Studio Express.lbi" -->
+<a href="http://www.microsoft.com/express/Windows/" target="_blank">Microsoft Visual C++ 2010 Express Edition</a><!-- #EndLibraryItem -->. This is a free download from Microsoft. You can also use a computer at one of PCC&rsquo;s <a href="http://www.pcc.edu/resources/computer-labs/" target="_blank">Computer Resource Centers</a>.</p>
+	<p>In order to connect with <strong><!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
+
+<strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --></strong> you will need an SSH client. One that works well on PC&rsquo;s is <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty" target="_blank">PuTTY</a>. Set up PuTTY to use <u>SSH version 2</u> on the default SSH port (22). To transfer files back and forth between your PC and<!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
+
+<strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem -->, I suggest that you use <a href="http://winscp.net/eng/index.php" target="_blank">WinSCP</a>. </p>
+	<p class="headerText">Where To Find The Code</p>
+	<p>Many of the lessons in this course will refer to code examples. There will be links in each lesson to the code it uses. </p>
+	<p>Code that should run in Linux will be available  on <strong><!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" --> <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --></strong> in directory<span class="code"><strong> ~mtrigobo/cs201</strong></span>. The subdirectory structure of this directory matches the structure of the lessons. Non-Linux code will be linked directly from the lessons so that you can download it to your machine.</p>
+	<p class="headerText">How To Contact Me </p>
+	<p> Use the Desire2Learn email system. I will check Desire2Learn email every day, Monday through Friday. If you feel you need to meet with me personally, please send me Desire2Learn email and we can make an appointment.</p>
+	<p> Because I&rsquo;m a part-time instructor, I do not have a phone that I use regularly at PCC.</p>
+	<p> I am not available on weekends during the term. As noted, I will try to be both available and prompt in my responses during the week (Monday - Friday). However, on weekends I won't be checking on Desire2Learn or answering questions. If you miss me on Friday you won't have any contact with me until Monday morning, so don't wait until the last minute to ask questions or report problems.</p>
+	<p class="headerText">What To Do Next </p>
+	<ul>
+		<li>get <a href="http://cygwin.com" target="_blank">Cygwin</a> (see the &ldquo;Cygwin Setup&rdquo; section of the &ldquo;Introduction&rdquo; lesson for the list of components you need) </li>
+       	<li>read the Course          Syllabus
+       		(you can select this from the Course Menu on the left side of your browser window)</li>
+       	<li>go to the course content and start to work on the first topic</li>
+       	<li>go to the <strong>Discussions &rarr; Introductions</strong> area and post a message introducing yourself to the class. Please include something about your experience with computers, why you&rsquo;re interested in taking this course, and what you hope to get out of it. </li>
+   	    <li>access your account on <strong><!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" --> <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem --></strong>. Your username will be the same as your username on <a href="https://my.pcc.edu/cp/home/displaylogin" target="_blank">MyPCC</a>. For example, my username would be <strong>michael.trigoboff</strong>. Your password will be <strong>syccuxfs123</strong>. As soon as you log on to your account, you should change your password to something known only to you, using Unix's <strong>passwd </strong>command.</li>
+	</ul>
+	<p class="headerText">ADA Statement</p>
+	<p>If you have a disability and need an accommodation, please make arrangements to meet with me outside of class. PCC students requesting accommodations must provide documentation of disability and work to the <a href="http://www.pcc.edu/resources/disability" target="_blank">Office for Students with Disabilities</a> (OSD) at 503-977-4341.</p>
+	<p>&nbsp;</p>
+	<p><span class="headerText"><em>Institutional  Resources @ PCC</em></span></p>
+	
+	<table width="95%" height="50" border="0" cellspacing="4">
+		<tbody>
+			<tr>
+				<td bgcolor="#FFFFFF" style="width: 50%;">
+					<img src="../icons/icon_apple.jpg" alt="An Apple" width="32" height="29" border="0" align="left" />
+					<a href="http://www.pcc.edu/pcc/res/advising.htm" target="_blank">Academic Advising</a>
+					<br />
+				maximize your college experience</td>
+				<td bgcolor="#FFFFFF" style="width: 50%;">
+					<img src="../icons/icon_webct.jpg" alt="WebCT Icon" width="32" height="31" border="0" align="left" />
+					</a><a href="http://www.pcc.edu/resources/tutoring/" target="_blank">Tutoring Services</a>
+					<br />					
+					succeed in your courses and beyond</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF" style="width: 50%;">
+					<img src="../icons/icon_webct.jpg" alt="WebCT Icon" width="32" height="31" border="0" align="left" />
+					<a href="http://www.pcc.edu/pcc/res/counseling.htm" target="_blank">Counseling</a><br />
+					solve problems and develop your potential </td>
+				<td bgcolor="#FFFFFF" style="width: 50%;">
+					<img src="../icons/icon_apple.jpg" alt="An Apple" width="32" height="29" border="0" align="left" /></a>
+					<a href="http://www.pcc.edu/pcc/res/" target="_blank">Resources &amp; Services</a>
+					<br />
+				an index of what&rsquo;s available at PCC</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="headerText">&nbsp;</p>
+  <!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

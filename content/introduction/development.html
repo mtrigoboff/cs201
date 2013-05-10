@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Working in Unix</title>
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+.style14 {font-size: 14px; font-style: italic; }
+.style16 {font-family: "Courier New", Courier, monospace; font-size: 14px; }
+.style35 {font-family: "Courier New", Courier, monospace}
+-->
+</style>
+<!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Working in Unix" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Working in Unix</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>How to compile, run, and debug your C programs in a Unix environment: </p>
+<p><span class="headerText">Editing Your C Code</span></p>
+<p>You need to learn one of the following text editors:</p>
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Vi" target="_blank">vi</a>    
+    <ul>
+      <li><em>simpler to learn, fully capable programming text editor</em></li>
+      <li>here is a handy <a href="files/vi-vim-cheat-sheet.gif" target="_blank">cheat sheet</a> for vi, donated by a student in this class </li>
+      <li>here is a printable <a href="files/vi reference card.pdf" target="_blank">reference card</a> for vi</li>
+      <li>here is a good <a href="http://acms.ucsd.edu/info/vi_tutorial.shtml" target="_blank">vi tutorial</a></li>
+      <li>if you're having trouble with the cursor keys showing up as A, B, C, D,<br />
+        <a href="http://spectlog.com/content/Fixing_vi_editor_on_cygwin_terminal" target="_blank">this document</a> may show you how to fix the problem</li>
+  </ul>
+  </li>
+  <li>  <a href="http://en.wikipedia.org/wiki/Emacs" target="_blank">emacs</a>
+    <ul>
+      <li><em>more complex, more capabilities</em></li>
+      <li><em>actually the programming language <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)" target="_blank">LISP</a> masquerading as a text editor</em></li>
+    </ul>
+  </li>
+  </ul>
+<p><span class="headerText">Compiling Your C Code </span></p>
+<p>We will be using gcc, the <u>G</u>NU <u>C</u> <u>C</u>ompiler.</p>
+<p>To compile your C program, do one of these:</p>
+<center>
+	<table cellpadding="4" width="90%">
+		<tbody>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">gcc yourcode.c -o yourcode</div></td>
+				<td valign="top"><div align="left" class="style14">compiles your code into a runnable .exe file</div></td>
+			</tr>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">gcc -g  yourcode.c -o yourcode</div></td>
+				<td valign="top"><div align="left" class="style14">compiles your code into a runnable .exe file, includes information needed by gdb</div></td>
+			</tr>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">gcc -c  yourcode.c</div></td>
+				<td valign="top"><div align="left" class="style14">compiles your code into yourcode.o, which you can use with objdump</div></td>
+			</tr>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">gcc -S yourcode.c</div></td>
+				<td valign="top"><div align="left" class="style14">compiles your code into yourcode.s, an assembly listing of your compiled code in AT&amp;T format</div></td>
+			</tr>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">gcc -S -masm=intel yourcode.c</div></td>
+				<td valign="top"><div align="left" class="style14">compiles your code into yourcode.s, an assembly listing of your compiled code in Intel format</div></td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<p><em>For the purposes of this course, you should compile all of your code without any optimizations (i.e. don&rsquo;t use flags like </em><span class="codeInText">-O3</span><em>)</em>. </p>
+<p class="headerText">Running Your C Code </p>
+To run your C program, do this: <br />
+<br />
+<center>
+	<table cellpadding="4" width="90%">
+		<tbody>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">./yourcode</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<p align="left"><em>You can dispense with the</em><span class="style35"> ./ </span><em>if you add</em><span class="style35"> . </span><em>to the PATH shell variable in your Unix environment</em>. </p>
+</center>
+<p class="headerText">Examining Your Object Code</p>
+To examine the object code that your C program compiled into, do one of these: <br />
+<br />
+<center>
+	<table cellpadding="4" width="90%">
+		<tbody>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">objdump -S yourcode.o</div></td>
+				<td valign="top"><div align="left" class="style14">displays your object code in AT&amp;T format</div></td>
+			</tr>
+			<tr valign="top">
+				<td valign="top" width="320"><div align="left" class="style16">objdump -S -M intel yourcode.o</div></td>
+				<td valign="top"><div align="left" class="style14">displays your object code in Intel format</div></td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<p class="headerText">Debugging Your C Program</p>
+To debug your C program, do this: <br />
+<br />
+<center>
+	<table cellpadding="4" width="90%">
+		<tbody>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">gdb yourcode</div></td>
+				<td valign="top"><div align="left" class="style14">debug your code with gdb&rsquo;s command-line interface</div></td>
+			</tr>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">gdbtui yourcode</div></td>
+				<td valign="top"><div align="left" class="style14">debug your code with gdb&rsquo;s character-oriented GUI</div></td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<br />
+Once you&rsquo;re running in the debugger, you can do this: <br />
+<br />
+<center>
+	<table cellpadding="4" width="90%">
+		<tbody>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">set di intel</div></td>
+				<td valign="top"><div align="left" class="style14">tells the debugger to display assembly code in the Intel format</div></td>
+			</tr>
+			<tr>
+				<td valign="top" width="320"><div align="left" class="style16">set di att</div></td>
+				<td valign="top"><div align="left" class="style14">tells the debugger to display assembly code in the AT&amp;T format</div></td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+<p class="headerText">Moving Files Between Your Computer And syccuxfs01.pcc.edu</p>
+To  move files between your computer and <strong>syccuxfs01.pcc.edu</strong>, you&rsquo;ll need to use a  file transfer program. The one I use, <a href="http://winscp.net/eng/index.php" target="_blank">WinSCP</a>, works well, and is free and open  source.<br />
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>
