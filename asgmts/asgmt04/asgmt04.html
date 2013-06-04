@@ -64,21 +64,21 @@ th {
   <li>your code should be no longer than 50 lines </li>
 </ul>
 <p>The basic idea is to change the contents of the inner loop to make the computation run faster while having it still repeatedly compute the sum of the array elements. </p>
-<p>The code that you should start with is <strong>~mtrigobo/cs201/a04/a04.c</strong> available on <strong>syccuxfs01.pcc.edu</strong>.</p>
+<p>The code that you should start with is <strong>~mtrigobo/cs201/a04/a04.c</strong> available on <strong>syccuxfs01.pcc.edu</strong>. In that directory, you will also find <strong>ptrloop.c</strong>, which demonstrates a technique that may be of use to you.</p>
 <p><span style="font-style: italic">Do not write any assembly language for this assignment. You can achieve the speedup you need at the C code level. </span></p>
 <p><u><em>Do not use</em></u><em> the optimization features of gcc. I will be compiling your code with all gcc optimizations turned off. Compile your code like this:</em></p>
 <blockquote>
-  <p class="code">gcc -Wall -g a04.c -o a04 </p>
+  <p class="code">gcc -m32 -std=gnu99 -Wall -g a04.c -o a04</p>
 </blockquote>
 <p><em>Remember that you need to do only <u>one</u> of the versions below</em>.</p>
 <p><span style="font-style: italic">The &ldquo;Example&rdquo; page of the &ldquo;Optimization&rdquo; lesson demonstrates techniques that may be of use to you as you do this assignment</span>. </p>
 <hr />
 <h3><!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> Version </h3>
-<p>Optimize the code in <strong>a04.c</strong> so that it runs in less than <span style="font-weight: bold">11.5</span> seconds. If you run <span style="font-weight: bold">a04regular.benchmark</span> with the <span class="code">time</span> command, you will see the basis for deciding the time limit for this version of the assignment. </p>
+<p>Optimize the code in <strong>a04.c</strong> so that it runs in less than <span style="font-weight: bold">11.5</span> seconds.</p>
 <p>Upload your work as file <strong>a04.c</strong>. </p>
 <hr />
 <h3><!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> Version</h3>
-<p>Optimize the code in <strong>a04.c</strong> so that it runs in less than <span style="font-weight: bold">6.5</span> seconds. If you run <span style="font-weight: bold">a04premium.benchmark</span> with the <span class="code">time</span> command, you will see the basis for deciding the time limit for this version of the assignment.</p>
+<p>Optimize the code in <strong>a04.c</strong> so that it runs in less than <span style="font-weight: bold">6.5</span> seconds.</p>
 <p>Upload your work as file <strong>a04.c</strong>. </p>
 <hr />
 <!-- InstanceEndEditable -->
