@@ -9,3 +9,5 @@ dwsync.xml
 *.db
 *.xps
 asgmts/asgmt02/linux executables/*
+*/ArtOfAssembly/*
+calendar.html

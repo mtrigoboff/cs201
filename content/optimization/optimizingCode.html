@@ -144,16 +144,10 @@ a:hover {
   <li>the code optimization PowerPoint slides describe these quite well with good examples</li></ul>
  <p class="headerText">Loop Optimization</p>
 <ul>
-	<li>optimizes by reducing loop control overhead
-		<ul>
-			<li>more executions of loop content for each execution of loop control code </li>
-			<li>this is a minor factor </li>
-		</ul>
-	</li>
-	<li>also increases opportunities for parallelism if machine can do it
-		<ul>
-			<li>Pentium  4&rsquo;s can execute code in parallel, as we will see later in this course</li>
-		</ul>
+	<li>increase opportunities for parallelism if machine can do it
+      <ul>
+	    <li>Pentium  4&rsquo;s can execute code in parallel, as we will see later in this course</li>
+	  </ul>
 	</li>
 	<li>code examples:
 	  <ul>
@@ -168,10 +162,14 @@ a:hover {
           </ul>
 	    </li>
 	    <li><strong>loopsplit.c</strong>
-	      <ul>
-	        <li><em>same code but with the loop split</em></li>
+          <ul>
+            <li><em>same code but with the loop split</em></li>
           </ul>
 	    </li>
+	    <li><strong>ptrloop.c</strong>
+          <ul>
+            <li><em>same code but the loop uses pointers</em></li></ul>
+        </li>
       </ul>
 	</li>
 	<li><em>run these examples on<!-- #BeginLibraryItem "/Library/syccuxfs01.lbi" -->
