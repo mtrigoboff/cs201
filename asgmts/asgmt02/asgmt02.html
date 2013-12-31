@@ -82,16 +82,6 @@ typedef enum {
 <p>You wil also need  to restore the original value of the Rounding Control field before <span class="code">roundD</span> returns. Do not use <span class="code">finit</span> or <span class="code">fninit</span> for this. The original value is whatever the value was when <span class="code">roundD</span> was called, which could have been set by the calling function to some arbitrary value, not necessarily what <span class="code">finit</span> produces. </p>
 <p>Start with the provided code  file a02p.c. Upload your code as <strong>a02p.c</strong>. </p>
 <hr />
-<h3>Super <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> Assignment</h3>
-<p><em>This is a very challenging assignment. It&rsquo;s here for those of you who like an extra challenge, and to provide an opportunity to &ldquo;catch up&rdquo; for students who didn&rsquo;t do well on a previous quiz or assignment. You may need the results of the <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> assignment above in order to do this assignment. </em></p>
-<p>Write a function named <span class="code">powD</span> that raises its first argument to the power of its second argument. The function prototype is:</p>
-<blockquote>
-  <p><span class="code">double powD(double n, double exp);</span></p>
-</blockquote>
-<p>The value returned by <span class="code">powD</span> will be <span class="code">n<sup>exp</sup></span>. Note that <span class="code">n</span> and <span class="code">exp</span> are not required to be integer values. Your code will have to handle cases like 2.7<sup> 4.3</sup>, etc. Your function should exactly match the results returned by the C standard function <span class="code">pow</span>, which is defined in <span class="code">math.h</span>. This includes cases which return infinity or a NaN. For instance, <span class="code">pow(-1.0, 0.5)</span> is asking for the square root of<span class="code1"> -1</span>, which is a NaN.</p>
-<p>You will not need, <em>and should not have</em>, any loops in your code for this assignment. The object is to cleverly use the floating point instructions available in the IA-32 Architecture.  So do not go to the trouble of implementing a mathematical solution like a power series &ndash; that is <em>not</em> what this assignment is asking for. </p>
-<p>Start with the provided code  file a02sp.c. Upload your code as <strong>a02sp.c</strong>.</p>
-<hr />
 <!-- InstanceEndEditable -->
 <p class="header">Compiling Your Code</p>
 <p>You are required to use these flags when compiling your code:</p>
