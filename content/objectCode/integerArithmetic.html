@@ -100,7 +100,7 @@ a:hover {
 <p>Multiplication has an inconvenient property: the product can be as much as twice the width of the numbers being multiplied. In other words, if you multiply two 16-bit values, you may need 32 bits to hold the result. Consider unsigned values. If you multiply 65,535 by itself, the answer will be 4,294,836,225. In hexadecimal, that would be: <span class="codeInText">0xFFFF </span>&times;<span class="codeInText"> 0xFFFF = 0xFFFE0001</span>. This product definitely needs 32 bits, otherwise it will be truncated. </p>
 <p>Multiplication instructions come in signed, unsigned flavors, and in one-argument, and two-argument forms.</p>
 <p>The oldest  version of the multiply instruction is the one-argument form. In those forms, the product is placed in a &ldquo;virtual register&rdquo; formed by concatenating two registers as follows: </p>
-<table border="1" cellpadding="4">
+<table border="1" cellpadding="4" cellspacing="0">
 	<tr>
 		<th scope="col"><div align="center">operand size </div></th>
 		<th scope="col"><div align="center">product size </div></th>
@@ -132,7 +132,7 @@ a:hover {
 <p>If you look at this code in Microsoft Visual Studio, you will see that Microsoft&rsquo;s compiler makes the same mistakes. </p>
 <p class="headerText">Division</p>
 <p>Division, for historical reasons, also works with the kind of &ldquo;virtual register&rdquo; scheme that is used for multiplication </p>
-<table border="1" cellpadding="4">
+<table border="1" cellpadding="4" cellspacing="0">
 	<tr>
 		<th scope="col"><div align="center">operand size </div></th>
 		<th scope="col"><div align="center">dividend</div></th>
