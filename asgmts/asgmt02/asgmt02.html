@@ -51,13 +51,12 @@ th {
 <p>You can use a mixture of C code and assembly code for these assignments, but <em>all floating point calculations (including comparisons) must be done in assembly language</em>. You should use C only for support tasks like defining local variables, returning a value from the function, etc. </p>
 <p>The IA-32 Architecture includes the floating point instructions needed to implement these functions. <em>You will save yourself a lot of work if you carefully choose the right instructions</em>. This is a large and powerful instruction set, and you should make use of that power instead of &ldquo;re-inventing the wheel.&rdquo;</p>
 <p>In other words, don&rsquo;t spend a lot of time writing a lot of dumb code. Instead, spend your time <em>thinking</em> first, and you will be able to write a smaller amount of smart code. </p>
-<p>Loops are not necessary for any of these assignments, and your code should not include them. <em>Do not</em> implement a mathematical solution such as a power series. There is no need for something like this and doing all that unneccessary work will reflect poorly on your understanding of the instructions available in the IA-32 Architecture. </p>
 <p>If you need to examine or alter the value of the FPU Control Word, you can use the <span class="code1"><strong>fldcw</strong></span> and <span class="code1"><strong>fstcw</strong></span> instructions.</p>
 <hr />
 <h3><!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> Version</h3>
-<p>Write a function named <span class="code">absD</span> that returns the absolute value of its argument (the D indicates that the argument and return value are of type <span class="code">double</span>). The function prototype is:</p>
+<p>Write a function named <span class="code">sumD</span> that returns the sum of its two arguments (the D indicates that the arguments and return value are of type <span class="code">double</span>). The function prototype is:</p>
 <blockquote>
-  <p class="code">double absD(double n); </p>
+  <p class="code">double sumD(double x, double y); </p>
 </blockquote>
 <p>Start with the provided code  file a02.c. Upload your code as <strong>a02.c</strong>. </p>
 <hr />

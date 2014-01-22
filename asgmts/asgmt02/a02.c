@@ -1,28 +1,33 @@
-// starter file for Assignment 02
+// starter file for Assignment 3
 
 #include <stdio.h>
 #include <stdlib.h>
 
 #define PRECISION   3
 
-double absD(double n)
+double sumD(double x, double y)
 {
+    double      sum = 0.0;
+
 // do not change anything above this comment
 
-    return n;
+    return sum;
 
 // do not change anything below this comment, except for printing out your name
 }
 
 int main(int argc, char **argv)
 {
-    double  n = 0.0;
+    double  x = 0.0;
+    double  y = 0.0;
 
-    printf("CS201 - Assignment 02 - your name\n");
-    if (argc > 1)
-        n = atof(argv[1]);
+    printf("CS201 - Assignment 02 - I. Forgot\n");
+    if (argc == 3) {
+        x = atof(argv[1]);
+        y = atof(argv[2]);
+        }
 
-    printf("abs(%.*f) = %.*f\n", PRECISION, n, PRECISION, absD(n));
+    printf("%.*f  + %.*f = %.*f\n", PRECISION, x, PRECISION, y, PRECISION, sumD(x, y));
 
     return 0;
 }
