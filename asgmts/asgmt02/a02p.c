@@ -1,44 +1,48 @@
-// starter file for Assignment 02p
+// starter file for Assignment 2p
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-#define PRECISION           3
-#define RND_CTL_BIT_SHIFT   10
-
-// floating point rounding modes: IA-32 Manual, Vol. 1, p. 4-20
-typedef enum {
-    ROUND_NEAREST_EVEN =    0 << RND_CTL_BIT_SHIFT,
-    ROUND_MINUS_INF =       1 << RND_CTL_BIT_SHIFT,
-    ROUND_PLUS_INF =        2 << RND_CTL_BIT_SHIFT,
-    ROUND_TOWARD_ZERO =     3 << RND_CTL_BIT_SHIFT
-} RoundingMode;
-
-double roundD(double n, RoundingMode roundingMode)
+// function for checking that your assembly code is computing the correct result
+double quadraticRootC(double a, double b, double c)
 {
-// do not change anything above this comment
-
-    return n;
-
-// do not change anything below this comment, except for printing out your name
+	return (-b + sqrt(b * b - 4 * a * c)) / (2 * a);
 }
 
-int main(int argc, char **argv)
+double quadraticRoot(double a, double b, double c)
 {
-    double  n = 0.0;
+	// write assembly code below to calculate the quadratic root
+	asm(
+		/* Delete the line below. It's only there to allow the starter code
+		 * to compile. You will be replacing it with your own code.				*/
+		"		mov		$0, %%eax			\n"
+		:									// outputs
+		:									// inputs
+		: "eax"								// clobbers
+	);
 
-    printf("CS201 - Assignment 02p - your name\n");
-    if (argc > 1)
-        n = atof(argv[1]);
+	return 0;
+}
 
-    printf("roundD even %.*f = %.*f\n",
-           PRECISION, n, PRECISION, roundD(n, ROUND_NEAREST_EVEN));
-    printf("roundD down %.*f = %.*f\n",
-           PRECISION, n, PRECISION, roundD(n, ROUND_MINUS_INF));
-    printf("roundD up   %.*f = %.*f\n",
-           PRECISION, n, PRECISION, roundD(n, ROUND_PLUS_INF));
-    printf("roundD zero %.*f = %.*f\n",
-           PRECISION, n, PRECISION, roundD(n, ROUND_TOWARD_ZERO));
+// do not change this function, except to print your own name
+int main (int argc, char **argv)
+{
+	double	a, b, c;
+	double	root, rootC;
 
-    return 0;
+	printf("CS201 - Assignment 2p - I. Forgot\n");	// print your own name instead
+	if (argc != 4) {
+		printf("need 3 arguments: a, b, c\n");
+		return -1;
+		}
+	a = atof(argv[1]);
+	b = atof(argv[2]);
+	c = atof(argv[3]);
+	root = quadraticRoot(a, b, c);
+	rootC = quadraticRootC(a, b, c);
+
+	printf("quadraticRoot(%.3f, %.3f, %.3f) = %.3f, %.3f\n", a, b, c, root, rootC);
+
+	return 0;
 }
