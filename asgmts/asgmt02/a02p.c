@@ -26,7 +26,7 @@ double quadraticRoot(double a, double b, double c)
 }
 
 // do not change this function, except to print your own name
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	double	a, b, c;
 	double	root, rootC;
