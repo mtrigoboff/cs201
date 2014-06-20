@@ -92,7 +92,6 @@ a:hover {
 	<li><em>signals are a way for Unix processes to communicate with each other, but this mode of communication is not reliable &ndash; the intended recipient may not always receive the signal</em></li>
 	<li><strong>boh.8.18.c</strong>: child signals parent
 		<ul>
-				<li><em>this code will not run properly in Cygwin</em></li>
 				<li>the parent may not count all signals from child, because if the next signal from child comes while the parent is already in signalHandler, the signal is lost</li>
 				<li>the child doesn&rsquo;t sleep if there&rsquo;s a cmd line argument, and then all but one of the signals are missed</li>
 	  </ul>
@@ -143,7 +142,6 @@ a:hover {
 	</li>
 	<li><strong>fork5sem.c</strong>	</li>
 	<ul>
-			<li><em>this code doesn&rsquo;t work properly in Cygwin</em></li>
 			<li>creates 3 processes that print</li>
 			<li>parent waits for input from user then kills children</li>
 			<li>call from command line without argument to not use semaphores</li>

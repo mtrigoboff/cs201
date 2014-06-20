@@ -51,7 +51,7 @@ th {
 <p>The <b>parent process</b> will take the arguments to<font face="Courier New, Courier, monospace"> main()</font> and send the characters in them <i>one at a time</i> to the child process through a <b>pipe</b> (one call to <b>write</b> for each character).</p>
 <p>Do not send characters from<font face="Courier New, Courier, monospace" class="code"> argv[0]</font> through the pipe.  Start with<font face="Courier New, Courier, monospace"> argv[1]</font> and
   continue through the rest of the arguments.</p>
-<p>The <b>child process</b> will read the characters sent by the parent process <span style="font-style: italic">one at a time</span>, and count the number of characters it received from the parent. The child process <span style="font-style: italic">should not</span> use the arguments to<span class="code"> main()</span> <span style="font-style: italic">in any way whatsoever</span>. The child process will return the number of characters counted to the parent by returning normally.</p>
+<p>The <b>child process</b> will read the characters sent by the parent process <span style="font-style: italic">one at a time</span>, and count the number of characters it received from the parent. The child process <span style="font-style: italic">should not</span> use the arguments to<span class="code"> main()</span> <span style="font-style: italic">in any way whatsoever</span>. The child process will communicate the number of characters counted to the parent as the return value from<span class="code"> main()</span>.</p>
 <p>The parent process will need to reap the child process to find out how many characters were counted by the child process.</p>
 <p>It may be of use to know that<font face="Courier"> read()</font> will return immediately
   with a zero once the other end of the pipe is closed by the parent.</p>
@@ -68,6 +68,8 @@ child counted 9 characte</font>rs</pre>
 <p>Your output should be formatted exactly as shown (small differences in whitespace are OK). Remember to replace &ldquo;I. Forgot&rdquo; with your own name.</p>
 <p>Start with the provided code  file <strong>a03.c</strong>. Upload your code as <strong>a03.c</strong>. </p>
 <!-- InstanceEndEditable -->
+<p class="header">Required Platform</p>
+<p>I grade your code on  <strong>syccuxfs01.pcc.edu</strong>. Your code is required to compile and run correctly on that  machine.</p>
 <p class="header">Compiling Your Code</p>
 <p>You are required to use these flags when compiling your code:</p>
 <blockquote>
