@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		// Receive number of characters counted via the value
 		// returned when the child process is reaped.
 
-		printf("child counted %d chars\n", nChars);
+		printf("child counted %d characters\n", nChars);
 		return 0;
 		}
 }
