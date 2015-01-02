@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!--
+09/2014:
+Experimented with using HTML for lab instructions.
+Nowhere near as easy and flexible as using Word -> PDF.
+-->
+
+<!-- template parameters -->
+<!-- TemplateParam name="labNumber" type="text" value="--" -->
+<title>CS201 Lab @@(labNumber)@@</title>
+</head>
+
+<body>
+<h1>CS201 Lab @@(labNumber)@@</h1>
+<hr />
+<!-- TemplateBeginEditable name="content" -->
+<p></p>
+<!-- TemplateEndEditable -->
+</body>
+</html>
