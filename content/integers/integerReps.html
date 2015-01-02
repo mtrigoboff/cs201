@@ -88,15 +88,21 @@ a:hover {
 <blockquote>
 <!-- InstanceBeginEditable name="content" -->
 <p>What we have in a computer&rsquo;s memory is <strong>bits</strong>, nothing but bits. Sometimes we want those bits to act like integers, so we can do integer computation. A &ldquo;representation&rdquo; is a definition of which bits mean which integer. Let&rsquo;s consider a 3 bit integer. There are 8 (2<sup>3</sup>) possible values. Which integers should these 8 possible values &ldquo;represent?&rdquo; Here are some possibilities:</p>
-<table width="462" border="1" cellspacing="0">
+<table border="1" cellpadding="6" cellspacing="0">
 	<tr>
-		<th width="95" scope="col"><div align="center">bit value </div></th>
-		<th width="93" scope="col"><div align="center">unsigned</div></th>
-		<th width="143" scope="col"><div align="center">two&rsquo;s complement </div></th>
-		<th width="103" scope="col"><div align="center">power of 2 </div></th>
+		<th scope="col"><div align="center">bit value </div></th>
+		<th scope="col"><div align="center">unsigned</div></th>
+		<th scope="col"><div align="center">
+		  <p>signed magnitude </p>
+</div></th>
+		<th scope="col"><div align="center">ones&rsquo; complement </div></th>
+		<th scope="col"><div align="center">two&rsquo;s complement </div></th>
+		<th scope="col"><div align="center">power of 2 </div></th>
 	</tr>
 	<tr>
 		<td><div align="center">000</div></td>
+		<td><div align="center">0</div></td>
+		<td><div align="center">0</div></td>
 		<td><div align="center">0</div></td>
 		<td><div align="center">0</div></td>
 		<td><div align="center">1</div></td>
@@ -105,10 +111,14 @@ a:hover {
 		<td><div align="center">001</div></td>
 		<td><div align="center">1</div></td>
 		<td><div align="center">1</div></td>
+		<td><div align="center">1</div></td>
+		<td><div align="center">1</div></td>
 		<td><div align="center">2</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">010</div></td>
+		<td><div align="center">2</div></td>
+		<td><div align="center">2</div></td>
 		<td><div align="center">2</div></td>
 		<td><div align="center">2</div></td>
 		<td><div align="center">4</div></td>
@@ -117,17 +127,23 @@ a:hover {
 		<td><div align="center">011</div></td>
 		<td><div align="center">3</div></td>
 		<td><div align="center">3</div></td>
+		<td><div align="center">3</div></td>
+		<td><div align="center">3</div></td>
 		<td><div align="center">8</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">100</div></td>
 		<td><div align="center">4</div></td>
+		<td><div align="center">-0</div></td>
+		<td><div align="center">-3</div></td>
 		<td><div align="center">-4</div></td>
 		<td><div align="center">16</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">101</div></td>
 		<td><div align="center">5</div></td>
+		<td><div align="center">-1</div></td>
+		<td><div align="center">-2</div></td>
 		<td><div align="center">-3</div></td>
 		<td><div align="center">32</div></td>
 	</tr>
@@ -135,11 +151,15 @@ a:hover {
 		<td><div align="center">110</div></td>
 		<td><div align="center">6</div></td>
 		<td><div align="center">-2</div></td>
+		<td><div align="center">-1</div></td>
+		<td><div align="center">-2</div></td>
 		<td><div align="center">64</div></td>
 	</tr>
 	<tr>
 		<td><div align="center">111</div></td>
 		<td><div align="center">7</div></td>
+		<td><div align="center">-3</div></td>
+		<td><div align="center">-0</div></td>
 		<td><div align="center">-1</div></td>
 		<td><div align="center">128</div></td>
 	</tr>
