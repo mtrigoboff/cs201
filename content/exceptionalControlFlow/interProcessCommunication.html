@@ -133,28 +133,37 @@ a:hover {
 		<li>they will stick around even after your program exits</li>
 		<li>create semaphores with IPC_PRIVATE if you want semaphores of your own</li>
 		</ul>
-	<li><strong>ineffective.c</strong>
-		<ul>
-			<li>demonstrates what would be an ineffective approach to controlling the number of processes allowed into a critical section</li>
-			<li>think about why this code is ineffective (look at the compiled code for a clue)  </li>
-			<li><em>this is code to just look at, not to run </em></li>
-		</ul>
+	<li>code examples
+	  <ul>
+	    <li><strong>ineffective.c</strong>
+	      <ul>
+	        <li>demonstrates what would be an ineffective approach to controlling the number of processes allowed into a critical section</li>
+	        <li>think about why this code is ineffective (look at the compiled code for a clue)  </li>
+	        <li><em>this is code to just look at, not to run </em></li>
+          </ul>
+        </li>
+	    <li><strong>fork5sem.c</strong>	
+	      <ul>
+	        <li>creates 3 processes that print</li>
+	        <li>parent waits for input from user then kills children</li>
+	        <li>call from command line without argument to not use semaphores</li>
+	        <li>call from command line with a numeric argument to use semaphores
+	          <ul>
+	            <li>the argument specifies how many processes can &ldquo;grab&rdquo; the semaphore at the same time</li>
+	            <li>1 and 2 are good arguments to try with this code </li>
+	            <li>with arguments of 3 and above the code acts just like it does with <em>no</em> argument</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+	    <li><strong>fork5sem2.c</strong>
+	      <ul>
+	        <li>allows you to control the number of processes you create, and allows you to experiment further with processes and semaphores</li>
+	      </ul>
+	    </li>
+      </ul>
 	</li>
-	<li><strong>fork5sem.c</strong>	</li>
-	<ul>
-			<li>creates 3 processes that print</li>
-			<li>parent waits for input from user then kills children</li>
-			<li>call from command line without argument to not use semaphores</li>
-			<li>call from command line with a numeric argument to use semaphores
-				<ul>
-						<li>the argument specifies how many processes can &ldquo;grab&rdquo; the semaphore at the same time</li>
-					<li>1 and 2 are good arguments to try with this code </li>
-					<li>with arguments of 3 and above the code acts just like it does with <em>no</em> argument</li>
-			    </ul>
-			</li>
-		    <li><strong>fork5sem2.c</strong> allows you to control the number of processes you create, and allows you to experiment further with this sort of code </li>
-	</ul>
-</ul>
+  </ul>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->
 </blockquote>

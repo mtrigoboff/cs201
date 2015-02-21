@@ -100,7 +100,7 @@ a:hover {
 <p class="headerText">Who&rsquo;s Telling The Truth? </p>
 <p>Let&rsquo;s do an experiment to find out whether Linux or Visual Studio is getting things right. We&rsquo;ll use <a href="http://www.joyofpi.com/pi.html" target="_blank">the value of pi</a> as a test case, since we know the correct value out to <em>many</em> digits. </p>
 <p><strong>error.c</strong>  prints out double and  float values for pi in Linux. <a href="files/error.zip">error.zip</a> contains a Visual Studio solution that does the same thing. (It's almost the same code, except for the assembly code that gets the value of pi from the chip.) </p>
-<p>We observe that Visual Studio&rsquo;s output is accurate except for the rightmost digit. Linux, on the other hand, are quite inaccurate towards the right end of their output. But we can see that both versions of this code are using the same hex value internally for pi.</p>
+<p>We observe that Visual Studio&rsquo;s output is accurate except for the rightmost digit. Linux, on the other hand, is quite inaccurate towards the right end of its output. But we can see that both versions of this code are using the same hex value internally for pi.</p>
 <p>This suggests that the culprit is the implementation of <span class="codeInText">printf</span> in Linux. </p>
 <p><em>Sometimes your tools may lie to you. It is up to you to be watchful and figure out what&rsquo;s happening. Remember that in extreme circumstances, lives may depend on getting things like this right.</em></p>
 <p>&nbsp;</p>
