@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Introduction to the GDBTUI Debugger</title>
+<title>Introduction to the GDB Debugger</title>
 <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
 <!-- template parameters -->
 
@@ -13,7 +13,7 @@
 
 
 
-<!-- InstanceParam name="topicName" type="text" value="Introduction to the GDBTUI Debugger" -->
+<!-- InstanceParam name="topicName" type="text" value="Introduction to the GDB Debugger" -->
 <style type="text/css">
 <!--
 body {
@@ -81,7 +81,7 @@ a:hover {
 
 <body>
 <blockquote>
-  <p><span class="pageHeaderText">CS201: Introduction to the GDBTUI Debugger</span></p>
+  <p><span class="pageHeaderText">CS201: Introduction to the GDB Debugger</span></p>
 </blockquote>
 <hr />
 
@@ -97,7 +97,7 @@ a:hover {
 	</ul>
 <p>If you want to be a professional software engineer or computer scientist, <em>you will need to learn to use debuggers</em>. Getting really good at using print statements for debugging is the equivalent of getting really good at riding a bike with training wheels. Employers want programmers who don&rsquo;t need training wheels, programmers who know how to operate industrial-strength tools. </p>
 <p>I will not be able to prevent you from using print statements to debug your code. But if you use print statements for debugging in this class, you will be cheating <em>yourself</em>. </p>
-<p>In this class, we will be using <strong>gdbtui</strong>, which is a character-based GUI user interface for the very powerful, professional-level <strong>gdb</strong> debugger (&ldquo;gdb&rdquo; stands for &ldquo;<u>G</u>NU <u>d</u>e<u>b</u>ugger&rdquo;, and &ldquo;tui&rdquo; stands for &ldquo;<u>t</u>ext <u>u</u>ser <u>i</u>nterface&rdquo;).</p>
+<p>In this class, we will be using the <strong>gdb</strong> Text User Interface (TUI), which is a character-based GUI user interface for the very powerful, professional-level <strong>gdb</strong> debugger (&ldquo;gdb&rdquo; stands for &ldquo;<u>G</u>NU <u>d</u>e<u>b</u>ugger&rdquo;).</p>
 <p>Work to do for this lesson: </p>
 <ul>
 	<li>get access to <strong>Linux</strong>
@@ -108,14 +108,14 @@ a:hover {
 	</li>
 	<li>run the code in <strong>gdb</strong>&rsquo;s &ldquo;<u>t</u>ext <u>u</u>ser <u>i</u>nterface&rdquo;
 	  <ul>
-	    <li>in Linux, invoke the debugger as <strong>gdbtui</strong></li></ul></li>
+	    <li>in Linux, invoke the debugger as <strong>gdb -tui</strong></li></ul></li>
   </ul>
 <p class="headerText">Source Code Debugging </p>
-<p>To observe the source code in <strong>gdbtui</strong>:	</p>
+<p>To observe the source code in <strong>gdb</strong>:	</p>
 <ul>
-	<li>type<span class="codeInText"> gdbtui </span>into the Linux command line
+	<li>type<span class="codeInText"> gdb -tui </span>into the Linux command line, followed by the name of your executable file
       <ul>
-			<li>your code will appear in the upper half of the gdbtui display</li>
+			<li>your code will appear in the upper half of the gdb display</li>
 		</ul>
 		</li>
 	<li>set a breakpoint in<span class="codeInText"> main()</span> by 
@@ -142,16 +142,16 @@ a:hover {
 			<li>when you&rsquo;re done, type<span class="codeInText"> c</span>, which tells your program to run until either the next breakpoint or until<span class="codeInText"> main()</span> returns to the operating system </li>
 		</ul>
 	</li>
-	<li>quit gdbtui by typing <strong>q</strong></li>
+	<li>quit gdb by typing <strong>q</strong></li>
 </ul>
-<p>You now have the minimal set of skills you need to watch your source code running in gdbtui.</p>
+<p>You now have the minimal set of skills you need to watch your source code running in <strong>gdb</strong>.</p>
 <p class="headerText">Object Code Debugging </p>
-<p>You can also use <strong>gdbtui</strong> to watch what your object code is doing. The following instructions will show you how. Don&rsquo;t worry if this object code is mysterious to you at this time &ndash; by the end of this course you will be able to understand all of your object code. This lesson  just shows you how to <em>look at</em> object code. Much of the rest of this course will involve learning to <em>understand</em> the object code you&rsquo;re looking at. </p>
+<p>You can also use <strong>gdb</strong> to watch what your object code is doing. The following instructions will show you how. Don&rsquo;t worry if this object code is mysterious to you at this time &ndash; by the end of this course you will be able to understand all of your object code. This lesson  just shows you how to <em>look at</em> object code. Much of the rest of this course will involve learning to <em>understand</em> the object code you&rsquo;re looking at. </p>
 <ul>
 	<li>set a breakpoint in<span class="codeInText"> main()</span> by 
 	  typing<span class="codeInText"> br main</span></li>
     <li>run the code by typing<span class="codeInText"> r</span></li>
-    <li>set gdbtui to display your object code as well as your source code
+    <li>set gdb to display your object code as well as your source code
 		<ul>
 		  <li>type<span class="codeInText"> layout split</span></li>
 			</ul>
@@ -163,7 +163,7 @@ a:hover {
 		</ul>
 	</li>
 	<li>to see registers type <span class="codeInText">tui reg general</span></li>
-	<li>when you&rsquo;re done, quit gdbtui by typing <strong>q</strong></li>
+	<li>when you&rsquo;re done, quit <strong>gdb</strong> by typing <strong>q</strong></li>
 </ul>
 <p class="headerText">Next Steps </p>
 <p><strong>gdb</strong> has many features that are not covered in this short tutorial. I recommend that you use the <a href="files/gdb-manual.pdf" target="_blank">gdb manual</a> to learn about its many features. There is also a <a href="files/gdb-refcard.pdf" target="_blank">reference card</a> that may be of use to you.</p>

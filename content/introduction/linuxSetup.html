@@ -88,21 +88,21 @@ a:hover {
 <blockquote>
 <!-- InstanceBeginEditable name="content" -->
     <p class="headerText">Configuration Files </p>
-    <p>To set Linux up, you can add <a href="files/linuxSetupFiles.zip">these files</a> to your home directory:</p>
+    <p>To set Linux up, you can add these files from<!-- #BeginLibraryItem "/Library/~mlt-linux.lbi" --><span style="font-family: Consolas, 'Courier New', Courier, monospace; font-size: 14px;"> ~michael.trigoboff/linux </span><!-- #EndLibraryItem -->to your home directory:</p>
     <ul>
       <li><span class="codeInText">.bash_profile</span>
         <ul>
           <li> <em>startup file for <strong>bash</strong></em></li>
-          <li>adds<span class="codeInText"> . </span>to your Bash PATH variable, which allows you to run your code without typing<span class="codeInText"> ./ </span>before the program name </li>
+          <li>adds<span class="codeInText"> . </span>to your Bash PATH variable, which allows you to run your code without typing<span class="codeInText"> ./ </span>before the program name</li>
+          <li>adds<!-- #BeginLibraryItem "/Library/~mlt-bin.lbi" --><span style="font-family: Consolas, 'Courier New', Courier, monospace; font-size: 14px;"> ~michael.trigoboff/bin </span><!-- #EndLibraryItem --><span class="codeInText"></span>to your Bash PATH variable, which allows you to run Bash scripts from that directory</li>
           <li>reconfigures the Bash prompt so that it doesn&rsquo;t take up an entire line all by itself </li>
-          <li>sets your Linux <a href="http://en.wikibooks.org/wiki/FOSS_A_General_Introduction/Localization_and_Internationalization" target="_blank">localization</a> so that you get smart quotes in gcc error messages and warnings instead of garbage characters</li>
+          <li>sets your Linux <a href="http://en.wikibooks.org/wiki/FOSS_A_General_Introduction/Localization_and_Internationalization" target="_blank">localization</a> so that you get smart quotes in gcc error messages and warnings, instead of garbage characters</li>
         </ul>
       </li>
       <li><span class="codeInText">.vimrc</span>
         <ul>
           <li><em>startup file for <strong>vim</strong></em></li>
           <li>sets tab stops to 4 (it takes more than one setting to do this)</li>
-          <li>configures<span class="codeInText"> vim </span>to replace tabs with spaces. You may not want this setting for all of your future use of<span class="codeInText"> vim</span>, but please leave it this way during this class. By having spaces instead of tabs, your  code will appear properly indented when typed out (using <span class="codeInText">cat</span>) in Bash, etc. </li>
         </ul>
       </li>
       <li><span class="codeInText">.gdbinit</span>
@@ -115,17 +115,10 @@ a:hover {
 <p class="headerText">Compilation Script File</p>
     <p>You will normally compile your source code with a command like this:  </p>
     <blockquote>
-      <p class="codeInText">gcc -m32 -std=gnu99 -Wall -g mycode.c -o mycode</p>
+      <p class="codeInText">gcc &lt;compiler flags&gt; -o mycode</p>
     </blockquote>
-    <p>To avoid typing all of this over and over and over again, you can use the bash script file that I use in class, <span class="codeInText"><a href="files/gc.zip">gc</a></span> (it&rsquo;s provided in a .zip file, which is ridiculous, but Desire2Learn seems not to be able to handle files whose names do not have an extension).</p>
-<p>You will need to:
-<ul>
-	<li>extract this file and placed it in a subdirectory named <span class="codeInText">bin</span> under your home directory<br />
-		(on <!-- #BeginLibraryItem "/Library/class Linux machine.lbi" --> <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem -->, this directory is included in your execution <a href="http://www.ghacks.net/2009/06/03/adding-a-directory-to-your-path/" target="_blank">PATH</a>)</li>
-	<li>set the file to be <em>executable</em>, by executing the following Linux command:<br />
-    	<span class="codeInText">chmod 755 gc</span></li>
-</ul>
-<p>You can then compile your code (in file <span class="codeInText">mycode.c</span>) by doing this:</p>
+    <p>To avoid typing all of this over and over and over again, you can use the Bash script file that I use in class, <strong>gc</strong>. It&rsquo;s available in the<!-- #BeginLibraryItem "/Library/~mlt-bin.lbi" --><span style="font-family: Consolas, 'Courier New', Courier, monospace; font-size: 14px;"> ~michael.trigoboff/bin </span><!-- #EndLibraryItem -->directory,  which should be part of your Bash PATH.</p>
+  <p>You can then compile your code (in file <span class="codeInText">mycode.c</span>) by doing this:    
 <blockquote>
 	<p class="codeInText">gc mycode</p>
 </blockquote>

@@ -107,8 +107,8 @@ a:hover {
 	<p class="codeInText">offset(baseReg)</p>
 	<p class="codeInText">(baseReg)</p>
 </blockquote>
-<p><strong>array.c</strong> computes and prints out the sum of the elements of an array using an <em>index</em> to iterate through the array. Compile array.c in Linux, and run the code in<strong> gdbtui</strong>. Look at the code in MIXED mode, so that you see the object code as well as the source code. </p>
-<p>Set<strong> gdbtui </strong>to display in both AT&amp;T and Intel modes. Look at the instruction at <span class="codeInText">&lt;main+93&gt;</span> and observe how the memory reference changes from one form to the other. </p>
+<p><strong>array.c</strong> computes and prints out the sum of the elements of an array using an <em>index</em> to iterate through the array. Compile array.c in Linux, and run the code in<strong> gdb</strong>. Look at the code in MIXED mode, so that you see the object code as well as the source code. </p>
+<p>Set<strong> gdb </strong>to display in both AT&amp;T and Intel modes. Look at the instruction at <span class="codeInText">&lt;main+93&gt;</span> and observe how the memory reference changes from one form to the other. </p>
 <p>Note how the offset appears as <span class="codeInText">-24</span> in Intel mode and <span class="codeInText">0xffffffe8</span> in AT&amp;T mode. Note how the opcode <span class="codeInText">mov</span> in Intel mode becomes <span class="codeInText">movl</span> in AT&amp;T mode. </p>
 <p><strong>array2.c</strong> shows a different way of summing the elements of an array, using a <em>pointer</em> instead of an <em>index</em>. In the &ldquo;old days,&rdquo; coding a loop this way was a mark of skill, because it would compile into faster code than the indexed version. Modern optimizing compilers have made it unnecessary in most cases to hand-code for efficiency like this. Look at the object code for array2.c and compare the instructions compiled for the assignment statement in the loop with what was compiled for the equivalent statement in array.c.</p>
 <p>&nbsp;</p>

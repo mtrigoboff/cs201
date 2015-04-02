@@ -194,7 +194,7 @@ To debug your C program, do this: <br />
 				<td valign="top"><div align="left" class="style14">debug your code with gdb&rsquo;s command-line interface</div></td>
 			</tr>
 			<tr>
-				<td valign="top" width="320"><div align="left" class="style16">gdbtui yourcode</div></td>
+				<td valign="top" width="320"><div align="left" class="style16">gdb -tui yourcode</div></td>
 				<td valign="top"><div align="left" class="style14">debug your code with gdb&rsquo;s character-oriented GUI</div></td>
 			</tr>
 		</tbody>
@@ -207,11 +207,11 @@ Once you&rsquo;re running in the debugger, you can do this: <br />
 	<table cellpadding="4" width="90%">
 		<tbody>
 			<tr>
-				<td valign="top" width="320"><div align="left" class="style16">set di intel</div></td>
+				<td valign="top" width="320"><div align="left" class="style16">set disassembly-flavor intel</div></td>
 				<td valign="top"><div align="left" class="style14">tells the debugger to display assembly code in the Intel format</div></td>
 			</tr>
 			<tr>
-				<td valign="top" width="320"><div align="left" class="style16">set di att</div></td>
+				<td valign="top" width="320"><div align="left" class="style16">set disassembly-flavor att</div></td>
 				<td valign="top"><div align="left" class="style14">tells the debugger to display assembly code in the AT&amp;T format</div></td>
 			</tr>
 		</tbody>
