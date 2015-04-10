@@ -49,7 +49,9 @@ th {
 <p>description</p>
 <!-- TemplateEndEditable -->
 <p class="header">Required Platform</p>
-<p>I grade your code on<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" --> <strong>syccuxfs01.pcc.edu</strong><!-- #EndLibraryItem -->. Your code is required to compile and run correctly on that  machine.</p>
+<p>I grade your code on<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
+
+<strong>syccuxfas01.pcc.edu</strong><!-- #EndLibraryItem -->. Your code is required to compile and run correctly on that  machine.</p>
 <p class="header">Compiling Your Code</p>
 <p>You are required to use these flags when compiling your code:</p>
 <blockquote>
