@@ -1,16 +1,18 @@
 syntax: glob
-*.pdf
-dwsync.xml
-*.gif
-*.zip
-*.prev
-*.jpg
-*.ppt
-*.db
-*.xps
-asgmts/asgmt02/linux executables/*
 */ArtOfAssembly/*
-calendar.html
+*.db
+*.docx
+*.gif
+*.jpg
+*.pdf
+*.prev
+*.png
+*.ppt
 *.xls
 *.xlsx
+*.xps
+*.zip
+asgmts/asgmt02/linux executables/*
+calendar.html
+dwsync.xml
 News Attachments/*
