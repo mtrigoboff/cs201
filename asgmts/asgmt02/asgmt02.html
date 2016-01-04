@@ -47,42 +47,42 @@ th {
 <p class="title">CS201 Assignment 2 Instructions</p>
 <!-- InstanceBeginEditable name="description" -->
 <p><em>Remember that you only need to do one of the assignments below.</em></p>
-<p>In each of these assignments, you will be asked to write a &ldquo;math library&rdquo; function. You will be writing the function in assembly language, using gcc&rsquo;s <span style="font-weight: bold">inline assembler</span>. Class code files <span style="font-weight: bold">asm.c</span> and <span style="font-weight: bold">cpuid.c</span> are good models for how to write assembly code for gcc. (The files mentioned are available on <strong><!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
-
-<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem --></strong>). </p>
-<p>You can use a mixture of C code and assembly code for these assignments, but <em>all floating point calculations (including comparisons) must be done in assembly language</em>. You should use C only for support tasks like defining  and initializing local variables, returning a value from the function, etc.</p>
-<p>Your assembly code should work in the following way:</p>
-<ol>
-  <li>Load values from the function&rsquo;s arguments and local variables onto the floating point stack (local variables can be initialized first by C code as long as no calculations are performed).</li>
-  <li>Perform the required calculation <em>entirely within the floating point stack</em>. Using <strong>stack comments</strong> in this code will help you keep track  of what&rsquo;s going on. (A stack comment is a comment that specifies what is supposed to be on the floating point stack after that instruction has executed. Or you can write stack comments to specify the situation before the instruction executes if you prefer.)</li>
-  <li>Store the calculated result from the floating point stack to a local variable.</li>
-</ol>
-<p>The function will then return the contents of that local variable. </p>
-<p>The IA-32 Architecture includes the floating point instructions needed to implement these functions (they all start with the letter &lsquo;F&rsquo;). <em>You will save yourself a lot of work if you carefully choose the right instructions</em>. This is a large and powerful instruction set, and you should make use of that power instead of &ldquo;re-inventing the wheel.&rdquo; In other words, don&rsquo;t spend a lot of time writing a lot of dumb code. Instead, spend your time <em>thinking</em> first, and you will be able to write a smaller amount of smart code.</p>
+<p>In each of these assignments, you will be asked to write a &ldquo;math library&rdquo; function. You will be writing the function in assembly language, using gcc&rsquo;s <span style="font-weight: bold">inline assembler</span>. In addition to the documentation provided here, code files <span style="font-weight: bold">asm.c</span> and <span style="font-weight: bold">cpuid.c</span> are good models for how to write assembly code for gcc. (The files mentioned above <span style="font-weight: bold">in bold</span> are available on <strong>syccuxfs01.pcc.edu</strong>). </p>
+<p>You can use a mixture of C code and assembly code for these assignments, but <em>all floating point calculations (including comparisons) must be done in assembly language</em>. You should use C only for support tasks like defining local variables, returning a value from the function, etc. </p>
+<p>The IA-32 Architecture includes the floating point instructions needed to implement these functions. <em>You will save yourself a lot of work if you carefully choose the right instructions</em>. This is a large and powerful instruction set, and you should make use of that power instead of &ldquo;re-inventing the wheel.&rdquo;</p>
+<p>In other words, don&rsquo;t spend a lot of time writing a lot of dumb code. Instead, spend your time <em>thinking</em> first, and you will be able to write a smaller amount of smart code. </p>
+<p>Loops are not necessary for any of these assignments, and your code should not include them. <em>Do not</em> implement a mathematical solution such as a power series. There is no need for something like this and doing all that unneccessary work will reflect poorly on your understanding of the instructions available in the IA-32 Architecture. </p>
+<p>If you need to examine or alter the value of the FPU Control Word, you can use the <span class="code1"><strong>fldcw</strong></span> and <span class="code1"><strong>fstcw</strong></span> instructions.</p>
 <hr />
 <h3><!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> Version</h3>
-<p>Compute the volume of a sphere according to the formula 4*&pi;<sup>3</sup>/3.</p>
-<p>In <span class="code">sphereVolumeC</span>, write assembly code that gets the value of &pi; from the chip instead of using the provided constant. Do not change anything else about this function.</p>
-<p>In <span class="code">sphereVolume</span>, write assembly code that calculates the value of the formula. </p>
-<p>Start with the provided code file a02.c. Upload your code as <strong>a02.c</strong>. </p>
+<p>Write a function named <span class="code">absD</span> that returns the absolute value of its argument (the D indicates that the argument and return value are of type <span class="code">double</span>). The function prototype is:</p>
+<blockquote>
+  <p class="code">double absD(double n); </p>
+</blockquote>
+<p>Start with the provided code  file a02.c. Upload your code as <strong>a02.c</strong>. </p>
 <hr />
 <h3><!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> Version</h3>
-<p>Using the <a href="http://en.wikipedia.org/wiki/Quadratic_formula" target="_blank">Quadratic Formula</a>, compute one of the roots of a quadratic equation, </p>
-<p>In <span class="code">quadraticRoot</span>, write assembly code that calculates the version of the formula that <em>adds </em>the square root.</p>
-<p>Because this code calls the <span class="code">sqrt</span> function from <span class="code">math.h</span>, you will need to compile it as follows on <strong></strong><!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
-
-<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->:</p>
+<p>Write a function named <span class="code">roundD</span> that rounds its first argument to an  integer value according to the mode specified by its second argument. The function prototype is:</p>
 <blockquote>
-  <p class="code">gcc &lt;required flags&gt; a02p.c <strong>-lm</strong> -o a02p </p>
+  <p class="code">double roundD(double n, RoundingMode roundingMode);</p>
 </blockquote>
-<p>You can use file <span class="code">~michael.trigoboff/bin/gclm</span> to avoid having to type all of this in.</p>
+<p><span class="code1">RoundingMode</span> is defined as follows:</p>
+<blockquote>
+  <pre class="code">#define RND_CTL_BIT_SHIFT   10
+
+// floating point rounding modes: IA-32 Manual, Vol. 1, p. 4-20
+typedef enum {
+    ROUND_NEAREST_EVEN =    0 &lt;&lt; RND_CTL_BIT_SHIFT,
+    ROUND_MINUS_INF =       1 &lt;&lt; RND_CTL_BIT_SHIFT,
+    ROUND_PLUS_INF =        2 &lt;&lt; RND_CTL_BIT_SHIFT,
+    ROUND_TOWARD_ZERO =     3 &lt;&lt; RND_CTL_BIT_SHIFT
+} RoundingMode;</pre>
+</blockquote>
+<p>You will need to set the Rounding Control field of the FPU Control Word in accordance with the second argument.</p>
+<p>You wil also need  to restore the original value of the Rounding Control field before <span class="code">roundD</span> returns. Do not use <span class="code">finit</span> or <span class="code">fninit</span> for this. The original value is whatever the value was when <span class="code">roundD</span> was called, which could have been set by the calling function to some arbitrary value, not necessarily what <span class="code">finit</span> produces. </p>
 <p>Start with the provided code  file a02p.c. Upload your code as <strong>a02p.c</strong>. </p>
 <hr />
 <!-- InstanceEndEditable -->
-<p class="header">Required Platform</p>
-<p>I grade your code on<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
-
-<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->. Your code is required to compile and run correctly on that  machine.</p>
 <p class="header">Compiling Your Code</p>
 <p>You are required to use these flags when compiling your code:</p>
 <blockquote>
@@ -99,7 +99,7 @@ th {
     <td>compiles 32-bit code, disallows use of 64-bit integer registers</td>
   </tr>
   <tr>
-    <td class="code">-std=gnu11</td>
+    <td class="code">-std=gnu99</td>
     <td>allows use of newer features of C</td>
   </tr>
   <tr>
@@ -114,7 +114,7 @@ th {
 </blockquote>
 <p>Here is how you would use these flags:</p>
 <blockquote>
-  <p class="code">gcc -m32 -std=gnu11 -Wall -g yourcode.c -o yourcode</p>
+  <p class="code">gcc -m32 -std=gnu99 -Wall -g yourcode.c -o yourcode</p>
 </blockquote>
 <p class="header">Grading Your Code</p>
 <p>Your code needs to compile without errors or warnings and run correctly. Code that does not compile will receive zero points. Code that crashes will receive zero points.</p>
