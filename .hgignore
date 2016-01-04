@@ -1,5 +1,6 @@
 syntax: glob
 */ArtOfAssembly/*
+*/asgmts/*
 *.db
 *.docx
 *.gif
@@ -8,6 +9,7 @@ syntax: glob
 *.prev
 *.png
 *.ppt
+*.pptx
 *.xls
 *.xlsx
 *.xps
