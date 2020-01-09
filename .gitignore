@@ -12,6 +12,7 @@
 !*.c
 !*.h
 !*.dwt
+!*.htm
 !*.html
 !*.lbi
 !*.txt
