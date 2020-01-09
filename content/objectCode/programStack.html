@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>The Program Stack</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="The Program Stack" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: The Program Stack</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>The program stack (also known as &ldquo;the stack&rdquo; or &ldquo;the calling stack&rdquo; is the place where memory for C function arguments and local variables is allocated.  (These are the so-called &ldquo;automatic&rdquo; variables.)</p>
+<p>The program stack is supported by the following features of the IA-32 architecture:</p>
+<ul>
+	<li><em>registers
+		</em><br />
+		<br />
+		<table border="1" cellpadding="4" cellspacing="0">
+			<tr valign="top">
+				<th width="74" scope="col"><div align="left">register</div></th>
+				<th scope="col"><div align="left">comment</div></th>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText"><div align="left" class="codeInText">esp</div></td>
+				<td><div align="left">stack pointer: points to &ldquo;top&rdquo; of stack (which is the <em>lowest</em> address because the stack grows <em>downwards)</em></div></td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText"><div align="left" class="codeInText">ebp</div></td>
+				<td><div align="left">frame pointer: points to where caller&rsquo;s frame pointer is stored. Positive offsets from ebp point to function arguments (starting with ebp&nbsp;+&nbsp;8). Negative offsets from ebp point to local variables. </div></td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText"><div align="left" class="codeInText">eax</div></td>
+				<td><div align="left">integer and pointer return values are returned from functions in eax. Floating point values are returned in another way, which will be discussed later in this course. </div></td>
+			</tr>
+		</table>
+		<br />
+	</li>
+	<li><em>instructions</em><br />
+		<br />
+		<table border="1" cellpadding="4" cellspacing="0">
+			<tr valign="top">
+				<th width="74" scope="col">instruction</th>
+				<th scope="col">comment</th>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">push</td>
+				<td>&ldquo;pushes&rdquo; a value onto the stack by subtracting the data size from esp and then writing the value to the address contained in esp </td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">pop</td>
+				<td>&ldquo;pops&rdquo; a value off the stack by storing what esp points to and then adding the data size to esp </td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">call</td>
+				<td>&ldquo;calls&rdquo; a function. Pushes the address of the instruction after the call instruction onto the stack (this is where the called function will return to) and then jumps to the start of the called function. </td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">ret</td>
+				<td>pops the address on top of the stack and jumps to that address (the address was stored by the calling function) </td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">enter</td>
+				<td>automates setting up a function&rsquo;s stack frame. Pushes caller&rsquo;s ebp onto stack, sets ebp to address of caller&rsquo;s ebp on stack, subtracts size of memory needed for local variables from esp. </td>
+			</tr>
+			<tr valign="top">
+				<td class="codeInText">leave</td>
+				<td>automates &ldquo;unwinding&rdquo; called function&rsquo;s stack frame. Restores calling function&rsquo;s ebp from stack, leaves esp pointing to return address in preparation for execution of ret instruction. </td>
+			</tr>
+		</table>
+		<br />
+	</li>
+	</ul>
+<p class="headerText">Code That Demonstrates The Program Stack</p>
+<p>Run the following code samples in<strong> gdb</strong>, and watch what happens on the stack.</p>
+<p>To see the stack, use the gdb x (eXamine memory) command with $esp:</p>
+<blockquote>
+	<p class="codeInText">x/12x $esp</p>
+</blockquote>
+<p>You will then be able to watch values being pushed onto and popped off of the stack. </p>
+<p><strong>stack.c</strong> demonstrates the behavior of the stack when a function is called, and how the local variables for that function are allocated and used. Note that local variables <em>are not</em> initialized. Doing so would add too much overhead to the function-calling process. </p>
+<p><strong>stackr.c</strong> demonstrates how a recursive function uses the stack.</p>
+<p><strong>stackmain.c</strong> demonstrates how the arguments to <span class="codeInText">main()</span> are stored. It turns out they are stored on the stack in exactly the same way as the arguments to any other function. The only thing special about <span class="codeInText">main()</span> is that the operating system calls it when it wants to run your program. </p>
+<p><strong>stackretup2.c</strong> and <strong>stackretupn.c</strong> demonstrate how a function can return higher up the stack than the function that called it.</p>
+<p><strong>jump.c</strong> also demonstrates how a function can &ldquo;jump&rdquo; up the stack  higher than the function that called it.</p>
+<p><span class="headerText">Floating Point On The Program Stack</span></p>
+<p>In Linux, floating point arguments are passed on the stack. You can observe this in <strong>gdb</strong> by using the <strong>x</strong> (e<strong>X</strong>amine memory) command like this using <strong>fexpr.c</strong> as an example:</p>
+<blockquote>
+  <p class="codeInText">x/12gf $esp </p>
+</blockquote>
+<p>In this command, the &lsquo;g&rsquo; specifies the display of eight-byte values. This command will display 12 of these values, starting with the address in memory specified by <span class="codeInText">esp</span>.</p>
+<p>Now step through <span class="codeInText">main()</span> until the call instruction for function <span class="codeInText">fn()</span>. You will see the floating point arguments get placed on the stack.</p>
+<p>As you step out of <span class="codeInText">fn()</span>, you will see that floating point return values are returned in register ST(0). This is how floating point values are usually returned in C code compiled for the IA-32 Architecture. </p>
+<p><strong>fasm.c</strong> illustrates how floating point arguments are passed to, and how floating point values are returned from functions in code compiled with gcc. This code also illustrates how gcc's inline assembler can be used when dealing with floating point data. </p>
+<p><strong>fpi.c</strong> illustrates how a math library function might request the value of &pi; from the FPU and return it to the function&rsquo;s caller. </p>
+<p class="headerText"></p>
+<p>&nbsp;</p>
+<p class="headerText">Buffer Overflow Attacks </p>
+<p>Vulnerability to buffer overflows is a significant software weakness that is often exploited by attackers. The vulnerability occurs when a buffer is allocated <em>on the stack</em>, and the buffer is not protected from &ldquo;overflow&rdquo;  (i.e. writing past the end of the buffer).</p>
+<p>Figures 3.17 and 3.28 in <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --> illustrate the structure of a stack frame. Note that the current function&rsquo;s <em>return address</em> is stored   &ldquo;above&rdquo; (i.e. at a higher address than) all local variables. This means that if you write far enough past a buffer allocated as a local variable, <em>you can clobber the return address</em>. You can make the function  &ldquo;return&rdquo; anywhere you want it to. This is the essence of a buffer overflow attack. </p>
+<p>An example of this sort of attack would be a network packet that&rsquo;s longer than it should be, targeting a buffer on the stack that is not protected from overflows. </p>
+<p><strong>bofproc.c</strong> simulates a buffer overflow attack that transfers control to a privileged operating system function. You can step through this code in <strong> gdb </strong> and watch the attack happen and succeed. </p>
+<p><strong>bofstk.c</strong> simulates a buffer overflow attack that transfers control to code within the buffer that overflowed (as might happen if a rogue packet is received that contains its own attack code. You can watch this happen in <strong> gdb</strong>.</p>
+<p>The attack code instructions being placed in the buffer include the one-byte instruction, 0x90. This is the NOP instruction, which does nothing (it stands for &ldquo;no operation&rdquo;), and moves on to the next instruction. It can be used in attacks like this when you&rsquo;re not exactly sure where your code will start executing. In this situation, you can start your code with a string of NOP instructions, which will &ldquo;capture&rdquo; the flow of control and lead it into your attack code.</p>
+<p><em>By the way, you are being taught about this so that you can defend yourself from attacks. If I ever hear that one of my students has used these techniques for evil, I will personally come and testify against that student at their trial, <u>even if I have to spend my own money to get there</u>.</em></p>
+<p>Step through function <span class="codeInText">bofstk</span> until the last line of code (the one that sets <span class="codeInText">buffer[7]</span>). Now switch the Source Window to MIXED mode and continue stepping (using either the <span class="codeInText">si</span> command in the Console Window, or typing S to the Source Window). Once function <span class="codeInText">bofstk</span> &ldquo;returns&rdquo; to an address within its own buffer (by executing a <span class="codeInText">ret</span> instruction), you will not be able to watch the program run in <strong> gdb</strong>&rsquo;s Source Window. But you can continue to step the code (and watch the <span class="codeInText">eip</span> register increment). If you do this a few times, you will see value <span class="codeInText">0xdeadbeef</span> appear in register <span class="codeInText">eax</span>, proving that the attack succeeded. </p>
+<p class="headerText">Visual Studio </p>
+<p>You can run <a href="files/stack.zip">a version of the code</a> from this lesson in Visual Studio, where you will see that things are similar but not quite the same as they are in Linux. To get a Memory window in the Visual Studio debugger, go to Debug&nbsp;&rarr;&nbsp;Windows&nbsp;&rarr;&nbsp;Memory and choose one of Memory&nbsp;1 through Memory&nbsp;4.</p>
+<p>Once you have the window, type <span class="codeInText">esp</span> into its Address field, and then click the double-arrow icon to the right of the field so that a box is displayed around it. The window will then show you the stack. If the window is not showing you 32-bit values, right-click in the window and select &ldquo;4-byte Integer.&rdquo; </p>
+<p>To step through the object code, right-click in the C source code and choose &ldquo;Go To Disassembly.&rdquo; </p>
+<p>&nbsp; </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

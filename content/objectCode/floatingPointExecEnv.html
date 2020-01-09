@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Floating Point Execution Environment</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Floating Point Execution Environment" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Floating Point Execution Environment</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>Originally, floating point arithmetic in the IA-32 Architecture was done on a separate chip, the Floating Point Unit (FPU). As the architecture evolved, the FPU was brought onboard and became part of the Central Processing Unit (CPU). But for backwards compatibility, the separate nature of the FPU has remained.</p>
+<p>As we will see, floating point operations have their own unique &ldquo;flavor.&rdquo; </p>
+<p>As described in <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem -->, and in <a href="../../IA-32 Architecture/ArtOfIntelx86Assembly.pdf" target="_blank">The Art of Assembly</a>, Chapter 14, the FPU&rsquo;s execution environment consists of a &ldquo;stack&rdquo;  of registers that contain floating point numbers, along with some other registers.  This execution environment is also described in detail in <!-- #BeginLibraryItem "/Library/IA-32 Manual.lbi" --> Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, <a href="../../IA-32 Architecture/IA-32 vol 1.pdf" target="_blank">Volume&nbsp;1</a>, Chapter  &nbsp;8. </p>
+<p>The execution environment consists of:</p>
+<ul>
+	<li><strong>ST(i) registers</strong>
+		<ul>
+			<li>8 registers that are used as a &ldquo;wrap around&rdquo; stack that can hold up to 8 floating point values </li>
+		</ul>
+	</li>
+	<li><strong>FPU status register
+		</strong>
+		<ul>
+			<li>floating point condition codes</li>
+				<li>top of floating point stack pointer    (3 bits)</li>
+				<li>stack fault flag</li>
+				<li>exception flags</li>
+			</ul>
+	</li>
+	<li><strong>FPU tag word
+		</strong>
+		<ul>
+			<li>2 bits for each     ST(i) register that record its status, such as whether it contains a valid floating point value</li>
+			</ul>
+	</li>
+	<li><strong>FPU control word</strong>
+		<ul>
+			<li>precision control (what sort of floating point numbers are being used in the FPU). Choices are:
+				<ul>
+					<li>REAL10 (the default, a 10-byte floating point number, a C <span class="codeInText">extended double</span>)</li>
+					<li>REAL8 (an IEEE-754 8-byte floating point number, a C <span class="codeInText">double</span>)</li>
+					<li>REAL4 (an IEEE-754 4-byte floating point number, a C <span class="codeInText">float</span>)</li>
+					</ul>
+			</li>
+			<li>infinity control
+				<ul>
+					<li>only used for compatibility with code written for  old (80287) versions of the Intel FPU</li>
+					</ul>
+			</li>
+			<li>rounding control
+				(this is extensively discussed in <!-- #BeginLibraryItem "/Library/IA-32 Manual.lbi" --> Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, Volume 1, 
+				Section 4.8.4)
+				<ul>
+					<li>nearest even
+						(the default)
+						<ul>
+							<li>rounds to nearest representable floating point number that ends in a zero </li>
+							<li><em>avoids a statistical bias because, on the average, half of the values that need rounding are rounded up, the other half are rounded down</em></li>
+						</ul>
+					</li>
+					<li>round up
+						<ul>
+							<li>rounds toward +&infin;</li>
+							<li><em>introduces an upwards statistical bias, useful for determining the upper bound of a computation </em></li>
+						</ul>
+					</li>
+					<li>round down
+						<ul>
+							<li>rounds toward &minus;&infin;</li>
+							<li><em>introduces a downwards statistical bias, useful for determining the lower bound of a computation</em></li>
+						</ul>
+					</li>
+					<li>round towards zero</li>
+					</ul>
+			</li>
+			<li>exception masks
+				<ul>
+					<li>for enabling/disabling various floating point exceptions</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+<p class="headerText">Relationship Between the FPU and  MMX </p>
+<p>There is an IA-32 feature called &ldquo;MMX&rdquo; which can be used for multimedia applications. It uses a set of 8 MMX registers (MMX0 &ndash; MMX7). The MMX registers share the same &ldquo;silicon real estate&rdquo; as the floating point ST(i) registers. When you change an ST(i) register, data changes in the MMX register, and vice versa.</p>
+<p>As a result, it is necessary to use an IA-32 machine for either floating point operations or MMX operations. You can switch back and forth, but it should be done relatively infrequently because there is a large time overhead associated with switching. Your code will run <em>very slowly</em> if you do this too often. </p>
+<p>When switching from FPU to MMX, you will need to save the state of the FPU. There are instructions for doing this.</p>
+<p>When switching from MMX to FPU, you may need to save the MMX registers. You will then need to execute an EMMS instruction, which sets the FPU state (specifically the FPU tag word) to &ldquo;empty stack,&rdquo; allowing the use of the ST(i) registers. </p>
+<p>&nbsp;       </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Computer Architecture</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Computer Architecture" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Computer Architecture</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>Computer Architecture is the conceptual design and             fundamental operational structure of a computer system.</p>
+<p>Some traits of computer architecture:</p>
+<ul>
+  <li>Generally these are things visible to the programmer (a list               of instructions, data types, memory access methods, etc.)</li>
+  <li>Protocols on how the microprocessor communicates to the rest               of the system, i.e., how to read memory</li>
+  <li>Exceptions, modes, special cases</li>
+</ul>
+<p>There is a huge amount of design behind this, such as how the             arithmetic units are designed, what memory hierarchy is used, can             instructions be executed in parallel, etc.  Typically this             stuff is considered <strong>microarchitecture</strong>, because it is not             directly dependent to the programmer.  The programmer cares, of             course, but it's not the level that the programmer can access. </p>
+<p>Computer Architecture is a course into itself, in fact more than             one course. This material is just a brief introduction.</p>
+<p><span class="headerText">Key Components of the Computer</span></p>
+<ul>
+  <li><strong>CPU:</strong> the &ldquo;central processing unit&rdquo;, i.e. the computer itself</li>
+  <li><strong>register:</strong> a named memory location on the CPU.              It holds data that is easily and quickly accessed.  For             example, if you write some code to add up a bunch of numbers, that             subtotal, as it accumulates, is stored in a register.
+  </li>
+<li><strong>register file</strong>: a group of registers             organized in a way to easily access all of them.</li>
+<li><strong>ALU:</strong> the &ldquo;Arithmetic Logic Unit&rdquo; is the block of circuitry             that performs adds, subtracts, shifts, compares, and other             arithmetic and logical functions.  It is usually connected to             the register file so that any two register values can be input into             the ALU and the output of the ALU can feed into any register file.</li>
+<li><strong>datapath:</strong> where data runs through the system</li>
+<li><strong>control unit</strong>: the logic which controls the datapath, access to             memory, and which registers to access.  Simply speaking, the  control unit is the dispatcher and checker for all instructions             running on the CPU. </li>
+</ul>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

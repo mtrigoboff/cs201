@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Byte Ordering</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Byte Ordering" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Byte Ordering</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p><!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --> Chapter/section 2.1.4 describes how numeric data can be stored in different byte orders on different machines. Consider the <span class="codeInText">int</span> value 0x12345678. This value can be stored in 4 consecutive bytes as either:</p>
+<blockquote><table width="284" border="0" cellspacing="6">
+	<tr>
+		<td width="106"><strong>small endian:</strong></td>
+		<td width="172"><div align="right">0x78, 0x56, 0x34, 0x12</div></td>
+	</tr>
+	<tr>
+		<td><strong>big endian:</strong></td>
+		<td><div align="right">0x12, 0x34, 0x56, 0x78</div></td>
+	</tr>
+</table>
+</blockquote>
+<p>A two byte short value 0x1234 can be stored as: </p>
+<blockquote><table width="284" border="0" cellspacing="6">
+	<tr>
+		<td width="106"><strong>small endian:</strong></td>
+		<td width="172"><div align="right">0x34, 0x12</div></td>
+	</tr>
+	<tr>
+		<td><strong>big endian:</strong></td>
+		<td><div align="right">0x12, 0x34</div></td>
+	</tr>
+</table></blockquote>
+<p>Machines with small endian order: Intel, AMD (and other Intel-compatible), DEC.</p>
+<p>Machines with big endian order: Motorola, IBM mainframe, Sun.</p>
+<p>As in many other areas of Computer Science, there was (and probably still is) a religious war about this difference. Here is an <a href="http://www.ietf.org/rfc/ien/ien137.txt" target="_blank">amusing description</a> of that war. </p>
+<p class="headerText">When It Matters</p>
+<ul>
+	<li>transferring data between two machines of different endian-ness
+		<ul>
+			<li>e.g. small-endian machine writes data to a file, big-endian machine tries to read that file</li>
+		</ul>
+	</li>
+	<li>using a debugger to look at disassembled code on a small endian machine:
+		<ul>
+			<li>a 4 byte immediate operand   of the value 3 will appear as 0x03000000 </li>
+			</ul>
+	</li>
+	</ul>
+<p class="headerText">Code Example</p>
+<p>Run <strong>endian.c</strong> on a small-endian machine, and you will see the difference.</p>
+<p>&nbsp; </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Fractional Binary Numbers</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Fractional Binary Numbers" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Fractional Binary Numbers</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p><em>This lesson is based on <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --></em>, section 2.4.1. </p>
+<p>Fractional binary numbers are integers with an implicit &ldquo;binary point&rdquo; (like the decimal point in decimal number). Consider a 4 bit binary number with an implicit binary point between bits 1 and 2 (counting from the right). For example, the number 1011 could be written as 10.11 and would be equal to the decimal number 2&frac34; (2 + &frac12; + &frac14;).
+<p>Practice Problem 2.32 describes a problem with fractional binary numbers that led to <a href="https://youtu.be/9OEjnBfuNSc" target="_blank">an incident</a> during the Gulf War in 1991. A Patriot missile was fired at an incoming Scud missile but missed it because of a bug in the Patriot missile battery&rsquo;s software. The Scud went on to hit a U.S. military barracks, killing 28 of our soldiers.</p>
+<p>Bugs can sometimes have fatal consequences. You wouldn&rsquo;t want something like this on your conscience.</p>
+<p>The problem is similar to how 0.3333... never exactly represents one third, no matter how many threes you add onto the end. <strong>pmsl.c</strong> demonstrates the difference between the value of a fraction and the fractional binary number that represents it. Call this code from the command line as:</p>
+<blockquote>
+	<p class="codeInText">pmsl 32 1 10</p>
+	</blockquote>
+<p>You will see the error described in the Patriot missile example. You can call this code with other arguments to see the errors in other fractions. </p>
+<p>In Linux, the code prints a large number of significant digits for the various values. Running the Visual Studio solution in <a href="files/pmsl.zip">pmsl.zip</a> prints far fewer significant digits. Either Visual Studio is hiding data from us, or Linux is making things up.</p>
+<p class="headerText">Who&rsquo;s Telling The Truth? </p>
+<p>Let&rsquo;s do an experiment to find out whether Linux or Visual Studio is getting things right. We&rsquo;ll use <a href="http://www.joyofpi.com/pi.html" target="_blank">the value of pi</a> as a test case, since we know the correct value out to <em>many</em> digits. </p>
+<p><strong>error.c</strong>  prints out double and  float values for pi in Linux. <a href="files/error.zip">error.zip</a> contains a Visual Studio solution that does the same thing. (It's almost the same code, except for the assembly code that gets the value of pi from the chip.) </p>
+<p>We observe that Visual Studio&rsquo;s output is accurate except for the rightmost digit. Linux, on the other hand, is quite inaccurate towards the right end of its output. But we can see that both versions of this code are using the same hex value internally for pi.</p>
+<p>This suggests that the culprit is the implementation of <span class="codeInText">printf</span> in Linux. </p>
+<p><em>Sometimes your tools may lie to you. It is up to you to be watchful and figure out what&rsquo;s happening. Remember that in extreme circumstances, lives may depend on getting things like this right.</em></p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Unix Processes</title>
+<!-- InstanceBeginEditable name="head" -->
+<style type="text/css">
+<!--
+.style1 {font-family: "Courier New", Courier, monospace}
+-->
+</style>
+<!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Unix Processes" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Unix Processes</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<ul>
+	<li><strong>process</strong>:
+		<ul>
+			<li>an execution instance of a program </li>
+			<li>each process has a <strong>context</strong>, which is its state of execution, including:
+				<ul>
+					<li>stacks (both user and kernel)</li>
+					<li>registers</li>
+					<li><a href="files/fig8.11.jpg" target="_blank">memory</a></li>
+					<li>kernel data structures, e.g.:
+						<ul>
+							<li>page table</li>
+							<li>file table </li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>every process but the first one (created when Linux boots) is a child of another process</li>
+			<li>each processs has its own control flow, and appears (to itself) to be running on its own machine</li>
+		</ul>
+	</li>
+	<li>in Unix, every process has a &ldquo;process id&rdquo; (pid), a positive integer
+		<ul>
+			<li>the C type of a pid is: <span class="code">pid_t</span>, defined when you include <span class="code">&lt;unistd.h&gt;</span>  				</li>
+			<li>on Unix,  <span class="code">unistd.h</span> exists in both <span class="code">/usr/include</span><span class="style1"> </span>and <span class="code">/usr/include/sys/</span></li>
+			<li><span class="code">but pid_t</span> is actually defined in <span class="code">/usr/include/sys/types.h</span>, and is currently defined as an <span class="code">int</span> </li>
+			<li>process can discover its own pid by calling<span class="code"> getpid()</span>, and its parent&rsquo;s pid by calling<span class="code"> getppid()</span>. Both of these functions are defined in <span class="code">unistd.h</span>.</li>
+			<li><em>as a maintenance programmer (a very likely initial programming job), one of the important skills needed is finding definitions in a confusing maze of .h files. Some programming tools (e.g. Microsoft Visual Studio) provide support for this sort of search, but often the &ldquo;help&rdquo; they provide turns out to be just another source of confusion.</em></li>
+		</ul>
+	</li>
+	<li>a process is either <strong>running</strong>, <strong>stopped</strong>, or<strong> terminated </strong></li>
+	<li>a process can be running in either <strong>user mode</strong> or <strong>kernel mode</strong>
+		<ul>
+			<li>the IA-32 Manual, volume 3, calls this <strong>CPL</strong> (current privilege level)</li>
+			<li>CPL is bits 0 and 1 of the CS (<u>c</u>ode <u>s</u>egment) register
+				<ul>
+					<li>IA-32 chips  normally run in &ldquo;flat memory mode&rdquo; and do not need segment registers</li>
+					<li>so the segment registers are apparently being used for other purposes </li>
+				</ul>
+			</li>
+			<li>CPL values are defined in IA-32 Manual, volume 3, p. 4-7, 4-9<br />
+				<table border="1" cellspacing="0" cellpadding="4">
+					<tr>
+						<td><div align="center"><em>level</em></div></td>
+						<td><em>privilege level</em></td>
+					</tr>
+					<tr>
+						<td><div align="center">00</div></td>
+						<td> kernel</td>
+					</tr>
+					<tr>
+						<td><div align="center">01</div></td>
+						<td> OS services</td>
+					</tr>
+					<tr>
+						<td><div align="center">10</div></td>
+						<td>OS services</td>
+					</tr>
+					<tr>
+						<td><div align="center">11</div></td>
+						<td> application (or user) </td>
+					</tr>
+				</table>
+			</li>
+			<li>at application level, a process can&rsquo;t do privileged instructions (e.g. <span class="code">LGDT/LIDT</span>)</li>
+		</ul>
+	</li>
+	<li>when multiple processes are running, they <em>must not</em> change any shared memory in an uncontrolled way
+		<ul>
+			<li>code that satisfies this requirement is called <strong>thread-safe</strong> or <strong>re-entrant</strong></li>
+			<li>this is not a problem in Linux/Unix because each process has its own copy of the entire memory image</li>
+			<li>in earlier (or less-capable) operating systems, this was a problem
+				<ul>
+					<li>if you had global variables in your code, then there would be only <em>one</em> instance of them</li>
+					<li>all processes running your code would share that <em>one</em> set of global variables, in an uncontrolled way </li>
+					<li>making code re-entrant involved eliminating all global variables (both static and non-static)</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

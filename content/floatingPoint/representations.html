@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Floating Point Representations</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Floating Point Representations" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Floating Point Representations</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+	<p>&nbsp;</p>
+	<p>Floating point numbers are similar to <a href="http://en.wikipedia.org/wiki/Scientific_notation" target="_blank">scientific notation</a>, in which 3,456 would be rendered as 3.456&nbsp;&times;&nbsp;10<sup>3</sup>. This can be generalized as <em>fraction&nbsp;&times;&nbsp;base<sup>exponent</sup></em>. The floating point numbers defined by  <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> are <em>binary</em>. In this standard, <em>base</em> is equal to 2 and <em>fraction</em> is a binary number. </p>
+<p>Floating point numbers are supposed to cover the entire <a href="http://en.wikipedia.org/wiki/Extended_real_number_line" target="_blank">extended real number line</a> that covers the range from + &infin; to &minus; &infin;. 
+		A 32-bit C <span class="code"> float</span> has 
+		2<sup>32</sup> possible values.
+	  <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> is how we &ldquo;scatter&rdquo; these 
+		2<sup>32</sup> values along the number line to provide optimal &ldquo;coverage.&rdquo;	</p>
+	<p>Now consider a computation that produces a real number. What is the probability that the produced number is <em>exactly equal</em> to one of the 2<sup>32</sup> possible values? The probability is <em>zero</em>, computed as <span class="frac">2<sup>32</sup>&frasl; &infin; </span> (the number of possible values for the <span class="codeInText">float</span> divided by the number of possible real numbers).</p>
+	<p>Suppose we decide instead to store our real number in a 64-bit <span class="codeInText">double</span>, which has 2<sup>64</sup> possible values. What is the probability that the produced number is <em>exactly equal</em> to one of the 2<sup>64</sup> possible values? The probability is still<em> zero</em>, computed as <span class="frac">2<sup>64</sup>&frasl; &infin;</span>.</p>
+	<p>So the best &ldquo;coverage&rdquo; is inherently not very good coverage. There are <em>a lot </em>of real numbers, and only  2<sup>32  </sup> or 2<sup>64</sup> available to represent them. This leads to a variety of problems which you will need to understand before you can write competent floating point code. </p>
+	<p class="headerText">IEEE Standard 754 Diagram</p>
+	<p>The <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> is complicated. In addition to the readings provided to you, this diagram may be helpful:</p>
+  <p><br />
+  <img src="files/Floating Point Representation.jpg" width="881" height="553" alt="IEEE 754 Diagram" /></p>
+	<p class="headerText">Smaller Representations </p>
+  <p>In section 2.4.3, <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --> use a 6-bit floating point number (1 sign bit, 2 fraction bits, 3 exponent bits) to illustrate the &ldquo;coverage&rdquo; of the real number line a floating point representation can achieve.</p>
+	<p><strong>float.c</strong> prints out the set of values of small floating point representations so you can see how they&rsquo;re laid out on the real number line. This code is also a <em> very concrete</em> specification of the meaning of the bits in a floating point representation. The <span class="codeInText">printValue()</span> function is basically a rendition in C of the information in the <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> web page. If anything on this web page seems confusing or ambiguous to you, the C code can help. Working code is the most unambiguous way of expressing <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a>. </p>
+	<p><strong>float32</strong> is a bash script that will run the float.c code to produce a listing of the 6-bit representation from section 2.4.3. <strong>float43</strong> will produce a listing for the 8-bit representation (3 fraction bits and 4 exponent bits) from that section of the text.</p>
+	<p><strong>float823</strong> produces a listing for a standard C <span class="codeInText">float</span> (the &ldquo;823&rdquo; stands for 8 bits in the exponent, 23 bits in the fraction). Obviously, that would be a <em>very long</em> listing, but it's instructive to note that the code produces the correct value for the smallest possible value greater than zero.	</p>
+	<p>&nbsp; </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

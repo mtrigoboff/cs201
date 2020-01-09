@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Measuring Time-Related Behavior</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Measuring Time-Related Behavior" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Measuring Time-Related Behavior</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+
+  	<p>Unix provides tools for measuring the time-related aspects of a program&rsquo;s behavior. These include:</p>
+  	<ul>
+  	  <li>how long it takes the entire program  to run</li>
+      <li>how much time is spent in each process forked by the program</li>
+      <li>how much time each process spends in various parts of the code   </li>
+  </ul>
+  	<p>Each of these measurements has a <strong>resolution:</strong> the smallest amount of time that can be observed by that measurement. There are typically two common time measurement resolutions: </p>
+	<ul>
+		<li><strong>low resolution:</strong> operating system based (usually via a <strong>timer interrupt</strong>), typically in the 10 millisecond range</li>
+		<li><strong>high resolution:</strong> hardware based (e.g. a cycle counter), measures much smaller intervals than low resolution</li>
+	</ul>
+	<p class="headerText">Timer Interrupts</p>
+	<ul>
+		<li>this is how time is sliced among multiple processes</li>
+		<li>if interrupt is too frequent
+			<ul>
+				<li>too much of the CPU&rsquo;s time is spent in  switching overhead</li>
+			</ul>
+		</li>
+		<li>if interrupt is too infrequent
+			<ul>
+				<li>the illusion of simultaneous execution gets  grainy and slow </li>
+			</ul>
+		</li>
+	</ul>
+	<p class="headerText2">Interval Timing</p>
+	<ul>
+		<li>based on timer interrupts</li>
+		<li>records what the CPU is doing when each timer interrupt occurs</li>
+		<li>low resolution, inherently inaccurate</li>
+		<li>in Linux, CPU time spent administering the timer interrupts is not counted  accurately</li>
+		<li>there are memory cache issues when switching among processes</li>
+		<li><!-- #BeginLibraryItem "/Library/textbook authors.lbi" -->
+<a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem -->, figure 9.7 illustrates some of the inaccuracies that can occur with interval timing </li>
+	</ul>
+	<span class="headerText">Unix Time Measurement</span>
+	<ul>
+		<li>low resolution 
+			<ul>
+				<li><span class="code">time(1)</span>
+						<ul>
+							<li>Unix shell command</li>
+							<li>to time a program named <span class="code">prog</span>, type this at the bash command line:
+								<ul>
+									<li><span class="code">time ./prog arg1 arg2 ...</span></li>
+									<li>if you don&rsquo;t want to type <span class="code">&quot;./&quot;</span> before <span class="code">prog</span> every time, add this line to your <span class="code">~/.bash_profile</span>: 
+										<ul>
+											<li><span class="code">PATH=&quot;.:${PATH}&quot;</span></li>
+											<li><em>this will add . (the current directory) to your bash PATH variable, which bash uses to search for executables </em></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>use <strong>burntime.c</strong> with the time command on<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
+
+<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->as follows:
+								<ul>
+									<li><span class="code">time burntime 1000000000</span></li>
+								</ul>
+							</li>
+						</ul>
+				</li>
+				<li>code example 
+					<ul>
+						<li><strong>timer.c</strong>: 
+							demonstrates	the timing information
+							available from standard Unix time measurement library functions
+							<ul>
+								<li><span class="code">times(2)</span> system call</li>
+								<li><span class="code">clock(3)</span> system call</li>
+								<li><em>on<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
+
+<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->, 1000000000 is a useful argument for running <strong>timer</strong></em></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li>high resolution
+			<ul>
+				<li>at this time, there does not seem to be a high resolution timer  in Linux </li>
+			</ul>
+		</li>
+	</ul>
+	<p class="headerText">Windows Time Measurement </p>
+	<ul>
+		<li>high resolution time measurement is based on features of the underlying hardware, such as the system clock</li>
+	    <li>in the IA-32 architecture, the <span class="code">rdtsc</span> instruction provides access to a &ldquo;time-stamp counter&rdquo; which is incremented every clock cycle </li>
+	    <li><a href="files/hiResTimer.zip">hiResTimer.zip</a>: demonstrates the use of the Windows built-in <a href="http://msdn2.microsoft.com/en-us/library/ms644900" target="_blank">high-resolution timer</a>				
+				<ul>
+					<li><em>this is a Microsoft Visual Studio project </em></li>
+				</ul>
+      </li>
+	</ul>
+	<blockquote>
+		<p>&nbsp;</p>
+	</blockquote>
+  <!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

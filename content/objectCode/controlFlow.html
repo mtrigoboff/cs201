@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Flow Of Control</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Flow Of Control" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Flow Of Control</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>Most of the time, control flows sequentially from one instruction to the next. But sometimes a program needs to decide (based on the available data) which instruction will execute next. You are already familiar with this, in the form of <span class="codeInText">if</span> statements, <span class="code">switch</span> statements, and loops. This section will discuss how the object code for statements like this actually works.</p>
+<p>Software usually makes these decisions in a two-step process. First a data item is examined. The results of that examination are stored in the EFLAGS register. Then a &ldquo;conditional jump&rdquo; instruction is executed. The conditional jump decides, based on the contents of EFLAGS, to either transfer control to the next instruction, or to a different address. This is done by manipulating the EIP (Extended Instruction Pointer) register, which holds the address of the instruction currently being executed by the machine.</p>
+<p>There is also the &ldquo;unconditional jump&rdquo;  instruction, which always jumps to the specified address (by manipulating EIP) and not to the next address (unless the jump address <em>is</em> the next address). Speaking of which, the IA-32 instruction set includes the NOP (short for &ldquo;no operation&rdquo;) instruction, a one-byte instruction that does nothing and goes on to the following instruction. The NOP instruction is actually useful in certain situations, despite what you might think. </p>
+<p>Figure 3.7 in section 3.4.3 of the<!-- #BeginLibraryItem "/Library/IA-32 Manual.lbi" -->
+Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, Volume 1 illustrates the contents of EFLAGS.</p>
+<p>Instructions that set EFLAGS include: <span class="codeInText">cmp</span>, <span class="codeInText">and</span>, <span class="codeInText">or</span>, <span class="codeInText">xor</span>, and <span class="codeInText">test</span>.</p>
+<p>The <span class="codeInText">jmp</span> instruction jumps unconditionally to the specified address. </p>
+<p>There are many different conditional jump instructions, which are listed on the Jcc page of the <!-- #BeginLibraryItem "/Library/IA-32 Manual.lbi" --> Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, Volume 2A. Note that the <span class="codeInText">jg</span>, <span class="codeInText">jl</span>, etc. instructions are for <em>signed</em> integer comparisons. The <span class="codeInText">ja</span>, <span class="codeInText">jb</span>, etc. instructions are for <em>unsigned</em> integer comparisons. </p>
+<p class="headerText">The if Statement</p>
+<p><strong>ifstmt.c</strong> contains a simple <span class="codeInText">if</span> statement. Use <strong>gdb</strong> to look
+ at the object code for the <span class="codeInText">if</span> statement
+	and you will see the way that cmp and conditional jump statements are used to jump around code that
+ should not execute. Since code is basically a linear array of instructions in memory, this kind of &ldquo;jump around&rdquo; structure is what the compiler has to compile to produce the behavior specified by the <span class="codeInText">if</span> statement. </p>
+<p class="headerText">The switch Statement </p>
+<p>The switch statement is implemented in a very different way, as a &ldquo;jump table.&rdquo; The data item being switched on is used as an index into an array of addresses (the jump table).</p>
+<p><strong>swstmt.c</strong> illustrates this. Starting at the <span class="codeInText">switch</span> statement, we have a sequence of instructions that loads x into EAX, multiplies x by 4 (by shifting it left twice &ndash; the size of an address is 4 bytes), adds a hard-coded address to EAX, and then jumps to the address stored in memory at the address in EAX.</p>
+<p> The jump table starts at the hard-coded address. Look at the jump table With the gdb x (eXamine memory) command:</p>
+<blockquote>
+	<p class="codeInText">x/4x &lt;hard-coded address&gt;</p>
+</blockquote>
+<p>You will see addresses for the individual cases of the switch statement.</p>
+<p>You should watch this all happen by stepping through the code in <strong>gdb</strong>. </p>
+<p>You can run the &ldquo;solution&rdquo; in <a href="files/swstmt.zip">swstmt.zip</a> in Visual Studio and see a similar process happening, except that the compiled code in Visual Studio uses ECX instead of EAX to index into the jump table. Note that in the second switch statement in main, the compiler has produced a two-step version. First, the variable we are switching on is used as an index into a table of small integers. The small integer value is then used as an index into the actual jump table. </p>
+<p class="headerText">Modern Optimizing Compilers and the if and switch Statements </p>
+<p>Modern optimizing compilers make their own decisions about how to compile your C code. In particular, an <span class="codeInText">if</span> statement might be compiled as a jump table, and a <span class="codeInText">switch</span> statement might be compiled the way an <span class="codeInText">if</span> statement usually is. In critical sections of your code, you should check to make sure that your code compiled the way you wanted it to..</p>
+<p>In CS201 we will discuss how to decide whether code needs to be optimized by hand (beyond what an optimizing compiler can do), how to decide which part of the code to optimize, and the techniques that might actually make the code faster (which is non-obvious in the current quite complicated computing environment). </p>
+<p class="headerText">The loop Instruction</p>
+<p>The IA-32 instruction set has a <span class="codeInText">loop</span> instruction which is a conditional jump instruction that decrements ECX  and jumps if the resulting value in ECX is not zero. <strong>loop.c</strong> demonstrates this behavior.</p>
+<p>It's best to view this object code in<span class="codeInText"> layout asm </span>mode in <strong>gdb</strong>. You can step through the object code (by typing the <strong>ni</strong> command in the Console Window and watch the values change in the Registers window. This file contains assembly code written in the style required by gcc&rsquo;s GNU Assembler. </p>
+<p>The <span class="codeInText">loop</span> instruction <em>always</em> uses ECX as a counter. This is hardwired and cannot be changed. What if you have 2 nested loops and want to use the <span class="codeInText">loop</span> instruction for both of them? They both have to use ECX, but this will cause a conflict.</p>
+<p>One solution is to use the calling stack to temporarily store the outer loop&rsquo;s value of ECX. (The details of the calling stack will be discussed later on in this course.) The calling stack is defined by register ESP. A value is &ldquo;pushed&rdquo; onto this stack by <em>decrementing</em> ESP by the size of the value and then writing the value to the address in ESP. A value is &ldquo;popped&rdquo; by copying the value pointed to by ESP and then <em>incrementing </em>ESP. There are <span class="codeInText">push</span> and <span class="code">pop</span> instructions in the IA-32 instruction set for doing this. </p>
+<p><strong>loop2.c</strong> is code that demonstrates how an outer and an inner loop can both use the <span class="codeInText">loop</span> instruction and share ECX as described above. </p>
+<p>There are <span class="codeInText">loopcc</span> variants of the loop instruction that will also terminate the loop in response to an additional condition that does not depend on ECX. But ECX is still being counted down, and the loop will exit when ECX becomes zero regardless of the additional condition. </p>
+<p></p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

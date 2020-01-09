@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>History of the IA-32 Architecture</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="History of the IA-32 Architecture" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: History of the IA-32 Architecture</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>First a key term, <strong>Computer Architecture</strong>. Much like a building's architecture,  this is the &ldquo;look and feel&rdquo; of a computer system. This encompasses how a computer system  will interface with software and hardware, what instructions  can it execute, what protocols are used to read and write data, etc. </p>
+<p>IA-32 stands for: Intel Architecture, 32 bits,  also known as the x86 architecture. </p>
+<p>The IA-32 architecture is quite old, starting back around 1980. This long evolutionary history is quite visible in the architecture, in the same way that the <a href="http://en.wikipedia.org/wiki/Whale_evolution" target="_blank">evolutionary history of whales</a> can be discerned from the presence of tiny vestigial leg bones hidden within their bodies. </p>
+<p>You can see this clearly in some of the register naming conventions. EAX is the name of a 32 bit register. AX is the name of the low-order 16 bits of that register. When Intel chips were 16 bit machines, AX was one of the registers. Now it&rsquo;s half of EAX.</p>
+<p>When Intel chips were 8 bit machines, there was an A register. AX stands for &ldquo;A eXtended.&rdquo; EAX stands for &ldquo;Extended AX.&rdquo; So the full decoding of EAX would be &ldquo;Extended A eXtended.&rdquo; The evolution of Intel&rsquo;s chips from 8 bits to 32 bits can be seen in these naming conventions. </p>
+<p>Another example of this is the &ldquo;segment registers.&rdquo; These were originally used to support an older memory access method called &ldquo;segmented addressing.&rdquo; We now typically use a more modern method called &ldquo;flat addressing,&rdquo; and the segment registers have been repurposed to support other functions such as operating system privilege levels.</p>
+<p>Originally there were 4 segment registers: CS (code segment), DS (data segment), SS (stack segment), and ES (extra segment).  More modern IA-32 chips have 2 additional segment registers: FS and GS. Intel apparently noticed they already had registers starting with C, D, and E, so they named the next 2 starting with F and G. C, D, and E had a mnemonic meaning. F and G do not. Evolution sometimes produces strange and arbitrary results. </p>
+<p>Intel's first general purpose microprocessor was the 8086.  Intel became  a well known brand in the 1990's during the  time of the 80386 and 80486  processors.  The 5th generation processor was named the Pentium&#8482; Processor.   The move from numbers to trademarked names was done to reduce confusion and  &quot;false advertising&quot; by competitors, because Intel discovered that it could not trademark a number like &ldquo;586&rdquo;.  For example, one competitor (Cyrix)  manufactured a &ldquo;486&rdquo; processor that was closer to a &quot;&ldquo;386.&rdquo; </p>
+<p>Sixth generation: Pentium&#8482; Pro - was not even close to a Pentium, but the  name stuck</p>
+<p>Seventh generation: Pentium&#8482; 4 (since Pentium 2 and Pentium 3 were  incremental developments based on the Pentium Pro)</p>
+<p>Eight generation: Core 2 Duo - based off the Pentium Pro, not the Pentium 4 -  this is an interesting story.  The main reason behind this switch was the  Pentium 4 consumed too much power in the quest for faster processors.  The  Core 2 Duo went &quot;back to basics&quot; and focused on performance improvements in  other ways.</p>
+<p>Ninth generation: Core i7 (Nehalem).</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

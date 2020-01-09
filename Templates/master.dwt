@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>@@(topicName)@@</title>
+<!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<!-- template parameters -->
+<!-- TemplateParam name="bgColor" type="text" value="#FFFFFF" -->
+<!-- TemplateParam name="course" type="text" value="CS201" -->
+<!-- TemplateParam name="homeDirectory" type="text" value="" -->
+<!-- TemplateParam name="linkColor" type="text" value="#000066" -->
+<!-- TemplateParam name="linkHoverColor" type="text" value="#CC0000" -->
+<!-- TemplateParam name="linkVisitedColor" type="text" value="#660033" -->
+<!-- TemplateParam name="tableBgColor" type="text" value="#EEEEEE" -->
+<!-- TemplateParam name="textColor" type="text" value="#000000" -->
+<!-- TemplateParam name="topicName" type="text" value="Topic" -->
+<style type="text/css">
+<!--
+body {
+	background-color: @@(bgColor)@@;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: @@(tableBgColor)@@;
+}
+a:link {
+	color: @@(linkColor)@@;
+}
+a:visited {
+	color: @@(linkVisitedColor)@@;
+}
+a:hover {
+	color: @@(linkHoverColor)@@;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: @@(textColor)@@;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: @@(textColor)@@;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: @@(textColor)@@;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: @@(textColor)@@;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">@@(course)@@: @@(topicName)@@</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- TemplateBeginEditable name="content" -->
+  <p>Content </p>
+<!-- TemplateEndEditable -->
+</blockquote>
+</body>
+</html>

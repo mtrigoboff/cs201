@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Command-Line Arguments</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Command-Line Arguments" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Command-Line Arguments</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>This lesson will teach you to use command-line arguments in your C program. Suppose a user types this to the Unix command line: </p>
+<blockquote>
+	<p><span class="codeInText">&gt; programName abc def 123 </span></p>
+	</blockquote>
+<p>You can write code that will retrieve the number of arguments that were typed and the value of each one. In this case, the number is 4 (<span class="codeInText">&quot;programName&quot;</span> counts as one of the arguments), and you get the value of each argument as a C string. So, for instance, the 4th argument is a C string with the value <span class="codeInText">&quot;123&quot;</span>.</p>
+<p>In order to access these command-line arguments, code<span class="codeInText"> main()</span> like this:</p>
+<pre class="code">    main (int argc, char **argv)
+    {
+        ...
+    }</pre>
+	<p><span class="codeInText">argc</span> contains the number of arguments (including the program name). <span class="codeInText">argv</span> is a pointer to an array of pointers.  Each pointer in that array points to a C string
+		containing the corresponding argument. (<span class="codeInText">argv</span> can also be coded like this: <span class="codeInText">char *argv[]</span>. The two forms of <span class="codeInText">argv</span> are equivalent.)	</p>
+	<p>In the example above, <span class="codeInText">argc</span> will be 4, <span class="codeInText">argv[0]</span> will be <span class="codeInText">&quot;programName&quot;</span>, <span class="codeInText">argv[1]</span> will be <span class="codeInText">&quot;abc&quot;</span>, <span class="codeInText">argv[2]</span> will be <span class="codeInText">&quot;def&quot;</span>, and <span class="codeInText">argv[3]</span> will be <span class="codeInText">&quot;123&quot;</span>. Note that 123 is passed as a <em>string</em>, not as a <em>number</em>. </p>
+	<p><strong>printargs.c</strong> is a simple C program that prints its command-line arguments. </p>
+	<p>There are two functions,<span class="codeInText"> atoi()</span> and<span class="codeInText"> atof()</span> (defined in<span class="codeInText"> stdlib.h</span>) which are useful for translating numerical values contained in strings into actual numerical data (the names are abbreviations of <u>a</u>lphabetic-<u>to</u>-<u>i</u>nteger and <u>a</u>lphabetic-<u>to</u>-<u>f</u>loating):</p>
+	<ul>
+		<li><span class="codeInText">int <strong>atoi</strong>(char *str)
+			</span>
+			<ul>
+				<li>translates the number represented in <span class="codeInText">str</span> into an <span class="codeInText">int </span></li>
+			</ul>
+		</li>
+		<li><span class="codeInText">double <strong>atof</strong>(char *str) </span>
+			<ul>
+				<li>translates the number represented in <span class="codeInText">str</span> into a <span class="codeInText">double</span> </li>
+			</ul>
+		</li>
+	</ul>
+	<p>Both of these functions will return zero if the string argument is not a valid number.</p>
+	<p><strong>useargs.c</strong> is a simple C program that uses atoi() and atof() to parse its command line arguments and do something with them. </p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

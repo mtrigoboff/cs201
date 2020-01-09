@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Integer Arithmetic</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="Integer Arithmetic" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: Integer Arithmetic</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p class="headerText">Simple Arithmetic </p>
+<p><strong>expr1.c</strong> illustrates the object code for some simple integer arithmetic statements. The <span class="codeInText">add</span> and <span class="codeInText">sub</span> instructions do addition and subtraction, as you would expect.</p>
+<p class="headerText">Negation</p>
+<p>Sometimes there is more than one way to accomplish something. <strong>neg.c</strong> illustrates this for the process of negating a two&rsquo;s complement integer. Compile neg.c as usual and look at the object code. Recompile neg.c, but this time use the -O3 flag (which specifies a high level of optimization). Observe what gcc did this time. </p>
+<p class="headerText">Optimized Arithmetic </p>
+<p><strong>expr2.c</strong> illustrates gcc&rsquo;s optimization capabilities. Compile expr2.c as usual and look at the object code generated for the integer arithmetic. Recompile expr2.c, but this time use the -O3 flag. Note the use of the lea instruction. Figure out why this code still produces the expected output.</p>
+<p>A &ldquo;virtuoso&rdquo; assembly language programmer will not only use instructions for their <em>intended </em>purposes, but will also use instructions <em>creatively</em> to perform tasks that they may not originally have been intended to do. expr2.c demonstrates this &ndash; it uses the lea instruction to do small arithmetic, even though the instruction was originally intended to compute addresses. </p>
+<p class="headerText">Multiplication</p>
+<p>Multiplication has an inconvenient property: the product can be as much as twice the width of the numbers being multiplied. In other words, if you multiply two 16-bit values, you may need 32 bits to hold the result. Consider unsigned values. If you multiply 65,535 by itself, the answer will be 4,294,836,225. In hexadecimal, that would be: <span class="codeInText">0xFFFF </span>&times;<span class="codeInText"> 0xFFFF = 0xFFFE0001</span>. This product definitely needs 32 bits, otherwise it will be truncated. </p>
+<p>Multiplication instructions come in signed, unsigned flavors, and in one-argument, and two-argument forms.</p>
+<p>The oldest  version of the multiply instruction is the one-argument form. In those forms, the product is placed in a &ldquo;virtual register&rdquo; formed by concatenating two registers as follows: </p>
+<table border="1" cellpadding="4" cellspacing="0">
+	<tr>
+		<th scope="col"><div align="center">operand size </div></th>
+		<th scope="col"><div align="center">product size </div></th>
+		<th scope="col"><div align="center">virtual register </div></th>
+	</tr>
+	<tr>
+		<td><div align="center">8 bits </div></td>
+		<td><div align="center">16 bits </div></td>
+		<td><div align="center">AX</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">16 bits </div></td>
+		<td><div align="center">32 bits </div></td>
+		<td><div align="center">DX:AX</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">32 bits </div></td>
+		<td><div align="center">64 bits </div></td>
+		<td><div align="center">EDX:EAX</div></td>
+	</tr>
+</table>
+<p>So in the example above, the product <span class="codeInText">0xFFFE0001</span> would be stored as follows: DX would contain <span class="codeInText">0xFFFE</span>, and AX would contain <span class="codeInText">0x0001</span>. </p>
+<p>The more modern version of the multiply instruction uses two arguments. Both of those arguments are of the same width. For example, <span class="codeInText">imul&nbsp;ebx,&nbsp;eax </span>multiplies the number in EBX by the number in EAX. Note that EBX and EAX are both 32-bit registers.  <em>If the product is too large, you can lose the leftmost side of it when using the two argument form of the multiply instruction</em>. </p>
+<p><strong>expr3.c</strong> demonstrates some unexpected characteristics of the compiled code for   multiplication and division. You should step through this code in <strong>gdb</strong> and work on understanding  the object code. </p>
+<p>The first multiplication works correctly. </p>
+<p>The 16-bit signed multiplication works correctly.</p>
+<p>The 32-bit signed multiplication does not. It should produce a 64-bit value, <span class="codeInText">0x3FFFFFFF00000001</span>, but the result is being stored in a 32-bit register, so the leftmost 32 bits are lost. We lose the <span class="codeInText">0x3FFFFFFF</span> and just end up with the <span class="codeInText">0x00000001</span>. What's worse, this multiplication instruction sets the Overflow Flag in EFLAGS,  but the object code never checks that flag&rsquo;s value. The chip knows something&rsquo;s wrong and lights up a warning, but the compiled code isn&rsquo;t looking. </p>
+<p>The multiplication of two unsigned values should be an unsigned multiply, but instead is compiled as <em>signed</em> (an <span class="codeInText">imul</span> instruction, instead of a <span class="codeInText">mul</span> instruction). So the arguments to multiply are treated as &minus;1 and &minus;1. The result of the multiplication is therefore just 1. </p>
+<p>If you look at this code in Microsoft Visual Studio, you will see that Microsoft&rsquo;s compiler makes the same mistakes. </p>
+<p class="headerText">Division</p>
+<p>Division, for historical reasons, also works with the kind of &ldquo;virtual register&rdquo; scheme that is used for multiplication </p>
+<table border="1" cellpadding="4" cellspacing="0">
+	<tr>
+		<th scope="col"><div align="center">operand size </div></th>
+		<th scope="col"><div align="center">dividend</div></th>
+		<th scope="col"><div align="center">quotient</div></th>
+		<th scope="col"><div align="center">remainder</div></th>
+	</tr>
+	<tr>
+		<td><div align="center">8 bits </div></td>
+		<td><div align="center">AX</div></td>
+		<td><div align="center">AL</div></td>
+		<td><div align="center">AH</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">16 bits </div></td>
+		<td><div align="center">DX:AX</div></td>
+		<td><div align="center">AX</div></td>
+		<td><div align="center">DX</div></td>
+	</tr>
+	<tr>
+		<td><div align="center">32 bits </div></td>
+		<td><div align="center">EDX:EAX</div></td>
+		<td><div align="center">EAX</div></td>
+		<td><div align="center">EDX</div></td>
+	</tr>
+</table>
+<p>There is are CWD and CDQ instructions that will do the correct sign extension to set up the appropriate dividend for a <em>signed </em>division. For an <em>unsigned</em> division, you only need to put zeros into the left half of the dividend, so no special instruction is needed. These instructions are rendered as CDLT in Unix&rsquo;s AT&amp;T mode. CDLT does not appear in Intel&rsquo;s documentation, which can be confusing. </p>
+<p>The two division examples are also in <strong>expr3.c</strong>.</p>
+<p>The first division works correctly.</p>
+<p>The second division uses unsigned values, and should therefore compile as an unsigned division. It does. Multiplication and division are not incorrect in corresponding places. If they got it right for division, why didn&rsquo;t they get it right for multiplication? A mystery... </p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>

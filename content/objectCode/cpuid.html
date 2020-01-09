@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>The CPUID Instruction</title>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- template parameters -->
+
+
+<!-- InstanceParam name="homeDirectory" type="text" value="" -->
+
+
+
+
+
+<!-- InstanceParam name="topicName" type="text" value="The CPUID Instruction" -->
+<style type="text/css">
+<!--
+body {
+	background-color: #FFFFFF;
+	font-size: 16px;
+	color: #000000;
+	font-family: Cambria, "Times New Roman", serif;
+}
+table {
+	background-color: #EEEEEE;
+}
+a:link {
+	color: #000099;
+}
+a:visited {
+	color: #000066;
+}
+a:hover {
+	color: #FF0000;
+}
+.calendarDate {
+	text-align: center;
+	vertical-align: middle;
+}
+.code {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 12px;
+}
+.codeInText {
+	font-family: Consolas, "Courier New", mon;
+	font-size: 14px;
+}
+.codeBlue {
+	color: #000099;
+	font-family: Consolas, "Courier New", mono;
+	font-size: 12px;
+}
+.headerText {
+	font-size: 24px;
+	color: #000000;
+	text-decoration: underline;
+}
+.headerText2 {
+	font-size: 18px;
+	color: #000000;
+	text-decoration: underline;
+	font-weight: normal;
+}
+.headerText3 {
+
+	font-size: 16px;
+	color: #000000;
+	text-decoration: underline;
+}
+.pageHeaderText {
+	font-size: 36px;
+	color: #000000;
+}
+.red {
+  color: #FF0000
+}
+-->
+</style>
+</head>
+
+<body>
+<blockquote>
+  <p><span class="pageHeaderText">CS201: The CPUID Instruction</span></p>
+</blockquote>
+<hr />
+
+<blockquote>
+<!-- InstanceBeginEditable name="content" -->
+<p>As the IA-32 Architecture continues to evolve, new features continue to be added in the form of new registers and new instructions. Among the features that have been added are:</p>
+<ul>
+	<li>MMX
+		<ul>
+			<li>a set of instructions and registers that are useful for multimedia applications</li>
+			<li>support for SIMD-style processing of multiple integer values in parallel </li>
+			<li><em>Intel now claims that &ldquo;MMX&rdquo; is not actually an acronym for anything in particular</em></li>
+		</ul>
+	</li>
+	<li>SSE 
+		<ul>
+			<li>a set of instructions and registers that support SIMD-style processing of multiple floating point values in parallel</li>
+			<li>support for processing floating point number in closer compliance with the IEEE-754 Standard  </li>
+			<li>added in three stages as SSE, SSE2, and SSE3 </li>
+		</ul>
+	</li>
+  </ul>
+<p>In later products, other features such as virtualization support, 64-bit,  threading, and power savings were added.</p>
+<p>You don't necessarily know which CPU your code will be running on. If you want to use the newer instructions, you have to check and see if those instructions are supported by the processor. <em> Code that includes these instructions will crash if those instructions are not supported by the processor</em>.   One of Intel's objectives is to make sure old code runs on  new processors, but <em>not necessarily the reverse.</em></p>
+<p>Checking for the newer instructions can be done at two different times in the life cycle of a piece of software on a particular machine. Each way has its advantages and disadvantages. It is left as an exercise for you to figure out what these two times are.</p>
+<p>Features like MMX and the various stages of SSE may or may not be present in a particular system. If you want to use these instructions, what you have to do  first is <em>check</em> and see if the instructions are supported by the processor. <em> Code that includes these instructions will crash if the instructions are not supported by the processor</em>.</p>
+<p>The presence or absence of IA-32 Architecture features can be determined by using the <span class="codeInText">cpuid</span> instruction. Unfortunately, the <span class="codeInText">cpuid</span> instruction was not included in the earliest chips. So what you have to do is first check for the presence of the <span class="codeInText">cpuid</span> instruction, and then (if it&rsquo;s present) use it to check for the features you want. </p>
+<p>The instructions for how to check for the presence of <span class="codeInText">cpuid</span>, use it, and interpret its results are available in an <a href="../../IA-32 Architecture/Intel CPUID.pdf" target="_blank">Intel document</a>, in the <!-- #BeginLibraryItem "/Library/IA-32 Manual.lbi" --> Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, Volume 2A (on the pages that describe the <span class="codeInText">cpuid</span> instruction), and on <a href="http://www.sandpile.org/x86/cpuid.htm" target="_blank">this web page</a>.</p>
+<p><strong>cpuid.c</strong> demonstrates this process. You can run it in <strong>gdb</strong> and watch what happens.</p>
+<p><a href="files/cpuid.zip">cpuid.zip</a> contains a Visual Studio solution that demonstrates the same process with somewhat different code. </p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable -->
+</blockquote>
+</body>
+<!-- InstanceEnd --></html>
