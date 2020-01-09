@@ -141,16 +141,18 @@ a:hover {
 		temp = x;<br />
 		x = y;<br />
 		y = temp;</p>
-  </blockquote>
+</blockquote>
 <p>You can do this:</p>
 <blockquote>
-	<p class="codeInText">int x;<br />
-int y;
-<br />
-<br />
-// swap the values of x and y<br />
-y = (x ^ y) ^ x; </p>
-  </blockquote>
+<pre class="codeInText">
+char    x = 0x0F;   // x = 00001111
+char    y = 0x01;   // y = 00000001
+
+x ^= y;             // x = 00001110
+y ^= x;             // y = 00001111
+x ^= y;             // x = 00000001</pre>
+</blockquote>
+<p> <em>Thanks to Summer 2017 student Joanne McBride for pointing out an error in an earlier version of this code.</em></p>
 <p>This is an interesting trick, but you would not necessarily want to do this in industrial strength production code.</p>
 <p><strong>xor.c</strong> demonstrates this technique. This code generates no printed output. You have to run it in a debugger to see what it does. (But you&rsquo;re learning to use a debugger in this course, if you&rsquo;re following my advice.) </p>
 <p class="headerText">Shift Operations </p>

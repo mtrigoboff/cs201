@@ -132,7 +132,7 @@ a:hover {
 		<li>control is transferred to the address specified in the <strong>IDT</strong> for that exception   </li>
 	</ul>
 	<p><span class="headerText">Exception Types</span></p>
-	<p>There are 4 types of exception:</p>
+	<p>There are 4 types of exception:now</p>
 	<table border="1" cellspacing="0" cellpadding="4">
 		<tr>
 			<td><em>type</em></td>
@@ -163,8 +163,9 @@ a:hover {
 	<p>Traps in the IA-32 environment happen via the <span class="code">INT n</span> and <span class="code">SYSENTER </span>instructions.</p>
 	<p><span class="headerText">Fault Examples</span>	</p>
 	<ul>
-	  <li><strong>fault1.c</strong>: infinitely retries the same division by zero, causing the same error, because control returns from the signal handler to the statement that caused the problem. Hit control-C to terminate the repeated error. </li>
-    	<li><strong>fault2.c</strong>: integer mode division of 10 by first command line argument, catches divide by 0 error</li>
+	  <li><strong>fault1.c</strong>: infinitely retries the same division by zero, causing the same error, because control returns from the signal handler to the statement that caused the problem. Hit control-C to terminate the repeated error.<br />
+      <em>The error is SIGFPE (8): Floating Point Exception. This is very odd, because this code does an integer divide. Spring 2016 student Ian Gore looked into this and found out that despite the name of signal 8, the signal actually occurs for <a href="http://www.gnu.org/software/libc/manual/html_node/Program-Error-Signals.html" target="_blank">any arithmetic error</a>.</em></li>
+    	<li><strong>fault2.c</strong>: integer mode division of 10 by first command line argument, fails to catch divide by 0 error</li>
     	<li><strong>fault3.c</strong>: floating point mode division of first command line argument by second argument does not produce a divide by zero error even though there is a a defined floating point divide exception in the x87 FPU Control Word (IA-32 Manual, Volume 1, page 8-9). This is because the default setting for floating point exceptions is <em>masked</em> (which means that they are ignored by the hardware).</li>
   	    <li><strong>fault4.c</strong>: with the floating point zero divide exception umasked, our code can see when a divide by zero has occurred.  Using <span class="code">objdump</span>, you can see that the C division statement compiles into more than one floating point instruction. Repeating the <span class="code">fdiv</span> instruction that caused the error does not help because the preceding <span class="code">fld</span> instruction is not repeated. The value that caused the problem remains in ST(0). This version of the code infinitely retries the same division by zero (the <span class="code">fdiv</span> instruction), causing the same error, because control returns from the signal handler to the instruction that caused the problem. Hit control-C to terminate the repeated error. </li>
 	    <li><strong>fault5.c</strong>: with the floating point zero divide exception umasked, our code can see when a divide by zero has occurred.  As we saw in fault4.c, setting variables from the signal handler does not work because the C division statement compiles into more than one floating point instruction. Repeating the <span class="code">fdiv</span> instruction does not help because the preceding <span class="code">fld</span> instruction is repeated. <span class="code">Setjmp/longjmp </span>is the preferred way to return control from the signal handler function to someplace other than the instruction that caused the error. </li>

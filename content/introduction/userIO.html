@@ -94,10 +94,14 @@ a:hover {
   </ul>
 <p class="headerText">printf</p>
 <p>Compile and run <strong>printfdemo.c</strong>. Make sure you understand the various features of<span class="codeInText"> printf()</span> that the code uses. </p>
+<p>See <a href="http://man7.org/linux/man-pages/man3/printf.3.html" target="_blank">the manual page</a> for <span class="codeInText">printf()</span> for more information.</p>
 <p class="headerText">scanf</p>
 <p>Compile and run <strong>scanfdemo.c</strong>. Make sure you understand the various features of<span class="codeInText"> scanf()</span> that the code uses.</p>
 <p>One thing to note is that if<span class="codeInText"> scanf()</span> fails to parse what it's looking for (like if it's looking for a number and you type &ldquo;XYZ&rdquo;), those bad characters will stay in the buffer unless you explicitly flush them (see<span class="codeInText"> eatLine()</span> in <strong>scanfdemo.c</strong>). </p>
 <p><span class="codeInText">scanf()</span> is currently &ldquo;deprecated,&rdquo; which means you should not use it in production code. But this is a learning situation, and<span class="codeInText">  scanf()</span> is fine for our purposes. Besides, the currently &ldquo;approved&rdquo; method  uses<span class="codeInText"> <a href="../../files/GNU C Programming Tutorial.pdf" target="_blank">sscanf()</a></span> which is quite similar to <span class="codeInText"> scanf()</span>. Finally, <span class="codeInText">scanf()</span> was &ldquo;the standard&rdquo; for quite awhile, and you may well run into code that uses<span class="codeInText">  scanf()</span> in your career &ndash; so it&rsquo;s useful to understand <span class="codeInText">scanf()</span>.</p>
+<p>See <a href="http://man7.org/linux/man-pages/man3/scanf.3.html" target="_blank">the manual page</a> for <span class="codeInText">scanf()</span> for more information.</p>
+<p>For code that uses<span class="codeInText"> sscanf()</span> and does a much better job of detecting user input errors, see <strong>scanfdemo2.c</strong>.</p>
+<p class="headerText"></p>
 <!-- InstanceEndEditable -->
 </blockquote>
 </body>

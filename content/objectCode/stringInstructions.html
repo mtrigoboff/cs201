@@ -107,7 +107,7 @@ a:hover {
 		</tr>
 		<tr>
 			<td><div align="left">doubleword</div></td>
-			<td><div align="center">d</div></td>
+			<td><div align="center">l</div></td>
 			<td><div align="center">32</div></td>
 		</tr>
 	</table>
@@ -123,27 +123,27 @@ a:hover {
 		<th scope="col"><div align="left">register usage </div></th>
 	</tr>
 	<tr>
-		<td><div align="left">lodsb, lodsw, lodsd</div></td>
+		<td><div align="left">lodsb, lodsw, lodsl</div></td>
 		<td><div align="left">load  data</div></td>
 		<td><div align="left">al, ax, or eax &larr; [esi<span class="codeInText">++</span>]</div></td>
 	</tr>
 	<tr>
-		<td><div align="left">stosb, stosw, stosd</div></td>
+		<td><div align="left">stosb, stosw, stosl</div></td>
 		<td><div align="left">store  data</div></td>
 		<td><div align="left">[edi<span class="codeInText">++</span>] &larr; al, ax, or eax</div></td>
 	</tr>
 	<tr>
-		<td><div align="left">movsb, movsw, movsd</div></td>
+		<td><div align="left">movsb, movsw, movsl</div></td>
 		<td><div align="left">move data</div></td>
 		<td><div align="left">[edi<span class="codeInText">++</span>] &larr; [esi<span class="codeInText">++</span>]</div></td>
 	</tr>
 	<tr>
-		<td><div align="left">scasb, scasw, scasd</div></td>
+		<td><div align="left">scasb, scasw, scasl</div></td>
 		<td><div align="left">scan data for value </div></td>
 		<td><div align="left">[edi<span class="codeInText">++</span>] and al, ax, or eax </div></td>
 	</tr>
 	<tr>
-		<td><div align="left">cmpsb, cmpsw, cmpsd</div></td>
+		<td><div align="left">cmpsb, cmpsw, cmpsl</div></td>
 		<td><div align="left">compare data </div></td>
 		<td><div align="left">compare [esi<span class="codeInText">++</span>], [edi<span class="codeInText">++</span>] </div></td>
 	</tr>
@@ -155,7 +155,9 @@ a:hover {
 	<li>register <span class="codeInText">ecx</span> becomes zero (<span class="codeInText">ecx</span> is decremented once per execution of the instruction) </li>
 	<li>an additional condition specified by the prefix becomes false </li>
 </ul>
-<p><strong>stosb.c</strong> demonstrates the use of the <span class="codeInText">stosb</span> instruction with a <span class="codeInText">rep</span> prefix. This prefix does not specify an additional condition, so the <span class="codeInText">stosb</span> instruction is repeated until <span class="codeInText">ecx</span> has counted down to zero. You can run this code in <strong> gdb</strong> and watch how register <span class="codeInText">ecx</span> counts down as the stosb instruction is repeatedly executed due to its <span class="codeInText">rep</span> prefix. </p>
+<p><strong>stosb.c</strong> demonstrates the use of the <span class="codeInText">stosb</span> instruction with a <span class="codeInText">rep</span> prefix. This prefix does not specify an additional condition, so the <span class="codeInText">stosb</span> instruction is repeated until <span class="codeInText">ecx</span> has counted down to zero. You can run this code in <strong> gdb</strong> and watch how register <span class="codeInText">ecx</span> counts down as the stosb instruction is repeatedly executed due to its <span class="codeInText">rep</span> prefix.</p>
+<p><strong>strfns.c</strong> demonstrates how typical string-related functions can be implemented using these string-oriented instructions.</p>
+<p><strong>localvarinit.c</strong> demonstrates the use of the <span class="codeInText">stosl</span> instruction with a <span class="codeInText">rep</span> prefix to initialize the local variable space in a function&rsquo;s stack frame to all <span class="codeInText">0xCCCCCCCC</span>, which Visual Studio does for you automatically in Debug mode. This makes it likely that the use of an uninitialized variable will cause bad consequences right away, enabling the programmer to notice and fix the error quickly.</p>
 <p><a href="files/repetc.zip">repetc.zip</a> contains a Visual Studio solution that demonstrates a number of different string-oriented instructions, and their use both with and without repeat prefixes. To watch the repeated execution of the string-oriented instructions when there is a repeat prefix, hit F11. Each F11 will run <em>one</em> repetition. Or you can hit F10 and all of the remaining repetitions will happen and the debugger will move on to the following instruction. To see the data, open two Memory windows in the debugger, and pin one to <span class="codeInText">esi</span> and the other to <span class="codeInText">edi</span>. </p>
 <p>&nbsp;</p>
 <!-- InstanceEndEditable -->

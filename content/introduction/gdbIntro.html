@@ -165,10 +165,107 @@ a:hover {
 	<li>to see registers type <span class="codeInText">tui reg general</span></li>
 	<li>when you&rsquo;re done, quit <strong>gdb</strong> by typing <strong>q</strong></li>
 </ul>
+<p class="headerText">Commands Used In This Course</p>
+<p>Here is a list of <strong>gdb </strong>commands that will be of use to you in this course. Items in square brackets are optional. Vertical lines separate alternatives you can enter. For further details, see the <a href="files/gdb-manual.pdf" target="_blank"><strong>gdb</strong> manual</a>.</p>
+<ul>
+<li>run [command line arguments]
+  <ul>
+    <li>runs your code</li>
+    <li><em>abbreviation: </em>r</li>
+    </ul>
+</li>
+<li>layout [src|split|asm]
+  <ul>
+    <li>changes layout of text user interface (tui) windows</li>
+    <li><em>abbreviation: </em>lay</li>
+  </ul>
+</li>
+<li>break line-number
+  <ul>
+    <li>sets a  breakpoint at line number</li>
+    <li><em>abbreviation: </em>b</li></ul></li>
+<li>print
+  item  [= value]
+    <ul>
+    <li>prints item (can be variable, register, or expression)</li>
+    <li>with optional syntax, sets item to value</li>
+    <li><em>abbreviation: </em>p</li>
+    <li><em>examples:</em>
+<ul>
+  <li>p/x var
+          <ul>
+            <li><em>print variable named var in hex</em></li>
+          </ul>
+        </li>
+        <li>p/d var
+          <ul>
+            <li><em>print variable named var in decimal</em></li>
+          </ul>
+        </li>
+    </ul>
+    </li>
+    </ul>
+</li>
+<li>x
+address
+  <ul>
+    <li>e<strong><u>x</u></strong>amines (i.e. prints) contents of memory at address</li>
+    <li><em>abbreviation: </em>x      </li>
+    <li><em>examples:</em>
+      <ul>
+        <li>x/4xb addr
+          <ul>
+            <li>print 4 bytes in hex starting at given address</li>
+            </ul>
+        </li>
+        <li>x/2dw addr
+          <ul>
+            <li>print two 4-byte values in decimal starting at given address</li>
+          </ul>
+        </li>
+        </ul>
+    </li>
+    </ul>
+</li>
+<li>next
+  <ul>
+    <li>executes currently-hilighted C statement, <em>does not</em> go into function calls</li>
+    <li><em>abbreviation: </em>n</li>
+    </ul>
+</li>
+<li>step
+  <ul>
+    <li>executes currently-hilighted C statement, <em>does</em> go into function calls</li>
+    <li><em>abbreviation: </em>s</li>
+    </ul>
+</li>
+<li>nexti
+  <ul>
+    <li>executes currently-hilighted object code instruction, <em>does not</em> go into function calls</li>
+    <li><em>abbreviation: </em>ni</li>
+  </ul>
+</li>
+<li>stepi
+  <ul>
+    <li>executes currently-hilighted object code instruction, <em>does</em> go into function calls</li>
+    <li><em>abbreviation: </em>si</li>
+    </ul>
+</li>
+<li>backtrace
+  <ul>
+    <li>displays current state of the stack (i.e. the function call sequence)</li>
+    <li><em>abbreviation: </em>bt</li>
+    </ul>
+</li>
+<li>info [locals|float]
+  <ul>
+    <li>prints local variables of current function, or state of FPU (floating point unit)
+  </li></ul>
+</li>
+</ul>
 <p class="headerText">Next Steps </p>
-<p><strong>gdb</strong> has many features that are not covered in this short tutorial. I recommend that you use the <a href="files/gdb-manual.pdf" target="_blank">gdb manual</a> to learn about its many features. There is also a <a href="files/gdb-refcard.pdf" target="_blank">reference card</a> that may be of use to you.</p>
+<p><strong>gdb</strong> has many features that are not covered in this short tutorial. I recommend that you use the <a href="files/gdb-manual.pdf" target="_blank"><strong>gdb</strong> manual</a> to learn about its many features. There is also a <a href="files/gdb-refcard.pdf" target="_blank">reference card</a> that may be of use to you.</p>
 <p><a href="https://www.youtube.com/watch?v=sCtY--xRUyI" target="_blank">This video</a>, suggested by Summer 2013 student Ben Michel, should also be helpful.</p>
-<p>&nbsp;</p>
 <!-- InstanceEndEditable -->
 </blockquote>
 </body>

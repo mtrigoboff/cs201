@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/info.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Syllabus</title>
 <!-- InstanceBeginEditable name="head" -->
 <style type="text/css">
@@ -91,218 +91,286 @@ a:hover {
 
 <body>
 <blockquote>
-  <p><span class="pageHeaderText">CS201: Syllabus</span></p>
+<p><span class="pageHeaderText">CS201: Syllabus</span></p>
 </blockquote>
 <hr />
-
-<blockquote>
-<!-- InstanceBeginEditable name="content" -->
-
-   	<p class="headerText">Instructor &ndash; Michael Trigoboff </p>
-	<p>My office is on the <a href="http://www.pcc.edu/pcc/dma/sylvaniamap.htm" target="_blank">Sylvania Campus</a> in TCB 312. If you need office time with me you should communicate with me about when we can do that.</p>
-	<p>If you need  to communicate with me privately, you should use the email feature of this Desire2Learn site. My email address is <strong>michael.trigoboff</strong> on Desire2Learn.</p>
-	<p><!-- #BeginLibraryItem "/Library/distance students welcome.lbi" -->
-This course is often taught as parallel sections, one in the classroom and the other  via distance learning. When that is the case, distance students who want to attend classroom sessions are always welcome.<!-- #EndLibraryItem --></p>
-  <p>If you&rsquo;re interested, you can find out more about me at <a href="http://spot.pcc.edu/~mtrigobo" target="_blank">http://spot.pcc.edu/~mtrigobo</a>.</p>
-	<p class="headerText">Course Description </p>
-	<p>This course will introduce you to what&rsquo;s &ldquo;beneath the surface&rdquo; of higher-level programming languages like C and C++, namely the &ldquo;object code.&rdquo; You will learn things about object code that will make you a more capable programmer. There&rsquo;s no substitute for knowing what&rsquo;s really going on &ldquo;under the hood,&rdquo; and this course will teach you about that.</p>
-	<p>In this course, we will mainly be working with Unix. Unix skills are valuable and acquiring them should increase your employment opportunities. If a job interviewer asks you to demonstrate some Unix skills, you don&rsquo;t want to be sitting in front of that workstation wondering, &ldquo;What do I do now?&rdquo; </p>
-	<p>Unix is available to you on the department&rsquo;s Linux machine,<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" -->
-
-<strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->. You will be required to use this machine for the programming assignments.</p>
+<blockquote><!-- InstanceBeginEditable name="content" -->
+<h1 class="headerText">Instructor &ndash; Michael Trigoboff</h1>
+<p>My office is on the <a href="http://www.pcc.edu/pcc/dma/sylvaniamap.htm" target="_blank" rel="noopener noreferrer">Sylvania Campus</a> in TCB 312. If you need office time with me you should communicate with me about when we can do that.</p>
+<p>If you need to communicate with me privately, you should use PCC email. My email address is <strong>michael.trigoboff@pcc.edu</strong> Desire2Learn is now using PCC&rsquo;s GMail service for email, so you can send messages via MyPCC or Desire2Learn. Either way is OK.</p>
+<p><!-- #BeginLibraryItem "/Library/distance students welcome.lbi" --> This course is often taught as parallel sections, one in the classroom and the other via distance learning. When that is the case, distance students who want to attend classroom sessions are always welcome.<!-- #EndLibraryItem --></p>
+<p>If you&rsquo;re interested, you can find out more about me at <a href="http://spot.pcc.edu/~mtrigobo" target="_blank" rel="noopener noreferrer">http://spot.pcc.edu/~mtrigobo</a>.</p>
+<h1 class="headerText">Course Description</h1>
+<p>This course will introduce you to what&rsquo;s &ldquo;beneath the surface&rdquo; of higher-level programming languages like C and C++, namely the &ldquo;object code.&rdquo; You will learn things about object code that will make you a more capable programmer. There&rsquo;s no substitute for knowing what&rsquo;s really going on &ldquo;under the hood,&rdquo; and this course will teach you about that.</p>
+<p>In this course, we will mainly be working with Unix. Unix skills are valuable and acquiring them should increase your employment opportunities. If a job interviewer asks you to demonstrate some Unix skills, you don&rsquo;t want to be sitting in front of that workstation wondering, &ldquo;What do I do now?&rdquo;</p>
+<p>Unix is available to you on the department&rsquo;s Linux machine,<!-- #BeginLibraryItem "/Library/class Linux machine.lbi" --> <strong>syccuxas01.pcc.edu</strong><!-- #EndLibraryItem -->. You will be required to use this machine for the programming assignments.</p>
 <p>You will be using the <b>C</b> programming language in this course. All of the programming assignments should be done in C within a Unix environment.</p>
 <p>In addition to acquiring skill with Unix, you should also develop proficiency with one of the source code text editors that are common in Unix. Your choices are:</p>
+<ul>
+<li><strong>vim</strong>
+<ul>
+<li>the power you need for programming</li>
+</ul>
+</li>
+<li><strong>emacs</strong>
+<ul>
+<li>much more power than you need, has a steeper learning curve than <strong>vim</strong> (emacs is actually the programming language Lisp masquerading as a text editor)</li>
+</ul>
+</li>
+</ul>
+<p>I use <strong>vim</strong>, but you are free to choose <strong>emacs</strong> if you want something much more powerful. If you&rsquo;re at that job interview and they find out that you can't do text editing in Unix, they will <em>not</em> be impressed.</p>
+<h1 class="headerText">Learning Outcomes</h1>
+<p>In t his course, you will you learn about the following topics:</p>
+<ul>
+	<li>how to do programming using Unix and the C language</li>
+	<li>what&rsquo;s &ldquo;under the surface&rdquo; of your C/C++ code
 	<ul>
-		<li><strong>vim</strong>
-		  <ul>
-		    <li>the power you need for programming</li>
-		  </ul>
-		</li>
-		<li><strong>emacs</strong>
-			<ul>
-				<li>much more power than you need, has a steeper learning curve than <strong>vim</strong> (emacs is actually the programming language Lisp masquerading as a text editor) </li>
-			</ul>
-		</li>
+	<li>object code (assembly code, machine language)</li>
+	<li>the machine itself (which will be studied more extensively in CS201)</li>
+	<li>what the machine is actually doing when it executes your code</li>
 	</ul>
-  <p>I use <strong>vim</strong>, but you are free to choose <strong>emacs</strong> if you want something much more powerful. If you&rsquo;re at that job interview and they find out that you can't do text editing in Unix, they will <em>not</em> be impressed. </p>
-	<p class="headerText">Learning Outcomes </p>
-	<p>In t his course, you will you learn about the following topics: </p>
+	</li>
+	<li>deeper knowledge of how your programs work</li>
 	<ul>
-	  <li>how to do programming using  Unix and the C language</li>
-	  <li>what&rsquo;s &ldquo;under the surface&rdquo; of your C/C++ code
-        <ul>
-          <li>object code (assembly code, machine language) </li>
-          <li>the machine itself (which will be studied more extensively in CS201)</li>
-          <li>what the machine is actually doing when it executes your code</li>
-        </ul>
-	  </li>
-	  <li>deeper knowledge of how your programs work</li>
-	  <ul>
-	    <li>special features of the Unix operating system</li>
-	    <li>performance optimization</li>
-	    <li>understanding of the true nature of the underlying Intel IA-32 architecture </li>
-      </ul>
-	  <li>Intel&rsquo;s IA-32 Architecture
-	    <ul>
-	      <li>the Intel Assembly Language instructions commonly seen in object code</li>
-          <li>the machinery underlying the Intel IA-32 architecture
-            <ul>
-              <li>for instance, registers like <strong>eax</strong> are merely a convenient fiction </li>
-            </ul>
-          </li>
-        </ul>
-	  </li>
-	  <li>the structure and function of &ldquo;the stack&rdquo;
-        (also known as &ldquo;the calling stack&rdquo;) 
-        <ul>
-          <li>detailed understanding of &ldquo;function calling overhead&rdquo; </li>
-          <li>understanding of the nature of &ldquo;buffer overflow attacks&rdquo;</li>
-        </ul>
-	  </li>
-	  <li>exceptional control flow
-	    <ul>
-          <li>functions that return twice, functions that never return, etc.</li>
-        </ul>
-      </li>
-	  <li>techniques for optimizing your code to make it run faster </li>
-	  <li>opportunity to practice and improve your programming skills</li>
-  </ul>
-	<p class="headerText">Textbooks </p>
-  <p>The textbook for this course is <a href="http://csapp.cs.cmu.edu" target="_blank">Computer Systems: A Programmer&rsquo;s Perspective</a> by Randal E. Bryant and David R. O&rsquo;Hallaron. It is available at the <a href="http://www.pcc.edu/resources/bookstore/" target="_blank">PCC bookstore</a>.</p>
-  	<blockquote>
-	  <p><a href="http://csapp.cs.cmu.edu" target="_blank"><img src="images/csapp3ecover-medium.jpg" alt="Bryant &amp; O'Hallaron, 3nd Edition" width="238" height="304" border="0" longdesc="http://csapp.cs.cmu.edu/" /></a></p>
-  </blockquote>
-  	<p>You can get a used copy of the <a href="http://csapp.cs.cmu.edu/2e/home.html" target="_blank">second edition</a>,   or the first edition instead, and save yourself some money.</p>
-	<blockquote>
-    <table cellpadding="2" cellspacing="24"><tr>
-	  <td><a href="http://csapp.cs.cmu.edu/2e/home.html" target="_blank"><img src="images/csapp2ecover-medium.jpg" alt="Bryant &amp; O'Hallaron, 2nd Edition" width="185" height="230" border="0" longdesc="http://csapp.cs.cmu.edu/" /></a></td>
-	  <td><img src="images/csappcover-medium.jpg" alt="Bryant &amp; O'Hallaron, First Edition" width="185" height="230" border="0" longdesc="http://csapp.cs.cmu.edu/public/1e/home.html" /></td>
-	</tr></table>
-  </blockquote>
-	<p>Make sure to go to the textbook site&rsquo;s errata page (<a href="http://csapp.cs.cmu.edu/3e/errata.html" target="_blank">third edition</a>, <a href="http://csapp.cs.cmu.edu/public/errata.html" target="_blank">second edition</a>). You will save yourself <em>hours</em> of futile effort attempting to understand incorrect (and therefore incomprehensible) material. <!-- The 1st edition, in particular has a large number of errata, a number of which were contributed by me (including <a href="http://csapp.cs.cmu.edu/public/1e/public/byteasm.html" target="_blank">this one</a>, which got me my very own page on their site). --> Unfortunately, the errata page for the first edition seems to no  longer be available, and it had <em>a lot</em> of errors.</p>
-<p>If you need a reference to the C programming language, there are many available online. The <a href="../../files/GNU C Programming Tutorial.pdf" target="_blank">GNU C Tutorial</a>, for instance  is usable, but occasionally it expresses strong opinions that I don&rsquo;t necessarily agree with (e.g. regarding the <span class="codeInText">goto</span> statement).</p>
-	<p>If you want a book, <a href="http://vig.prenhall.com/catalog/academic/product/0,4096,0131103628,00.html" target="_blank"> The C Programming Language, 2nd Edition</a> by Brian W. Kernighan and Dennis Ritchie is a classic of Computer Science. Kernighan and Ritchie created the C language. </p>
-	<blockquote>
-		<p><a href="http://vig.prenhall.com/catalog/academic/product/0,4096,0131103628,00.html" target="_blank">
-		<img src="images/krCover.jpg" alt="" width="165" height="218" border="1" /></a> </p>
-	</blockquote>
-	<p class="headerText">Course Work </p>
-	<p>The work for this course will consist of <b>online quizzes </b>and <b>programming assignments</b>. The quizzes are available in the &ldquo;Assessments&rdquo; section of the course home page. The assignments are available in the &ldquo;Assignments&rdquo; section of the course home page. The assignments will sometimes (but not always) consist of a <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> part and a <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> part.</p>
-	<p class="headerText">How To Submit Programming Assignments </p>
-	<p class="headerText2">Personalize Your Code</p>
-	<p>Your code should always print out the following as its first line of output:</p>
-	<blockquote>
-      <p>CS201 - <strong>assignment - your name</strong></p>
-  </blockquote>
-	<p>Make sure you change the places marked in <strong>bold text</strong> to show me which assignment you are submitting and who you are. <br />
-        <br />
-	  For example, if I were submitting assignment 3, my code would print out: </p>
-	<blockquote>
-      <p>CS201 - A03 - Michael Trigoboff</p>
-  </blockquote>
-	<p><em>I will deduct IQ points if you submit an assignment to me and your code prints out &ldquo;assignment&rdquo; or &ldquo;your name</em>.<em>&rdquo;</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-) </p>
-	<p class="headerText2">What To Upload</p>
-	<p>Each individual assignment will specify what you have to upload.</p>
-	<p>Do not get &ldquo;creative&rdquo; with the file names. Name your files <em>exactly</em> as specified (this includes whether letters in the name are upper-case or lower-case). I use scripts to compile and run your code, and when your file names are not what&rsquo;s expected, my scripts don&rsquo;t work. Annoying your instructor in this way will most likely not produce the benevolent and merciful attitude that you hope for...</p>
-	<p class="headerText">Grading</p>
-	<p>Your grade for this course will be a function of your grades on the quizzes, programming assignments, labs, and final exam.  </p>
-	<p><span class="headerText2">Quizzes</span></p>
-	<p>You are allowed to take each quiz <em>twice </em>(it will be exactly the same quiz each time you take it). Your grade for a quiz will be the <em>average</em> of your scores for the two attempts. This means that if you get a perfect score the first time you take a quiz, <em>there is no reason to take it a second time</em>.</p>
-  <p><span class="headerText2">Assignments</span></p>
-<p>Some assignments will come in two flavors: <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> and <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem -->. <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> assignments are more difficult than <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> assignments. When the choice is available, you will need to do the <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> version if you want to get an <strong>A</strong> in this course. </p>
-	<p>To get a good grade for an assignment, you must do it in a satisfactory manner, which means your work must: </p>
-  <ul>
-		<li>be coded according to the <a href="codingStds.html" target="_blank">Coding Standards</a></li>
-       	<li>compile without warnings (using gcc&rsquo;s<span class="codeInText"> -Wall </span>flag) </li>
-       	<li>run without errors when given correct input and arguments. You do not need to check for input or argument errors unless:
-       		<ul>
-       			<li>such checking is specified by an assignment</li>
-               	<li>you feel like doing it for your own learning </li>
-           	</ul>
-   	  </li>
-       	<li>produce output <em>exactly as specified</em> by the assignment<br />
-   	    (I run your code using scripts, and non-standard output causes problems in that environment) </li>
-   	    <li>be submitted on time
-   	      <ul>
-   	        <li>for Assignments 1-3, there will be a 4-day &ldquo;late submission&rdquo; period after the deadline, during which the assignment can still be submitted. Submission during this period will incur a 10% lateness penalty.</li>
-   	        <li>there will be no late submission period for Assignment 4 </li>
-          </ul>
-    </li>
-  </ul>
-  <p><span class="headerText2">Labs</span></p><p>Labs are graded pass/fail. Grading happens in person, during the lab sessions.</p>
-<p><span class="headerText2">Final Exam</span></p>
-  <p>The final exam is similar to the PSU Proficiency Demo. It will be in person, in the lab room. You will be asked to write a small Linux application during this session.</p>
-  <p class="headerText2"><span>Final Grade</span></p>
-	<p>Your final grade will be a function of the quality of your work on the assignments, quizzes, labs, and final exam. To get an <strong>A</strong>, you will need to do well on all of the  assignments (doing <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> versions when available) and score well on the quizzes and labs. To get a <strong>B</strong>, you will need to do well on all of the assignments (doing <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> versions) and score well on the quizzes and labs.</p>
-    <p>&ldquo;Well&rdquo; means 90% or above.</p>
-    <p>Assignments count for 45% of your grade. Quizzes  count for 45%. Labs count for 10%.</p>
-  <p>This table shows the maximum possible scores for each assignment and quiz:
+	<li>special features of the Unix operating system</li>
+	<li>performance optimization</li>
+	<li>understanding of the true nature of the underlying Intel IA-32 architecture</li>
+	</ul>
+	<li>Intel&rsquo;s IA-32 Architecture
+	<ul>
+	<li>the Intel Assembly Language instructions commonly seen in object code</li>
+	<li>the machinery underlying the Intel IA-32 architecture
+	<ul>
+	<li>for instance, registers like <strong>eax</strong> are merely a convenient fiction</li>
+	</ul>
+	</li>
+	</ul>
+	</li>
+	<li>the structure and function of &ldquo;the stack&rdquo; (also known as &ldquo;the calling stack&rdquo;)
+	<ul>
+	<li>detailed understanding of &ldquo;function calling overhead&rdquo;</li>
+	<li>understanding of the nature of &ldquo;buffer overflow attacks&rdquo;</li>
+	</ul>
+	</li>
+	<li>exceptional control flow
+	<ul>
+	<li>functions that return twice, functions that never return, etc.</li>
+	</ul>
+	</li>
+	<li>techniques for optimizing your code to make it run faster</li>
+	<li>opportunity to practice and improve your programming skills</li>
+</ul>
+<p>For more information, please go to the Course Content and Outcome Guide for this course at: <a href="http://www.pcc.edu/ccog">www.pcc.edu/ccog</a>.</p>
+<h1 class="headerText">Textbooks</h1>
+<p>The textbook for this course is <a href="http://csapp.cs.cmu.edu" target="_blank" rel="noopener noreferrer">Computer Systems: A Programmer&rsquo;s Perspective</a> by Randal E. Bryant and David R. O&rsquo;Hallaron. It is available at the <a href="http://www.pcc.edu/resources/bookstore/" target="_blank" rel="noopener noreferrer">PCC bookstore</a>.</p>
+<blockquote>
+<p><a href="http://csapp.cs.cmu.edu" target="_blank" rel="noopener noreferrer"><img src="images/csapp3ecover-medium.jpg" alt="Bryant &amp; O'Hallaron, Third Edition cover" width="238" height="304" border="0" longdesc="http://csapp.cs.cmu.edu/" /></a></p>
+</blockquote>
+<p>You can get a used copy of the <a href="http://csapp.cs.cmu.edu/2e/home.html" target="_blank" rel="noopener noreferrer">second edition</a>, or the first edition instead, and save yourself some money.</p>
+<blockquote>
+<table cellpadding="2" cellspacing="24">
+<tbody>
+<tr>
+<td><a href="http://csapp.cs.cmu.edu/2e/home.html" target="_blank" rel="noopener noreferrer"><img src="images/csapp2ecover-medium.jpg" alt="Bryant &amp; O'Hallaron, Second Edition cover" width="185" height="230" border="0" longdesc="http://csapp.cs.cmu.edu/" /></a></td>
+<td><img src="images/csappcover-medium.jpg" alt="Bryant &amp; O'Hallaron, First Edition cover" width="185" height="230" border="0" longdesc="http://csapp.cs.cmu.edu/public/1e/home.html" /></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Make sure to go to the textbook site&rsquo;s errata page (<a href="http://csapp.cs.cmu.edu/3e/errata.html" target="_blank" rel="noopener noreferrer">third edition</a>, <a href="http://csapp.cs.cmu.edu/public/errata.html" target="_blank" rel="noopener noreferrer">second edition</a>). You will save yourself <em>hours</em> of futile effort attempting to understand incorrect (and therefore incomprehensible) material.</p>
+<p><!-- The 1st edition, in particular has a large number of errata, a number of which were contributed by me (including <a href="http://csapp.cs.cmu.edu/public/1e/public/byteasm.html" target="_blank">this one</a>, which got me my very own page on their site). --> The errata page for the first edition is no longer available on the textbook&rsquo;s website, and it had <em>a lot</em> of errors. Fortunately, the errata page for the first edition is still available via <a href="https://web.archive.org/web/20070706120455/http://csapp.cs.cmu.edu:80/public/errata.html" target="_blank" rel="noopener noreferrer">the Wayback Machine</a>.</p>
+<p>If you need a reference to the C programming language, there are many available online. The <a href="../../files/GNU%20C%20Programming%20Tutorial.pdf" target="_blank" rel="noopener noreferrer">GNU C Tutorial</a>, for instance is usable, but occasionally it expresses strong opinions that I don&rsquo;t necessarily agree with (e.g. regarding the <span class="codeInText">goto</span> statement).</p>
+<p>If you want a book, <a href="http://vig.prenhall.com/catalog/academic/product/0,4096,0131103628,00.html" target="_blank" rel="noopener noreferrer"> The C Programming Language, 2nd Edition</a> by Brian W. Kernighan and Dennis Ritchie is a classic of Computer Science. Kernighan and Ritchie created the C language.</p>
+<blockquote>
+<p><a href="http://vig.prenhall.com/catalog/academic/product/0,4096,0131103628,00.html" target="_blank" rel="noopener noreferrer"> <img src="images/krCover.jpg" alt="C Programming Language, Second Edition cover" width="165" height="218" border="1" /></a></p>
+</blockquote>
+<h1 class="headerText">Course Work</h1>
+<p>The work for this course will consist of <b>online quizzes</b> and <b>programming assignments</b> <!--, and<strong> lab work</strong>-->. The quizzes are available in the <strong>Quizzes</strong> section of the course. <!--The lab work is available in the <strong>Labs</strong> section of the course.--> The assignments are available in the <strong>Assignments</strong> section of the course. The assignments will sometimes (but not always) consist of a <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> part and a <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> part (in this case, you only need to do <em>one</em> of the parts).</p>
+<h1 class="headerText">How To Submit Programming Assignments</h1>
+<h2 class="headerText2">Personalize Your Code</h2>
+<p>Your code should always print out the following as its first line of output:</p>
+<blockquote>
+<p>CS201 - <strong>assignment - your name</strong></p>
+</blockquote>
+<p>Make sure you change the places marked in <strong>bold text</strong> to show me which assignment you are submitting and who you are. <br /> <br /> For example, if I were submitting assignment 3, my code would print out:</p>
+<blockquote>
+<p>CS201 - A03 - Michael Trigoboff</p>
+</blockquote>
+<p><em>I will deduct IQ points if you submit an assignment to me and your code prints out &ldquo;assignment&rdquo; or &ldquo;your name</em>.<em>&rdquo;</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:-)</p>
+<h2 class="headerText2">What To Upload</h2>
+<p>Each individual assignment will specify what you have to upload.</p>
+<p>Do not get &ldquo;creative&rdquo; with the file names. Name your files <em>exactly</em> as specified (this includes whether letters in the name are upper-case or lower-case). I use scripts to compile and run your code, and when your file names are not what&rsquo;s expected, my scripts don&rsquo;t work. Annoying your instructor in this way will most likely not produce the benevolent and merciful attitude that you hope for...</p>
+<h1 class="headerText">Grading</h1>
+<p>Your grade for this course will be a function of your grades on the quizzes and programming assignments<!-- labs, and final exam-->.</p>
+<h2 class="headerText2">Quizzes</h2>
+<p>You are allowed to take each quiz <em>twice </em>(it will be exactly the same quiz each time you take it). Your grade for a quiz will be the <em>average</em> of your scores for the two attempts. This means that if you get a perfect score the first time you take a quiz, <em>there is no reason to take it a second time</em>.</p>
+<h2 class="headerText2">Assignments</h2>
+<p>Some assignments will come in two flavors: <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> and <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem -->. <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> assignments are more difficult than <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> assignments. When the choice is available, you will need to do the <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> version if you want to get an <strong>A</strong> in this course.</p>
+<p>To get a good grade for an assignment, you must do it in a satisfactory manner, which means your work must:</p>
+<ul>
+<li>be coded according to the <a href="codingStds.html" target="_blank" rel="noopener noreferrer">Coding Standards</a></li>
+<li>compile without warnings (using gcc&rsquo;s<span class="codeInText"> -Wall </span>flag)</li>
+<li>run without errors when given correct input and arguments. You do not need to check for input or argument errors unless:
+<ul>
+<li>such checking is specified by an assignment</li>
+<li>you feel like doing it for your own learning</li>
+</ul>
+</li>
+<li>produce output <em>exactly as specified</em> by the assignment<br /> (I run your code using scripts, and non-standard output causes problems in that environment)</li>
+<li>be submitted on time
+<ul>
+<li>for Assignments 1-3, there will be a 4-day &ldquo;late submission&rdquo; period after the deadline, during which the assignment can still be submitted. Submission during this period will incur a 10% lateness penalty.</li>
+<li>there will be no late submission period for Assignment 4</li>
+</ul>
+</li>
+</ul>
+<!-- <p class="headerText2">Labs</p><p>Labs are graded pass/fail. Grading happens in person, during the lab sessions.</p> -->
+<!--
+<p class="headerText2">Final Exam</p>
+<p>The final exam is similar to the PSU Proficiency Demo. It will be in person, in the lab room. You will be asked to write a small Linux application during this session.</p>
+-->
+<h2 class="headerText2">Final Grade</h2>
+<p>Your final grade will be a function of the quality of your work on the assignments and quizzes<!--labs, and final exam-->.</p>
+<p>To get an <strong>A</strong>, you will need to do <!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --> versions of the assignments when available. To get a <strong>B</strong>, you can do <!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --> versions of the assignments. To get either an <strong>A</strong> or a <strong>B</strong>, you will need to score 90% or above on the work you do.</p>
+<p>This table shows how much each of the class activities contributes to your final grade:</p>
 <table border="1" cellpadding="4" cellspacing="0">
+    <tbody>
       <tr>
-        <th scope="col">&nbsp;</th>
-        <th class="right" scope="col">Asgmt&nbsp;1</th>
-        <th class="right" scope="col">Asgmt&nbsp;2</th>
-        <th class="right" scope="col">Asgmt&nbsp;3</th>
-        <th class="right" scope="col">Asgmt&nbsp;4</th>
-        <th class="right" scope="col">Quiz 1</th>
-        <th class="right" scope="col">Quiz 2</th>
-        <th class="right" scope="col">Quiz 3</th>
-        <!--
+        <th width="200" align="left" rowspan="2">Class Activity</th>
+        <th width="200" colspan="2">Section</th>
+      </tr>
+      <tr>
+        <th width="100">Classroom</th>
+        <th width="100">Distance</th>
+      </tr>
+      <tr>
+        <td>Programming Assignments</td>
+        <td class="right">45%</td>
+        <td class="right">50%</td>
+      </tr>
+      <tr>
+        <td>Quizzes</td>
+        <td class="right">45%</td>
+        <td class="right">50%</td>
+      </tr>
+      <tr>
+        <td>Attendance</td>
+        <td class="right">10%</td>
+        <td class="right">&mdash;</td>
+      </tr>
+<!--
+	  <tr>
+        <td>Midterm</td>
+        <td class="right">&mdash;</td>
+        <td class="right">&mdash;</td>
+      </tr>
+      <tr>
+        <td>Final Exam</td>
+        <td class="right">20%</td>
+        <td class="right">20%</td>
+      </tr>
+-->
+    </tbody>
+  </table>
+<p>This table shows the maximum possible scores for each assignment and quiz:</p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tbody>
+<tr>
+<th scope="col">&nbsp;</th>
+<th class="right" scope="col">Asgmt&nbsp;1</th>
+<th class="right" scope="col">Asgmt&nbsp;2</th>
+<th class="right" scope="col">Asgmt&nbsp;3</th>
+<th class="right" scope="col">Asgmt&nbsp;4</th>
+<th class="right" scope="col">Quiz 1</th>
+<th class="right" scope="col">Quiz 2</th>
+<th class="right" scope="col">Quiz 3</th>
+<!--
         <th class="right" scope="col">Labs 2-5</th>
         <th class="right" scope="col">Labs 6-7</th>
-        -->
-      </tr>
-      <tr>
-        <td><!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --></td>
-        <td class="right">100</td>
-        <td class="right">150</td>
-        <td class="right">100</td>
-        <td class="right">100</td>
-        <td class="right">17</td>
-        <td class="right">56</td>
-        <td class="right">28</td>
-        <!--
+        --></tr>
+<tr>
+<td><!-- #BeginLibraryItem "/Library/Regular.lbi" --> <strong>Regular</strong><!-- #EndLibraryItem --></td>
+<td class="right">100</td>
+<td class="right">150</td>
+<td class="right">100</td>
+<td class="right">100</td>
+<td class="right">17</td>
+<td class="right">56</td>
+<td class="right">28</td>
+<!--
         <td class="right">1</td>
         <td class="right">5</td>
-        -->
-      </tr>
-      <tr>
-        <td><!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --></td>
-        <td class="right">200</td>
-        <td class="right">250</td>
+        --></tr>
+<tr>
+<td><!-- #BeginLibraryItem "/Library/Premium.lbi" --> <strong>Premium</strong><!-- #EndLibraryItem --></td>
+<td class="right">200</td>
+<td class="right">250</td>
+<td class="right">200</td>
+<td class="right">200</td>
+<td class="right">&nbsp;</td>
+<td class="right">&nbsp;</td>
+<td class="right">&nbsp;</td>
+<!--
         <td class="right">&nbsp;</td>
-        <td class="right">200</td>
         <td class="right">&nbsp;</td>
-        <td class="right">&nbsp;</td>
-        <td class="right">&nbsp;</td>
-        <!--
-        <td class="right">&nbsp;</td>
-        <td class="right">&nbsp;</td>
-        -->
-      </tr>
-  </table>
-    </p>
-<!-- <p>You can use <a href="files/cs201grading.xlsx" target="_blank">this spreadsheet</a> to compute your final grade.</p> -->
-<p class="headerText">Classroom Behavior</p>
-    <p>I work hard to teach a deep and subtle understanding of how code works and how to write and debug it. This requires a classroom atmosphere of concentrated attention. The more of us who pay attention, the stronger and more focused that becomes.</p>
-    <p>Your behavior in the classroom has an effect on  other students and on me. Your participation, in the form of questions and comments is welcome. Your attention is appreciated. But behavior that disrupts the atmosphere of the classroom will not be tolerated. This includes side conversations, texting, playing online games, etc.</p>
+        --></tr>
+</tbody>
+</table>
+<p>You can use <a href="files/cs201grading.xlsx" target="_blank">this spreadsheet</a> to compute your final grade.</p>
+<p>For more information, please go to the <a href="http://catalog.pcc.edu/handbook/g301-gradingguidelines/" target="_blank" rel="noopener noreferrer">PCC Grading Guidelines</a>.</p>
+<h1 class="headerText">Classroom Behavior</h1>
+<p>I work hard to teach a deep and subtle understanding of how code works and how to write and debug it. This requires a classroom atmosphere of concentrated attention. The more of us who pay attention, the stronger and more focused that becomes.</p>
+<p>Your behavior in the classroom has an effect on other students and on me. Your participation, in the form of questions and comments is welcome. Your attention is appreciated. But behavior that disrupts the atmosphere of the classroom will not be tolerated. This includes side conversations, texting, playing online games, etc.</p>
 <p>I welcome your presence in the classroom. But if you choose to be in my classroom, you&rsquo;re required to be there mentally as well as physically.</p>
-    <p class="headerText">Academic Honesty</p>
-    <p>Learning to write code is the mental equivalent of learning gymnastics. Cheating in a computer science course is like going to the gym and hiring someone else to lift the weights for you.</p>
-  <p>If you don&rsquo;t  do the work yourself, you will not learn to write code. This will become painfully obvious the first time you have to write code that you can&rsquo;t find on the Internet.</p>
-  <p>It&rsquo;s fine if you want to work with other students on a project, but make sure that you do the work yourself and understand what you did.</p>
-  <p>Cheating and plagiarism will be dealt with as mercilessly as the college&rsquo;s <a href="http://www.pcc.edu/about/policy/student%2Drights/student-rights.pdf#academic" target="_blank">Academic Integrity Policy</a> allows.</p>
-<p class="headerText">Special Accommodations</p>
-    <p>PCC is committed to supporting all students. If you plan to use academic accommodations for this course, please contact your instructor as soon as possible to discuss your needs.</p>
-    <p>Accommodations are not retroactive; they begin when the instructor receives the &quot;Approved Academic Accommodations&quot; letter from you (submitted in person for courses on campus; via email for Distance Learning courses).</p>
-    <p>To request academic accommodations for a disability, please contact a disability services counselor on any PCC campus. Office locations, phone numbers, and additional information may be located on the <a href="http://www.pcc.edu/resources/disability/" target="_blank">Disability Services</a> website.</p>
-    <p class="headerText">Netiquette</p>
+<h1 class="headerText">Academic Honesty</h1>
+<p>Learning to write code is the mental equivalent of learning gymnastics. Cheating in a computer science course is like going to the gym and hiring someone else to lift the weights for you.</p>
+<p>If you don&rsquo;t do the work yourself, you will not learn to write code. This will become painfully obvious the first time you have to write code that you can&rsquo;t find on the Internet.</p>
+<p>It&rsquo;s fine if you want to work with other students on a project, but make sure that you do the work yourself and understand what you did.</p>
+<p>Cheating and plagiarism will be dealt with as mercilessly as the college&rsquo;s <a href="http://www.pcc.edu/about/policy/student%2Drights/student-rights.pdf#academic" target="_blank" rel="noopener noreferrer">Academic Integrity Policy</a> allows.</p>
+<h1 class="headerText">Netiquette</h1>
 <p>There&rsquo;s a lot to say about &ldquo;net etiquette,&rdquo; but short summary is sufficient: I expect us to treat each other and this course with consideration and respect.</p>
-	<p>I want this to be a safe learning environment. <em>There are no dumb questions</em>. What&rsquo;s dumb is to not ask when you don&rsquo;t understand something. By not asking, you&rsquo;re just wasting your tuition money and time.</p>
-	<p>The path to the top of the Mountain of Knowledge necessarily passes through the Valley of Stupidity. If you&rsquo;re not willing to feel dumb on the way, you&rsquo;re not going to learn much Computer Science. But in this class, we&rsquo;re not going to do anything to make it worse than it has to be. There&rsquo;s going to be plenty of opportunity to feel dumb, even if we&rsquo;re nice to each other.</p>
-  <p class="headerText">Flexibility</p>
-	<p>The instructor reserves the right to modify course content and/or substitute assignments and learning activities in response to institutional, weather or class situations.  </p>
-<!-- InstanceEndEditable -->
+<p>I want this to be a safe learning environment. <em>There are no dumb questions</em>. What&rsquo;s dumb is to not ask when you don&rsquo;t understand something. By not asking, you&rsquo;re just wasting your tuition money and time.</p>
+<p>The path to the top of the Mountain of Knowledge necessarily passes through the Valley of Stupidity. If you&rsquo;re not willing to feel dumb on the way, you&rsquo;re not going to learn much Computer Science. But in this class, we&rsquo;re not going to do anything to make it worse than it has to be. There&rsquo;s going to be plenty of opportunity to feel dumb, even if we&rsquo;re nice to each other.<br />
+  </p>
+<h1 class="headerText">Participation Expectations (Distance Learning)</h1>
+<p>Students in this course are expected to enter the course at least 3 times a week to work on the modules, check email, and participate in discussions. Prompt participation in discussions is especially important when group work is involved since others in your group are depending on your input. Each time you log into the course be sure to check for any new announcements, email and discussion messages, and calendar postings.<br />
+	<br /> 
+</p>
+<hr />
+<h1 class="headerText"><em>Content Required By The College</em></h1>
+<h2 class="headerText2"><em>College Name</em></h2>
+<p><em>Portland Community College</em></p>
+<h2 class="headerText2"><em>Instructor</em></h2>
+<p><em>Michael Trigoboff<br /> <a href="mailto:michael.trigoboff@pcc.edu">michael.trigoboff@pcc.edu</a><br /> 971-722-4393</em></p>
+<h2 class="headerText2"><em>Course</em></h2>
+<p><em>CS 201 &ndash; Computer Systems<br /> 
+Summer Term, 2019<br /> 
+CRN(s): 30157, 34621<br /> 4 credits<br /> MR 11:00 &ndash; 11:50 TCB 212, 12:00 &ndash; 12:50 TCB 310<br /> Prerequisite: CS 162 or equivalent. Recommended: CS 140U.</em></p>
+<h2 class="headerText2"><em>Attendance And Make-Up Policies</em></h2>
+<p><em>Students are responsible for all material covered in class.</em></p>
+<h2 class="headerText2"><em>PCC Policy Links</em></h2>
+<blockquote>
+<p><em>
+	<a href="http://www.pcc.edu/enroll/registration/policies.html" target="_blank" rel="noopener noreferrer">PCC Registration Policy</a><br /> 
+	<a href="http://www.pcc.edu/enroll/paying-for-college/tuition/payment-due-dates/" target="_blank" rel="noopener noreferrer">PCC Payment Policy</a><br /> 
+	<a href="http://www.pcc.edu/about/policy/student-rights/student-rights.pdf#academic-integrity" target="_blank" rel="noopener noreferrer">Academic Integrity Policy</a><br /> 
+	<a href="http://www.pcc.edu/about/policy/student-rights" target="_blank" rel="noopener noreferrer">Student Rights and Responsibilities Handbook</a><br /> 
+	<a href="http://www.pcc.edu/resources/student-records/grading" target="_blank" rel="noopener noreferrer">Grading Guidelines</a><br /> 
+	<a href="http://www.pcc.edu/enroll/registration/dropping.html" target="_blank" rel="noopener noreferrer">Course Drop/Withdraw Deadlines</a><br /> 
+</em></p>
 </blockquote>
+<h2 class="headerText2"><em>ADA Statement</em></h2>
+<p><em>PCC is committed to supporting all students. If you plan to use academic accommodations for this course, please contact your instructor as soon as possible to discuss your needs.</em></p>
+<p><em>Accommodations are not retroactive; they begin when the instructor receives the "Approved Academic Accommodations" letter from you (submitted in person for courses on campus; via email for Distance Learning courses).</em></p>
+<p><em>To request academic accommodations for a disability, please contact a disability services counselor on any PCC campus. Office locations, phone numbers, and additional information may be located on the <a href="http://www.pcc.edu/resources/disability/" target="_blank" rel="noopener noreferrer">Disability Services</a> website.</em></p>
+<h2 class="headerText2"><em>Student Rights and Responsibilities Handbook</em></h2>
+<p><em>Students are required to comply with the <a href="http://www.pcc.edu/about/policy/student-rights/" target="_blank" rel="noopener noreferrer">Student Rights and Responsibilities Handbook</a>. The Handbook includes the Code of Student Conduct and the Academic Integrity Policy.</em></p>
+<h2 class="headerText2"><em>Title IX/Nondiscrimination</em></h2><p><em>Portland Community College is committed to creating and fostering a learning and working environment based on open communication and mutual respect. If you believe you have encountered sexual harassment, sexual misconduct, sexual assault, or discrimination based on race, color, religion, age national origin, veteran status, sex, sexual orientation, gender identity, or disability, please contact the Office of Equity and Inclusion at 971-722-5840 or <a href="mailto:equity.inclusion@pcc.edu">equity.inclusion@pcc.edu</a>.</em></em></p>
+<h2 class="headerText2"><em>Non-Enforcement of Federal Immigration Law</em></h2>
+<p><em>PCC is a “sanctuary college.” Find out more on the <a href="https://www.pcc.edu/resources/undocumented-students/" target="_blank" rel="noopener noreferrer">resources for undocumented students page</a>.</em></p>
+<h2 class="headerText2"><em>Flexibility</em></h2>
+<p><em>The instructor reserves the right to modify course content and/or substitute assignments and learning activities in response to institutional, weather or class situations. <br /> </em></p>
+<p>&nbsp;</p>
+<!-- InstanceEndEditable --></blockquote>
 </body>
 <!-- InstanceEnd --></html>

@@ -102,8 +102,12 @@ Intel IA-32 Architecture Manual<!-- #EndLibraryItem -->, Volume 1 illustrates th
  should not execute. Since code is basically a linear array of instructions in memory, this kind of &ldquo;jump around&rdquo; structure is what the compiler has to compile to produce the behavior specified by the <span class="codeInText">if</span> statement. </p>
 <p class="headerText">The switch Statement </p>
 <p>The switch statement is implemented in a very different way, as a &ldquo;jump table.&rdquo; The data item being switched on is used as an index into an array of addresses (the jump table).</p>
-<p><strong>swstmt.c</strong> illustrates this. Starting at <span class="codeInText">&lt;main+88&gt;</span> we have a sequence of instructions that loads x into EAX, multiplies x by 4 (by shifting it left twice &ndash; the size of an address is 4 bytes), loads the address stored at <span class="codeInText">0x402010</span> + EAX into EAX, and then jumps to that address.</p>
-<p> The jump table starts at <span class="codeInText">0x402010</span> (you can see this by viewing the object code in AT&amp;T mode). If you open an <strong>gdb</strong> Memory window at that address, You will see addresses for the individual cases of the switch statement.</p>
+<p><strong>swstmt.c</strong> illustrates this. Starting at the <span class="codeInText">switch</span> statement, we have a sequence of instructions that loads x into EAX, multiplies x by 4 (by shifting it left twice &ndash; the size of an address is 4 bytes), adds a hard-coded address to EAX, and then jumps to the address stored in memory at the address in EAX.</p>
+<p> The jump table starts at the hard-coded address. Look at the jump table With the gdb x (eXamine memory) command:</p>
+<blockquote>
+	<p class="codeInText">x/4x &lt;hard-coded address&gt;</p>
+</blockquote>
+<p>You will see addresses for the individual cases of the switch statement.</p>
 <p>You should watch this all happen by stepping through the code in <strong>gdb</strong>. </p>
 <p>You can run the &ldquo;solution&rdquo; in <a href="files/swstmt.zip">swstmt.zip</a> in Visual Studio and see a similar process happening, except that the compiled code in Visual Studio uses ECX instead of EAX to index into the jump table. Note that in the second switch statement in main, the compiler has produced a two-step version. First, the variable we are switching on is used as an index into a table of small integers. The small integer value is then used as an index into the actual jump table. </p>
 <p class="headerText">Modern Optimizing Compilers and the if and switch Statements </p>

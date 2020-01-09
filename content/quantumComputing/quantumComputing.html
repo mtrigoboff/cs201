@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Floating Point Behavior</title>
+<title>Quantum Computing</title>
 <!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
 <!-- template parameters -->
 
@@ -13,7 +13,7 @@
 
 
 
-<!-- InstanceParam name="topicName" type="text" value="Floating Point Behavior" -->
+<!-- InstanceParam name="topicName" type="text" value="Quantum Computing" -->
 <style type="text/css">
 <!--
 body {
@@ -81,28 +81,16 @@ a:hover {
 
 <body>
 <blockquote>
-  <p><span class="pageHeaderText">CS201: Floating Point Behavior</span></p>
+  <p><span class="pageHeaderText">CS201: Quantum Computing</span></p>
 </blockquote>
 <hr />
 
 <blockquote>
 <!-- InstanceBeginEditable name="content" -->
-<p>The behavior of floating point numbers is sometimes non-intuitive.</p>
-<p>Normally we consider addition and subtraction to be <strong>associative</strong>:</p>
-<blockquote>
-	<p class="codeInText">a + (b - b) == (a + b) - b </p>
-	</blockquote>
-<p>This is not necessarily true for floating point numbers:</p>
-<blockquote>
-	<p class="codeInText">(3.14 + 1.0e30) - 1.0e30 &rarr; 0.00</p>
-	<p class="codeInText">3.14 + (1.0e30 - 1.0e30) &rarr; 3.14 </p>
-</blockquote>
-<p><em>Think about why this is true.</em></p>
-<p>Even in cases that are not as pathological as the situation above, floating point arithmetic operations are not quite associative. The formula below looks like it should be true.</p>
-<blockquote>
-  <p class="codeInText">a + (b + c) == (a + b) + c </p>
-</blockquote>
-<p>But it is probably not exactly true because the roundoff errors will be different in the two different computations. The results will be close, but are not guaranteed to be identical.</p>
+<p>Quantum computing may be the next great advance in computer  hardware. Or maybe not.</p>
+<p>Or maybe it both will and won&rsquo;t be, in a sort of &ldquo;<a href="https://upload.wikimedia.org/wikipedia/commons/8/8b/Quantum_superposition_of_states_and_decoherence.ogv" target="_blank">superposition</a>.&rdquo; <span class="codeInText"> :-)</span></p>
+<p>In the meantime, here&rsquo;s an amusing introduction to the  topic:</p>
+<p><a href="https://www.smbc-comics.com/comic/the-talk-3" target="_blank"><img src="files/quantumComputingTalk.png" width="684" height="11112" alt="humorous quantum computing talk" /></a></p>
 <!-- InstanceEndEditable -->
 </blockquote>
 </body>

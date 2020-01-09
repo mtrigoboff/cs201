@@ -150,13 +150,28 @@ a:hover {
 	</ul>
 <p class="headerText">Code That Demonstrates The Program Stack</p>
 <p>Run the following code samples in<strong> gdb</strong>, and watch what happens on the stack.</p>
-<p>To see the stack, open a Memory window, and set its Address parameter to: $esp. You will then be able to watch values being pushed onto and popped off of the stack. </p>
-<p>You should set the Memory window to display 4-byte values. If the window is not doing this, open the window&rsquo;s Preferences (by using the window&rsquo;s Addresses menu). Set the window&rsquo;s Size property to Word. </p>
+<p>To see the stack, use the gdb x (eXamine memory) command with $esp:</p>
+<blockquote>
+	<p class="codeInText">x/12x $esp</p>
+</blockquote>
+<p>You will then be able to watch values being pushed onto and popped off of the stack. </p>
 <p><strong>stack.c</strong> demonstrates the behavior of the stack when a function is called, and how the local variables for that function are allocated and used. Note that local variables <em>are not</em> initialized. Doing so would add too much overhead to the function-calling process. </p>
 <p><strong>stackr.c</strong> demonstrates how a recursive function uses the stack.</p>
 <p><strong>stackmain.c</strong> demonstrates how the arguments to <span class="codeInText">main()</span> are stored. It turns out they are stored on the stack in exactly the same way as the arguments to any other function. The only thing special about <span class="codeInText">main()</span> is that the operating system calls it when it wants to run your program. </p>
 <p><strong>stackretup2.c</strong> and <strong>stackretupn.c</strong> demonstrate how a function can return higher up the stack than the function that called it.</p>
 <p><strong>jump.c</strong> also demonstrates how a function can &ldquo;jump&rdquo; up the stack  higher than the function that called it.</p>
+<p><span class="headerText">Floating Point On The Program Stack</span></p>
+<p>In Linux, floating point arguments are passed on the stack. You can observe this in <strong>gdb</strong> by using the <strong>x</strong> (e<strong>X</strong>amine memory) command like this using <strong>fexpr.c</strong> as an example:</p>
+<blockquote>
+  <p class="codeInText">x/12gf $esp </p>
+</blockquote>
+<p>In this command, the &lsquo;g&rsquo; specifies the display of eight-byte values. This command will display 12 of these values, starting with the address in memory specified by <span class="codeInText">esp</span>.</p>
+<p>Now step through <span class="codeInText">main()</span> until the call instruction for function <span class="codeInText">fn()</span>. You will see the floating point arguments get placed on the stack.</p>
+<p>As you step out of <span class="codeInText">fn()</span>, you will see that floating point return values are returned in register ST(0). This is how floating point values are usually returned in C code compiled for the IA-32 Architecture. </p>
+<p><strong>fasm.c</strong> illustrates how floating point arguments are passed to, and how floating point values are returned from functions in code compiled with gcc. This code also illustrates how gcc's inline assembler can be used when dealing with floating point data. </p>
+<p><strong>fpi.c</strong> illustrates how a math library function might request the value of &pi; from the FPU and return it to the function&rsquo;s caller. </p>
+<p class="headerText"></p>
+<p>&nbsp;</p>
 <p class="headerText">Buffer Overflow Attacks </p>
 <p>Vulnerability to buffer overflows is a significant software weakness that is often exploited by attackers. The vulnerability occurs when a buffer is allocated <em>on the stack</em>, and the buffer is not protected from &ldquo;overflow&rdquo;  (i.e. writing past the end of the buffer).</p>
 <p>Figures 3.17 and 3.28 in <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --> illustrate the structure of a stack frame. Note that the current function&rsquo;s <em>return address</em> is stored   &ldquo;above&rdquo; (i.e. at a higher address than) all local variables. This means that if you write far enough past a buffer allocated as a local variable, <em>you can clobber the return address</em>. You can make the function  &ldquo;return&rdquo; anywhere you want it to. This is the essence of a buffer overflow attack. </p>

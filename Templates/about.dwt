@@ -102,10 +102,8 @@ a:hover {
   <!-- TemplateBeginEditable name="optionalReading" -->
     <p><em>slides from the <!-- #BeginLibraryItem "/Library/textbook authors.lbi" -->Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron<!-- #EndLibraryItem --> web site: </em></p>
   <!-- TemplateEndEditable -->
-  <p class="headerText">Duration</p>
-  <!-- TemplateBeginEditable name="duration" -->
-  <p>duration</p>
-  <!-- TemplateEndEditable --><!-- InstanceEndEditable -->
+  <p>&nbsp;</p>
+<!-- InstanceEndEditable -->
 </blockquote>
 </body>
 <!-- InstanceEnd --></html>
