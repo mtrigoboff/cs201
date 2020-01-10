@@ -5,17 +5,18 @@
 !*/
 
 # ignore dirs
-*/_notes/*
-*/files/*
+**/_notes/
+**/asgmts/
+**/files/
 
 # unignore desired files
-!*.c
-!*.h
-!*.dwt
-!*.htm
-!*.html
-!*.lbi
-!*.txt
+!**/*.c
+!**/*.h
+!**/*.dwt
+!**/*.htm
+!**/*.html
+!**/*.lbi
+!**/*.txt
 
 # unignore .gitignore
 !.gitignore
