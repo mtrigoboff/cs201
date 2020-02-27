@@ -105,7 +105,8 @@ a:hover {
 			<li><strong>ipc1.c</strong>: attempts inter-process communication (IPC) using a global variable</li>
 				<li><strong>ipc2.c</strong>: attempts IPC using a pipe, but child hangs at<span class="code"> read()</span> call, then things work when user hits return</li>
 				<li><strong>ipc3.c</strong>: achieves IPC using a pipe and the<span class="code"> poll()</span> call</li>
-				<li><strong>ipc4.c</strong>: achieves IPC using a pipe and the<span class="code"> fcntl()</span> call, which makes reading from the pipe non-blocking</li>
+				<li><strong>ipc4.c</strong>: achieves IPC using a pipe and the<span class="code"> fcntl()</span> call, which makes reading from the pipe non-blocking<br />
+					<em>Thanks to Winter 2020 student Charlie Hall for pointing out that fcntl() could be used for this.</em></li>
 			</ul>
 		<ul>
 			<li><strong>pipe.c</strong>: small protocol using 2 pipes for 2-way IPC</li>
