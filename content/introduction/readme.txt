@@ -1,0 +1,1 @@
+This directory has been split up into the Binary Data and Linux topics on D2L.
