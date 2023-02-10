@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/content.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -102,7 +102,7 @@ a:hover {
 	<p class="headerText">IEEE Standard 754 Diagram</p>
 	<p>The <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> is complicated. In addition to the readings provided to you, this diagram may be helpful:</p>
   <p><br />
-  <img src="files/Floating Point Representation.jpg" width="881" height="553" alt="IEEE 754 Diagram" /></p>
+  <img src="files/Floating Point Representation.gif" width="881" height="553" alt="IEEE 754 Diagram" /></p>
 	<p class="headerText">Smaller Representations </p>
   <p>In section 2.4.3, <!-- #BeginLibraryItem "/Library/textbook authors.lbi" --> <a href="http://csapp.cs.cmu.edu/" target="_blank">Bryant&nbsp;&amp;&nbsp;O&rsquo;Hallaron</a><!-- #EndLibraryItem --> use a 6-bit floating point number (1 sign bit, 2 fraction bits, 3 exponent bits) to illustrate the &ldquo;coverage&rdquo; of the real number line a floating point representation can achieve.</p>
 	<p><strong>float.c</strong> prints out the set of values of small floating point representations so you can see how they&rsquo;re laid out on the real number line. This code is also a <em> very concrete</em> specification of the meaning of the bits in a floating point representation. The <span class="codeInText">printValue()</span> function is basically a rendition in C of the information in the <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a> web page. If anything on this web page seems confusing or ambiguous to you, the C code can help. Working code is the most unambiguous way of expressing <a href="http://steve.hollasch.net/cgindex/coding/ieeefloat.html" target="_blank">IEEE Standard 754</a>. </p>
