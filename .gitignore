@@ -7,7 +7,7 @@
 # ignore dirs
 **/_notes/
 **/asgmts/
-**/files/
+#**/files/
 
 # unignore desired files
 !**/*.c
@@ -16,6 +16,7 @@
 !**/*.htm
 !**/*.html
 !**/*.lbi
+!**/*.pdf
 !**/*.txt
 
 # unignore .gitignore
